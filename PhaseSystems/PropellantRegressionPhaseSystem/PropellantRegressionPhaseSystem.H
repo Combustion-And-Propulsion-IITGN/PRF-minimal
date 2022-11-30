@@ -82,6 +82,13 @@ protected:
         // Equivalence Ratio
         scalar eqR_;
 
+        // Adiabatic Flame Temperature
+        volScalarField Tad;
+
+        // Inlet velocity
+        volVectorField Ug;
+        volVectorField Up;
+
         // Sub Models
 
             //- Mass transfer models
@@ -135,7 +142,7 @@ public:
         virtual autoPtr<phaseSystem::heatTransferTable> heatTransfer() const;
 
         //- Return the momentum transfer matrices
-        virtual autoPtr<phaseSystem::heatTransferTable> momentumTransfer() const;
+        virtual autoPtr<phaseSystem::momentumTransferTable> momentumTransfer();
 
         //- Regress Propellant Surface
         virtual void solve();

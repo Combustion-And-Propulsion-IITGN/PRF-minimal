@@ -99,9 +99,15 @@ Foam::interfaceTrackingModels::subCellularInterfaceMotion::~subCellularInterface
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 void Foam::interfaceTrackingModels::subCellularInterfaceMotion::correct()
 {
+  // rb = aP^n
+  /***
   const phaseModel& phase = pair_.phase1();
   const volScalarField& p = phase.db().lookupObject<volScalarField>("p");
   rb_.ref() = interface_.ref()*(a*pow(p()/1e6, n))*1e-2;
+  ***/
+
+  // rb = constant
+  rb_.ref() = interface_.ref()*1e-2;  // const burning rate
 }
 
 void Foam::interfaceTrackingModels::subCellularInterfaceMotion::regress

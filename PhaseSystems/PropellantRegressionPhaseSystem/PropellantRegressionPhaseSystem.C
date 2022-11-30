@@ -61,6 +61,30 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
     BasePhaseSystem(mesh),
     molecularWeights_(this->subDict("molecularWeight")),
     eqR_(this->template get<scalar>("equivalenceRatio")),
+    Tad
+    (
+      volScalarField
+      (
+        IOobject("Tadiabatic", mesh), mesh,
+        dimensionedScalar("", dimTemperature, this->template get<scalar>("Tad"))
+      )
+    ),
+    Ug
+    (
+      volVectorField
+      (
+        IOobject("Ugas", mesh), mesh,
+        dimensionedVector("", dimVelocity, this->template get<vector>("Ugas"))
+      )
+    ),
+    Up
+    (
+      volVectorField
+      (
+        IOobject("Uparticle", mesh), mesh,
+        dimensionedVector("", dimVelocity, this->template get<vector>("Uparticle"))
+      )
+    ),
     saturationModel_
     (
         saturationModel::New(this->subDict("saturationModel"), mesh)
@@ -79,10 +103,25 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
         interfaceTrackingModelIter
     )
     {
-        this->rDmdt_.set
+        const phasePair& pair = this->phasePairs_[interfaceTrackingModelIter.key()];
+
+        // Initially assume no mass transfer
+        rDmdt_.set
         (
-            interfaceTrackingModelIter.key(),
-            phaseSystem::dmdt(interfaceTrackingModelIter.key()).ptr()
+            pair,
+            new volScalarField
+            (
+                IOobject
+                (
+                    IOobject::groupName("rDmdt", pair.name()),
+                    this->mesh().time().timeName(),
+                    this->mesh(),
+                    IOobject::READ_IF_PRESENT,
+                    IOobject::AUTO_WRITE
+                ),
+                this->mesh(),
+                dimensionedScalar(dimDensity/dimTime)
+            )
         );
     }
 
@@ -181,9 +220,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::massTransfer() const
     (
         new phaseSystem::massTransferTable()
     );
-
     // (No Species Present)
-
     return eqnsPtr;
 }
 
@@ -194,35 +231,74 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::heatTransfer() const
   autoPtr<phaseSystem::heatTransferTable> eqnsPtr =
           BasePhaseSystem::heatTransfer();
 
-  // phaseSystem::heatTransferTable& eqns = eqnsPtr();
+  phaseSystem::heatTransferTable& eqns = eqnsPtr();
 
-  forAllConstIter
-  (
-      interfaceTrackingModelTable,
-      interfaceTrackingModels_,
-      interfaceTrackingModelIter
-  )
-  {}
+  forAllConstIter(rDmdtTable, rDmdt_, rDmdtIter)
+  {
+    const phasePair& pair = this->phasePairs_[rDmdtIter.key()];
+    const volScalarField& rDmdt = *rDmdtIter();
+
+    const scalar coeff = coeff_[rDmdtIter.key()];
+
+    const phaseModel& phase1 = pair.phase1();
+    const phaseModel& phase2 = pair.phase2();
+
+    // specific Heat Capacity
+    const volScalarField Cp1(phase1.thermo().Cp());
+    const volScalarField Cp2(phase2.thermo().Cp());
+
+    // Temperature of the gases and particles
+    dimensionedScalar Ts("T", dimTemperature, 3000);
+
+    // Equations
+    fvScalarMatrix& eqn1 = *eqns[phase1.name()];
+    fvScalarMatrix& eqn2 = *eqns[phase2.name()];
+
+    // Enthalpy Source
+    eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
+            + coeff*rDmdt*Cp1*Tad;
+    eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+            + (1.0 - coeff)*rDmdt*Cp2*Tad;
+
+    // Kinetic Energy Source
+    eqn1 += - coeff*rDmdt*phase1.K()
+            + coeff*rDmdt*(0.5*magSqr(Up));
+    eqn2 += - (1.0 - coeff)*rDmdt*phase2.K()
+            + (1.0 - coeff)*rDmdt*(0.5*magSqr(Ug));
+  }
 
   return eqnsPtr;
 }
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::momentumTransferTable>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::momentumTransfer() const
+Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::momentumTransfer()
 {
   autoPtr<phaseSystem::momentumTransferTable> eqnsPtr =
                 BasePhaseSystem::momentumTransfer();
 
   phaseSystem::momentumTransferTable& eqns = eqnsPtr();
 
-  forAllConstIter
-  (
-      interfaceTrackingModelTable,
-      interfaceTrackingModels_,
-      interfaceTrackingModelIter
-  )
-  {}
+  forAllConstIter(rDmdtTable, rDmdt_, rDmdtIter)
+  {
+    const phasePair& pair = this->phasePairs_[rDmdtIter.key()];
+    const volScalarField& rDmdt = *rDmdtIter();
+
+    const scalar coeff = coeff_[rDmdtIter.key()];
+
+    const phaseModel& phase1 = pair.phase1();
+    const phaseModel& phase2 = pair.phase2();
+
+    // Equations
+    fvVectorMatrix& eqn1 = *eqns[phase1.name()];
+    fvVectorMatrix& eqn2 = *eqns[phase2.name()];
+
+    // Energy Source
+    eqn1 += -fvm::Sp(coeff*rDmdt, eqn1.psi())
+            + coeff*rDmdt*Up;
+    eqn2 += -fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+            + (1.0 - coeff)*rDmdt*Ug;
+  }
 
   return eqnsPtr;
 }
