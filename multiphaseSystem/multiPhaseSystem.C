@@ -332,7 +332,11 @@ void Foam::multiPhaseSystem::solveAlphas()
     // Correct the sum of the phase fractions to avoid drift
     forAll(movingPhases(), movingPhasei)
     {
-        movingPhases()[movingPhasei] *= alphaVoid/max(sumAlphaMoving, SMALL);
+        movingPhases()[movingPhasei] *= alphaVoid/sumAlphaMoving;
+
+        // cliping volume fraction for moving phases to avoid division by zero
+        phaseModel& phase = movingPhases()[movingPhasei];
+        phase.clip(SMALL, 1 - SMALL);
     }
 }
 

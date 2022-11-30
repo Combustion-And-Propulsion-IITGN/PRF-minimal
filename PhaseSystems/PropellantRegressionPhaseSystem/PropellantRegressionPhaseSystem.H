@@ -71,6 +71,9 @@ protected:
         typedef HashPtrTable<volScalarField, phasePairKey, phasePairKey::hash>
             rDmdtTable;
 
+        typedef HashTable<scalar, phasePairKey, phasePairKey::hash>
+            coeffTable;
+
     // Protected data
 
         // Molecular Weights of all the species
@@ -86,6 +89,10 @@ protected:
 
             //- Mass transfer rates
             rDmdtTable rDmdt_;
+
+            //- Mass Transfer Coefficient for particle phase
+            //        for gas phase it is 1.0 - coeff
+            coeffTable coeff_;
 
             //- The saturation model used to evaluate Tsat = Tf
             autoPtr<saturationModel> saturationModel_;

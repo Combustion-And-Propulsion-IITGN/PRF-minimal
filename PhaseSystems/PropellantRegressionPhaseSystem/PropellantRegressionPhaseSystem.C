@@ -85,6 +85,40 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
             phaseSystem::dmdt(interfaceTrackingModelIter.key()).ptr()
         );
     }
+
+    // Coefficient of mass transfer
+    forAllConstIter
+    (
+      interfaceTrackingModelTable,
+      interfaceTrackingModels_,
+      interfaceTrackingModelIter
+    )
+    {
+      // Molecular weights of Species
+      scalar Al = molecularWeights_.get<scalar>("Al");
+      scalar Al2O3 = molecularWeights_.get<scalar>("Al2O3");
+      scalar H2O = molecularWeights_.get<scalar>("H2O");
+      scalar H2 = molecularWeights_.get<scalar>("H2");
+
+      // number of moles of fuel
+      scalar zeta = Al/(eqR_*H2O);
+      scalar coeff = 1.0;
+
+      if (eqR_ <= 1.0) // Lean or Stoichiometric Mixture
+      {
+        coeff = Al2O3/(2*Al*(1 + 1/eqR_));
+      }
+      else  // Rich mixture
+      {
+        coeff = 1.0 - H2*zeta/(Al*(1 + 1/eqR_));
+      }
+
+      this->coeff_.set
+      (
+        interfaceTrackingModelIter.key(),
+        coeff
+      );
+    }
 }
 
 
@@ -111,7 +145,8 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdt
     const phasePairKey& key
 ) const
 {
-    return BasePhaseSystem::dmdt(key) + rDmdt(key);
+  // return BasePhaseSystem::dmdt(key) + this->rDmdt(key);
+    return BasePhaseSystem::dmdt(key);
 }
 
 
@@ -128,8 +163,11 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdts() const
     {
         const phasePair& pair = this->phasePairs_[rDmdtIter.key()];
         const volScalarField& rDmdt = *rDmdtIter();
+
+        const scalar coeff = coeff_[rDmdtIter.key()];
         // Add massTransfer Rate to the Gas Phase only
-        this->addField(pair.phase2(), "dmdt", rDmdt, dmdts);
+        this->addField(pair.phase1(), "dmdt", coeff*rDmdt, dmdts);
+        this->addField(pair.phase2(), "dmdt", (1.0 - coeff)*rDmdt, dmdts);
     }
     return dmdts;
 }
