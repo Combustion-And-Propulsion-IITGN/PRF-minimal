@@ -184,8 +184,8 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdt
     const phasePairKey& key
 ) const
 {
-  // return BasePhaseSystem::dmdt(key) + this->rDmdt(key);
-    return BasePhaseSystem::dmdt(key);
+    return BasePhaseSystem::dmdt(key) + this->rDmdt(key);
+    // return BasePhaseSystem::dmdt(key);
 }
 
 
@@ -247,24 +247,28 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::heatTransfer() const
   //   const volScalarField Cp1(phase1.thermo().Cp());
   //   const volScalarField Cp2(phase2.thermo().Cp());
   //
-  //   // Temperature of the gases and particles
-  //   dimensionedScalar Ts("T", dimTemperature, 3000);
-  //
   //   // Equations
   //   fvScalarMatrix& eqn1 = *eqns[phase1.name()];
   //   fvScalarMatrix& eqn2 = *eqns[phase2.name()];
-  //
-  //   // // Enthalpy Source
-  //   // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
-  //   //         + coeff*rDmdt*Cp1*Tad;
-  //   // eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
-  //   //         + (1.0 - coeff)*rDmdt*Cp2*Tad;
-  //   //
-  //   // // Kinetic Energy Source
-  //   // eqn1 += - coeff*rDmdt*phase1.K()
-  //   //         + coeff*rDmdt*(0.5*magSqr(Up));
-  //   // eqn2 += - (1.0 - coeff)*rDmdt*phase2.K()
-  //   //         + (1.0 - coeff)*rDmdt*(0.5*magSqr(Ug));
+
+    // // Enthalpy Source
+    // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
+    //         + coeff*rDmdt*Cp1*Tad;
+    // eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+    //         + (1.0 - coeff)*rDmdt*Cp2*Tad;
+    //
+    // // Stabilization Terms
+    // eqn1 += coeff*rDmdt*phase1.thermo().he()
+    //         - fvm::Sp(coeff*rDmdt, eqn1.psi());
+    // eqn2 += (1.0 - coeff)*rDmdt*phase2.thermo().he()
+    //         - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi());
+
+
+    // // Kinetic Energy Source
+    // eqn1 += - coeff*rDmdt*phase1.K()
+    //         + coeff*rDmdt*(0.5*magSqr(Up));
+    // eqn2 += - (1.0 - coeff)*rDmdt*phase2.K()
+    //         + (1.0 - coeff)*rDmdt*(0.5*magSqr(Ug));
   // }
 
   return eqnsPtr;

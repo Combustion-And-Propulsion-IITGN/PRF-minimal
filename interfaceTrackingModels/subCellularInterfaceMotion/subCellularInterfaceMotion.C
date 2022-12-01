@@ -82,7 +82,8 @@ Foam::interfaceTrackingModels::subCellularInterfaceMotion::subCellularInterfaceM
         pair_.phase1().mesh(),
         dimensionedScalar("", dimArea/dimVolume, 0.0)
       )
-    )
+    ),
+    crb_("", dimVelocity, dict.getOrDefault<scalar>("rb", -1))
 {
   const phaseModel& phase = pair_.phase1();
   const volScalarField& alpha
@@ -99,15 +100,20 @@ Foam::interfaceTrackingModels::subCellularInterfaceMotion::~subCellularInterface
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 void Foam::interfaceTrackingModels::subCellularInterfaceMotion::correct()
 {
-  // rb = aP^n
-  /***
-  const phaseModel& phase = pair_.phase1();
-  const volScalarField& p = phase.db().lookupObject<volScalarField>("p");
-  rb_.ref() = interface_.ref()*(a*pow(p()/1e6, n))*1e-2;
-  ***/
 
   // rb = constant
-  rb_.ref() = interface_.ref()*dimensionedScalar("", dimVelocity, 1e-2);
+  if (crb_.value() != -1)
+  {
+    rb_.ref() = interface_.ref()*crb_;
+  }
+  else
+  {
+    // rb = aP^n
+    const phaseModel& phase = pair_.phase1();
+    const volScalarField& p = phase.db().lookupObject<volScalarField>("p");
+    rb_.ref() = interface_.ref()*(a*pow(p()/1e6, n))*1e-2;
+  }
+
 }
 
 void Foam::interfaceTrackingModels::subCellularInterfaceMotion::regress

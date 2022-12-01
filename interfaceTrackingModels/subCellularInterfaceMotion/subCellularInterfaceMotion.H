@@ -69,6 +69,8 @@ public:
     volScalarField rb_;
 
     volScalarField As_;
+
+    dimensionedScalar crb_;
     // Constructors
 
         //- Construct from components

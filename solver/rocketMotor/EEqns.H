@@ -10,7 +10,7 @@ for (int Ecorr=0; Ecorr<nEnergyCorrectors; Ecorr++)
     forAll(fluid.anisothermalPhases(), anisothermalPhasei)
     {
         phaseModel& phase = fluid.anisothermalPhases()[anisothermalPhasei];
-        continue;
+
         const volScalarField& alpha = phase;
         const volScalarField& rho = phase.rho();
         const volVectorField& U = phase.U();
@@ -36,6 +36,13 @@ for (int Ecorr=0; Ecorr<nEnergyCorrectors; Ecorr++)
         fvOptions.constrain(EEqn);
         EEqn.solve();
         fvOptions.correct(phase.thermoRef().he());
+        Info<< phase.name() << " min/max T "
+            << min(phase.thermo().T()).value()
+            << " - "
+            << max(phase.thermo().T()).value()
+            << endl;
+
+      // Info << phase.thermo().T() << endl;
     }
 
     fluid.correctThermo();
