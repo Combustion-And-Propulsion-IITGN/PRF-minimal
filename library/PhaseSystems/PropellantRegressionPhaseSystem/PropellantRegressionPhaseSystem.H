@@ -103,7 +103,8 @@ protected:
         dimensionedScalar R_;
 
         // propellant density
-        dimensionedScalar rhop_;
+        dimensionedScalar rhoPropellant;
+        dimensionedScalar rhoParticle;
         dimensionedScalar alphaRhoAl;
 
         // Inlet velocity

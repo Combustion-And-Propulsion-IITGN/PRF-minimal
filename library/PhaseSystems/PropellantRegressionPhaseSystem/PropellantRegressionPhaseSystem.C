@@ -79,14 +79,15 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
       )
     ),
     R_("R", dimEnergy/dimMass/dimTemperature, 0),
-    rhop_("rhop", dimDensity, this->template get<scalar>("propellantRho")),
-    alphaRhoAl("", dimDensity, 0),
+    rhoPropellant("rhoprop", dimDensity, this->template get<scalar>("propellantRho")),
+    rhoParticle("rhopar", dimDensity, this->template get<scalar>("particleRho")),
+    alphaRhoAl("alphaRhoAl", dimDensity, 0),
     Ug
     (
       volVectorField
       (
         IOobject("Ugas", mesh), mesh,
-        dimensionedVector("", dimVelocity, vector(0 0 0))
+        dimensionedVector("", dimVelocity, vector(0, 0, 0))
       )
     ),
     Up
@@ -94,7 +95,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
       volVectorField
       (
         IOobject("Uparticle", mesh), mesh,
-        dimensionedVector("", dimVelocity, vector(0 0 0))
+        dimensionedVector("", dimVelocity, vector(0, 0, 0))
       )
     ),
     saturationModel_
@@ -144,7 +145,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
     MW_.H2 = molecularWeights_.get<scalar>("H2");
 
     R_.value() = 8314.5/MW_.H2;
-    alphaRhoAl.value() = rhop_*eqR_/(1 + eqR_);
+    alphaRhoAl.value() = rhoPropellant.value()*eqR_/(1 + eqR_);
 
     // Coefficient of mass transfer
     forAllConstIter
@@ -177,13 +178,13 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
     // Exit if efficiency is 0%
     if (zeta == 0)
     {
-      FatalInErrorFunction
+      FatalErrorInFunction
           << "Efficiency cannot be 0%\n"
           << "Choose any number -> (0, 1.0]" << exit(FatalError);
     }
     if (zeta > 1.0)
     {
-      FatalInErrorFunction
+      FatalErrorInFunction
           << "Efficiency cannot be more than 100%\n"
           << "Choose any number -> (0, 1.0]" << exit(FatalError);
     }
@@ -384,9 +385,12 @@ void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::correct()
     {
         *rDmdt_[interfaceTrackingModelIter.key()]
               = interfaceTrackingModelIter()->rb()
-                *interfaceTrackingModelIter()->As()*rhop_;
+                *interfaceTrackingModelIter()->As()*rhoPropellant;
         rb_ = interfaceTrackingModelIter()->rb();
     }
+
+    // calculate velocity of the gas and particle source
+    calculateVelocity();
 
 }
 
@@ -397,29 +401,28 @@ void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::calculateVelocity()
     //                into the combustion chamber
 
     // density of gas phase entering,
-    volScalarField rhog = this->phases_[0].thermo().p()/(Tad*R);
+    volScalarField rhog(this->phases()[0].thermo().p()/(Tad*R_));
 
     // volume fraction of particle phase
-    volScalarField alphap = 1/(1 + (rhop_/rhog)*(zeta/(8 + 9*eqR_)));
+    volScalarField alphap(1/(1 + (rhoParticle/rhog)*(zeta/(8 + 9*eqR_))));
 
     // Velocity of gas and particle phase
-    const fvMesh& mesh(this->phases_[0].mesh());
-    Info << "velocity: ";
+    const fvMesh& mesh(this->phases()[0].mesh());
     forAll(mesh.cells(), cellI)
     {
         // If interface present
         if (rb_[cellI] == 0) continue;
 
-        Ug[cellI].x() = -alphaRhoAl*rb_[cellI]*(1/9)
-                          /(eqR_*(1 - alphap[cellI])*rhog[cellI]);
+        scalar temp = (-alphaRhoAl.value()*rb_[cellI]
+                      /(9.0*eqR_*(1 - alphap[cellI])*rhog[cellI]));
+
+        Ug[cellI].x() = temp;
         Up[cellI].x() = Ug[cellI].x()*zeta;
 
         // Correct for change of Reference
         Ug[cellI].x() += rb_[cellI];
         Up[cellI].x() += rb_[cellI];
-        Info << Ug[cellI].x() << " | ";
     }
-    Info << endl;
 
 }
 
