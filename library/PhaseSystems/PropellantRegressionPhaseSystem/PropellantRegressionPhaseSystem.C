@@ -155,38 +155,38 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
       interfaceTrackingModelIter
     )
     {
-      // number of moles of fuel
-      scalar xi = MW_.Al/(eqR_*MW_.H2O);
-      scalar coeff = 1.0;
+        // number of moles of fuel
+        scalar xi = MW_.Al/(eqR_*MW_.H2O);
+        scalar coeff = 1.0;
 
-      if (eqR_ <= 1.0) // Lean or Stoichiometric Mixture
-      {
-        coeff = MW_.Al2O3/(2*MW_.Al*(1 + 1/eqR_));
-      }
-      else  // Rich mixture
-      {
-        coeff = 1.0 - MW_.H2*xi/(MW_.Al*(1 + 1/eqR_));
-      }
+        if (eqR_ <= 1.0) // Lean or Stoichiometric Mixture
+        {
+            coeff = MW_.Al2O3/(2*MW_.Al*(1 + 1/eqR_));
+        }
+        else  // Rich mixture
+        {
+            coeff = 1.0 - MW_.H2*xi/(MW_.Al*(1 + 1/eqR_));
+        }
 
-      this->coeff_.set
-      (
-        interfaceTrackingModelIter.key(),
-        coeff
-      );
+        this->coeff_.set
+        (
+            interfaceTrackingModelIter.key(),
+            coeff
+        );
     }
 
     // Exit if efficiency is 0%
     if (zeta == 0)
     {
-      FatalErrorInFunction
-          << "Efficiency cannot be 0%\n"
-          << "Choose any number -> (0, 1.0]" << exit(FatalError);
+        FatalErrorInFunction
+            << "Efficiency cannot be 0%\n"
+            << "Choose any number -> (0, 1.0]" << exit(FatalError);
     }
     if (zeta > 1.0)
     {
-      FatalErrorInFunction
-          << "Efficiency cannot be more than 100%\n"
-          << "Choose any number -> (0, 1.0]" << exit(FatalError);
+        FatalErrorInFunction
+            << "Efficiency cannot be more than 100%\n"
+            << "Choose any number -> (0, 1.0]" << exit(FatalError);
     }
 }
 
