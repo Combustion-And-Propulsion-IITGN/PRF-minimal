@@ -124,21 +124,8 @@ Foam::ThermalEnergyPhaseModel<BasePhaseModel>::heEqn()
      ==
         alpha*this->Qdot()
     );
-    tEEqn.ref() -= fvc::grad(alpha*this->thermo().p())&this->U();
-
-    // Add the appropriate pressure-work term
-    if (he.name() == this->thermo_->phasePropertyName("e"))
-    {
-        tEEqn.ref() += filterPressureWork
-        (
-            fvc::div(fvc::absolute(alphaPhi, alpha, U), this->thermo().p())
-          + (fvc::ddt(alpha) - contErr/rho)*this->thermo().p()
-        );
-    }
-    else if (this->thermo_->dpdt())
-    {
-        tEEqn.ref() -= filterPressureWork(alpha*this->fluid().dpdt());
-    }
+    tEEqn.ref() -= fvc::grad(alpha*this->thermo().p())&this->U()
+                   + alpha*this->fluid().dpdt();
 
     return tEEqn;
 }
