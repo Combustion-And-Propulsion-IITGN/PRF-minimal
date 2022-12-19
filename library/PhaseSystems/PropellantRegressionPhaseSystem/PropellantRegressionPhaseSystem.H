@@ -107,9 +107,6 @@ protected:
         dimensionedScalar rhoParticle;
         dimensionedScalar alphaRhoAl;
 
-        // alphaPFactor
-        volScalarField alphaPF;
-
         // Inlet velocity
         volVectorField Ug_;
         volVectorField Up_;
