@@ -94,6 +94,9 @@ heatTransfer() const
       const tmp<volScalarField> tKd(sharpInterfaceHeatTransferModelIter()->Kd());
       const volScalarField& Kd(tKd());
 
+      const tmp<volScalarField> tKc(sharpInterfaceHeatTransferModelIter()->Kc());
+      const volScalarField& Kc(tKc());
+
       const tmp<volScalarField> tCp1(phase1.thermo().Cpv());
       const volScalarField& Cp1(tCp1());
 
@@ -121,8 +124,14 @@ heatTransfer() const
       *eqns[phase1.name()] -=
             - fvm::laplacian
               (
-               fvc::interpolate(phase1)*fvc::interpolate(Kd/phase1.thermo().Cp()),
+               fvc::interpolate(phase1)*fvc::interpolate(Kd/Cp1),
                phase1.thermo().he()
+              );
+      *eqns[phase2.name()] -=
+            - fvm::laplacian
+              (
+                fvc::interpolate(phase2)*fvc::interpolate(Kc/Cp2),
+                phase2.thermo().he()
               );
     }
 
