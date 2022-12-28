@@ -433,6 +433,8 @@ while (pimple.correct())
                 if (propellantIndex != -1)
                 {
                   const volScalarField& propellant = phases[propellantIndex];
+
+                  // Fix velocities
                   forAll(propellant, i)
                   {
                     if (propellant[i] == 1.0)
@@ -440,6 +442,9 @@ while (pimple.correct())
                       phase.URef()[i] = vector(0, 0, 0);
                     }
                   }
+                //
+                //   // Correct phi
+                //   phase.phiRef() = fvc::flux(phase.U());
                 }
 
             }

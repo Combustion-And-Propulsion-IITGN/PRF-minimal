@@ -441,13 +441,13 @@ while (pimple.correct())
                     }
                   }
                 }
-                
+
             }
         }
     }
 
     // Update and limit the static pressure
-    p = max(p_rgh + rho*gh, pMin);
+    // p = max(p_rgh + rho*gh, pMin);
 
     // Limit p_rgh
     p_rgh = p - rho*gh;
