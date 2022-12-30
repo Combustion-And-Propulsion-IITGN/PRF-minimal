@@ -25,7 +25,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "PropellantRegressionPhaseSystem.H"
+#include "PropellantInterfacePhaseSystem.H"
 #include "interfaceTrackingModel.H"
 #include "fvmSup.H"
 #include "phaseSystem.H"
@@ -35,7 +35,7 @@ License
 
 template<class BasePhaseSystem>
 Foam::tmp<Foam::volScalarField>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::rDmdt
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::rDmdt
 (
     const phasePairKey& key
 ) const
@@ -53,7 +53,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::rDmdt
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class BasePhaseSystem>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhaseSystem
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::PropellantInterfacePhaseSystem
 (
     const fvMesh& mesh
 )
@@ -194,22 +194,22 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::PropellantRegressionPhas
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
 template<class BasePhaseSystem>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::
-~PropellantRegressionPhaseSystem()
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::
+~PropellantInterfacePhaseSystem()
 {}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 template<class BasePhaseSystem>
 const Foam::saturationModel&
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::saturation() const
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::saturation() const
 {
     return saturationModel_();
 }
 
 template<class BasePhaseSystem>
 Foam::tmp<Foam::volScalarField>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdt
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::dmdt
 (
     const phasePairKey& key
 ) const
@@ -221,7 +221,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdt
 
 template<class BasePhaseSystem>
 Foam::PtrList<Foam::volScalarField>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdts() const
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::dmdts() const
 {
     PtrList<volScalarField> dmdts(BasePhaseSystem::dmdts());
 
@@ -237,6 +237,9 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdts() const
 
         this->addField(pair.phase1(), "dmdt", coeff*rDmdt, dmdts);
         this->addField(pair.phase2(), "dmdt", (1.0 - coeff)*rDmdt, dmdts);
+
+        // Subtract for Propellant Phase
+        this->addField(this->phases()[2], "dmdt", -rDmdt, dmdts);
     }
     return dmdts;
 }
@@ -244,7 +247,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::dmdts() const
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::massTransferTable>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::massTransfer() const
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::massTransfer() const
 {
     // Create a mass transfer matrix for each species of each phase
     autoPtr<phaseSystem::massTransferTable> eqnsPtr
@@ -257,7 +260,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::massTransfer() const
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::heatTransferTable>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::heatTransfer() const
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::heatTransfer() const
 {
   autoPtr<phaseSystem::heatTransferTable> eqnsPtr =
           BasePhaseSystem::heatTransfer();
@@ -286,10 +289,10 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::heatTransfer() const
     fvScalarMatrix& eqn2 = *eqns[phase2.name()];
 
     // Energy Source 1
-    eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
-            + coeff*rDmdt*hs1;
-    eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
-            + (1.0 - coeff)*rDmdt*hs2;
+    // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
+    //         + coeff*rDmdt*hs1;
+    // eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+    //         + (1.0 - coeff)*rDmdt*hs2;
 
     // Energy Source 2
     // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
@@ -318,7 +321,7 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::heatTransfer() const
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::momentumTransferTable>
-Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::momentumTransfer()
+Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::momentumTransfer()
 {
   autoPtr<phaseSystem::momentumTransferTable> eqnsPtr =
                 BasePhaseSystem::momentumTransfer();
@@ -340,37 +343,24 @@ Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::momentumTransfer()
     fvVectorMatrix& eqn2 = *eqns[phase2.name()];
 
     // Momentum Source
-    eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
-            + coeff*rDmdt*Up_;
-    eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
-            + (1.0 - coeff)*rDmdt*Ug_;
+    // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
+    //         + coeff*rDmdt*Up_;
+    // eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+    //         + (1.0 - coeff)*rDmdt*Ug_;
   }
 
   return eqnsPtr;
 }
 
 template<class BasePhaseSystem>
-void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::solve()
+void Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::solve()
 {
-  // Regress Propellant surface (Manipulate propellant volume fraction)
-  forAllIter
-  (
-    interfaceTrackingModelTable,
-    interfaceTrackingModels_,
-    interfaceTrackingModelIter
-  )
-  {
-    word propellant = "alpha." + interfaceTrackingModelIter()->propellant_;
-    volScalarField& alpha = this->db().template lookupObjectRef<volScalarField>(propellant);
-    interfaceTrackingModelIter()->regress(alpha);
-  }
-
   // Solve other phase volume fraction equations
-  // BasePhaseSystem::solve();
+  BasePhaseSystem::solve();
 }
 
 template<class BasePhaseSystem>
-void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::correct()
+void Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::correct()
 {
     BasePhaseSystem::correct();
 
@@ -402,12 +392,12 @@ void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::correct()
     }
 
     // calculate velocity of the gas and particle source
-    calculateVelocity();
+    // calculateVelocity();
 
 }
 
 template<class BasePhaseSystem>
-void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::calculateVelocity()
+void Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::calculateVelocity()
 {
     //- Calculate velocity of the gas and particles comes
     //                into the combustion chamber
@@ -441,7 +431,7 @@ void Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::calculateVelocity()
 }
 
 template<class BasePhaseSystem>
-bool Foam::PropellantRegressionPhaseSystem<BasePhaseSystem>::read()
+bool Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::read()
 {
     if (BasePhaseSystem::read())
     {

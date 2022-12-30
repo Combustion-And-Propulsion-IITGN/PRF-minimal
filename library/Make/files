@@ -3,6 +3,7 @@ phaseModel/phaseModel/phaseModels.C
 iTModel = interfaceTrackingModels
 $(iTModel)/interfaceTrackingModel/interfaceTrackingModel.C
 $(iTModel)/subCellularInterfaceMotion/subCellularInterfaceMotion.C
+$(iTModel)/subCellularInterfaceMotion/burningRate.C
 
 iFModel = interfacialModels
 $(iFModel)/dragModels/particleDragModel/particleDragModel.C

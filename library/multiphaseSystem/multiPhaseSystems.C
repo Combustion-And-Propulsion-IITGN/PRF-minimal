@@ -55,6 +55,24 @@ namespace Foam
         regressionMultiphaseSystem
     );
 
+    typedef
+        PropellantInterfacePhaseSystem
+        <
+            InterphaseHeatTransferPhaseSystem
+            <
+                MomentumEnergyTransferPhaseSystem<multiphaseSystem>
+            >
+        >
+        interfaceRegressionMultiphaseSystem;
+
+    addNamedToRunTimeSelectionTable
+    (
+        multiPhaseSystem,
+        interfaceRegressionMultiphaseSystem,
+        dictionary,
+        interfaceRegressionMultiphaseSystem
+    );
+
 }
 
 // ************************************************************************* //
