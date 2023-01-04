@@ -103,7 +103,7 @@ Foam::interfaceTrackingModels::burningRate::burningRate
         this->mesh_.time().timeName(),
         this->mesh_,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
       ),
       this->mesh_,
       dimensionedScalar(dimless/dimLength, Zero)
@@ -116,7 +116,7 @@ Foam::interfaceTrackingModels::burningRate::burningRate
         this->mesh_.time().timeName(),
         this->mesh_,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
       ),
       this->mesh_,
       dimensionedVector(dimless/dimLength, vector(0, 0, 0))

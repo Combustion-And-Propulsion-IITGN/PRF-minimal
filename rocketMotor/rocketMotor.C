@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
             if (adjustTimeStep)
             {
               scalar maxDeltaTFact = maxCo/(CoNum + SMALL);
-              scalar deltaTFact = min(min(maxDeltaTFact, 1.0 + 0.1*maxDeltaTFact), 1.01);
+              scalar deltaTFact = min(min(maxDeltaTFact, 1.0 + 0.1*maxDeltaTFact), 1.2);
 
               runTime.setDeltaT
               (
@@ -176,6 +176,7 @@ int main(int argc, char *argv[])
 
             // #include "findPropellantCells.H"
             label purePropellantSize = 0;
+            label pureTPropellantSize = 0;
             if (propellantIndex != -1)
             {
               const volScalarField& propellant = phases[propellantIndex];
@@ -186,11 +187,16 @@ int main(int argc, char *argv[])
                 {
                   purePropellantSize++;
                 }
+                if (propellant[i] >= 0.99)
+                {
+                  pureTPropellantSize++;
+                }
               }
             }
             labelList purePropellantCells(purePropellantSize);
+            labelList pureTPropellantCells(pureTPropellantSize);
             scalar Tad = fluid.get<scalar>("Tad");
-            scalarField setTemp(purePropellantSize, Tad);
+            scalarField setTemp(pureTPropellantSize, 300);
             scalarField setAlpha(purePropellantSize, SMALL);
             vectorField setVelocity(purePropellantSize, vector(0, 0, 0));
             if (propellantIndex != -1)
@@ -198,12 +204,18 @@ int main(int argc, char *argv[])
               const volScalarField& propellant = phases[propellantIndex];
 
               label j = 0;
+              label k = 0;
               forAll(propellant, i)
               {
                 if (propellant[i] == 1)
                 {
                   purePropellantCells[j] = i;
                   j++;
+                }
+                if (propellant[i] >= 0.99)
+                {
+                  pureTPropellantCells[k] = i;
+                  k++;
                 }
               }
             }

@@ -289,10 +289,10 @@ Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::heatTransfer() const
     fvScalarMatrix& eqn2 = *eqns[phase2.name()];
 
     // Energy Source 1
-    // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
-    //         + coeff*rDmdt*hs1;
-    // eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
-    //         + (1.0 - coeff)*rDmdt*hs2;
+    eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
+            + coeff*rDmdt*hs1;
+    eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+            + (1.0 - coeff)*rDmdt*hs2;
 
     // Energy Source 2
     // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
@@ -343,10 +343,10 @@ Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::momentumTransfer()
     fvVectorMatrix& eqn2 = *eqns[phase2.name()];
 
     // Momentum Source
-    // eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
-    //         + coeff*rDmdt*Up_;
-    // eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
-    //         + (1.0 - coeff)*rDmdt*Ug_;
+    eqn1 += - fvm::Sp(coeff*rDmdt, eqn1.psi())
+            + coeff*rDmdt*Up_;
+    eqn2 += - fvm::Sp((1.0 - coeff)*rDmdt, eqn2.psi())
+            + (1.0 - coeff)*rDmdt*Ug_;
   }
 
   return eqnsPtr;
@@ -392,7 +392,7 @@ void Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::correct()
     }
 
     // calculate velocity of the gas and particle source
-    // calculateVelocity();
+    calculateVelocity();
 
 }
 

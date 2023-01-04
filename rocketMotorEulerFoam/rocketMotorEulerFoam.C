@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 
     Info<< "\nStarting time loop\n" << endl;
 
-    while (runTime.run())
+    while (!runTime.end())
     {
         #include "readTimeControls.H"
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
         else
         {
             #include "CourantNo.H"
-            #include "setDeltaT.H"
+            #include "setDeltaTFactor.H"
         }
 
         runTime++;
