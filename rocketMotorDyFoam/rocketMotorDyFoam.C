@@ -37,6 +37,7 @@ Description
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
+#include "dynamicFvMesh.H"
 #include "multiPhaseSystem.H"
 #include "phaseCompressibleTurbulenceModel.H"
 #include "pimpleControl.H"
@@ -52,9 +53,8 @@ int main(int argc, char *argv[])
     #include "addCheckCaseOptions.H"
     #include "setRootCase.H"
     #include "createTime.H"
-    #include "createMesh.H"
-    #include "createControl.H"
-    #include "createTimeControls.H"
+    #include "createDynamicFvMesh.H"
+    #include "createDyMControls.H"
     #include "createFields.H"
     #include "createFieldRefs.H"
 
@@ -77,9 +77,9 @@ int main(int argc, char *argv[])
 
     Info<< "\nStarting time loop\n" << endl;
 
-    while (!runTime.end())
+    while (runTime.run())
     {
-        #include "readTimeControls.H"
+        #include "readDyMControls.H"
 
         int nEnergyCorrectors
         (
@@ -102,6 +102,33 @@ int main(int argc, char *argv[])
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
+            if (pimple.firstIter() || moveMeshOuterCorrectors)
+            {
+                mesh.update();
+
+                if (mesh.changing())
+                {
+                    // Topology Change is removed
+                    if (mesh.topoChanging())
+                    {
+                      Info << "Topology is changing" << endl;
+                    }
+                    // Correction in gravity term is removed
+                    // MRF update is removed
+
+                    if (correctPhi)
+                    {
+                        // Correction of Phi was done here. Now removed
+                        // fluid.correct();
+                    }
+
+                    if (checkMeshCourantNo)
+                    {
+                        #include "meshCourantNo.H"
+                    }
+                }
+            }
+
             fluid.solve();
             fluid.correct();
 
