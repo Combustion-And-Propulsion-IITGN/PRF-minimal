@@ -66,7 +66,8 @@ void Foam::interfaceTrackingModels::burningRate::updateInterface()
         interfaceAreaVector_[celli] = vector(0, 0, 0);
         if (status == 0) // cell is cut
         {
-          if (mag(cutCell.faceArea().z()) < 1e-7)
+          vector normal = cutCell.faceArea()/mag(cutCell.faceArea());
+          if (mag(normal.z()) < 1e-3)
           {
             interfaceArea_[celli] = mag(cutCell.faceArea().x())/mesh_.V()[celli];
             interfaceAreaVector_[celli].x() = 1.0;
