@@ -1,3 +1,4 @@
+fvPatchFields/propellantWall/propellantWallFvPatchVectorField.C
 phaseModel/phaseModel/phaseModels.C
 
 iTModel = interfaceTrackingModels

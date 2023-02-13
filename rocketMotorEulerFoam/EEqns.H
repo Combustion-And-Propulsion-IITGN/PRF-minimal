@@ -15,6 +15,15 @@ for (int Ecorr=0; Ecorr<nEnergyCorrectors; Ecorr++)
         const volScalarField& rho = phase.rho();
         const volVectorField& U = phase.U();
 
+        // // Check for presence of phase
+        // Info << "max alpha: " << max(phase) << endl;
+        // if (max(phase).value() <= 1e-10)
+        // {
+        //   Warning << phase.name() << " is not present"
+        //           << " Max alpha: " << max(alpha).value() << endl;
+        //   continue;
+        // }
+
         fvScalarMatrix EEqn
         (
             phase.heEqn()
