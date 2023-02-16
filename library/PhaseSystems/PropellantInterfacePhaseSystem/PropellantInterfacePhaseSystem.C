@@ -347,6 +347,9 @@ Foam::PropellantInterfacePhaseSystem<BasePhaseSystem>::massTransfer() const
 
         if (min(X).value() < 0 || fH2.value() < 0 || fH2O.value() < 0)
         {
+          Info << "min(X): " << min(X).value() << endl;
+          Info << "fH2.value(): " << fH2.value() << endl;
+          Info << "fH2O.value(): " << fH2O.value() << endl;
           FatalErrorInFunction
               << "Mass Transfer(): dmdt or one of the factors are negative"
               << exit(FatalError);

@@ -109,13 +109,14 @@ int main(int argc, char *argv[])
             fluid.solve();
             fluid.correct();
 
+            //***********  Start Find Propellant size ***********//
             label purePropellantSize = 0;
             {
               const volScalarField& propellant = phases[propellantIndex];
 
               forAll(propellant, i)
               {
-                if (propellant[i] >= 0.9)
+                if (propellant[i] >= 0.99)
                 {
                   purePropellantSize++;
                 }
@@ -134,14 +135,15 @@ int main(int argc, char *argv[])
               label j = 0;
               forAll(propellant, i)
               {
-                if (propellant[i] >= 0.9)
+                if (propellant[i] >= 0.99)
                 {
                   purePropellantCells[j] = i;
                   j++;
                 }
               }
             }
-
+            //***********  End Find Propellant size ***********//
+            
             #include "YEqns.H"
 
             if (faceMomentum)

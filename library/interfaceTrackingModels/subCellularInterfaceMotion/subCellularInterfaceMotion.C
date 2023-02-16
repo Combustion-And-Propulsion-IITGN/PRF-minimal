@@ -132,7 +132,10 @@ void Foam::interfaceTrackingModels::subCellularInterfaceMotion::regress
   const scalarField& V = mesh.V();
   const scalar One(1 - SMALL);
   const scalar Zero(SMALL);
+  interface_ = dimensionedScalar(dimless, 0.0);
+  As_ = dimensionedScalar(As_.dimensions(), 0.0);
 
+  // Internal Cells
   forAll(Own, i)
   {
     // case:1 Interface is present at the center of the owner cell
@@ -205,6 +208,33 @@ void Foam::interfaceTrackingModels::subCellularInterfaceMotion::regress
     }
     // case:5 Interface is not present (Ignore)
     else continue;
+  }
+
+  // Boundary Patches
+  forAll(mesh.boundary(), patchi)
+  {
+    const fvPatch& patch = mesh.boundary()[patchi];
+    const labelList& fC = patch.faceCells();
+    const scalarField pSf
+    (
+      patch.magSf() * (patch.nf() & vector(1, 0, 0))
+    );
+    forAll(fC, celli)
+    {
+      if ((alpha0[fC[celli]] <= 0.5) && (alpha0[fC[celli]] > Zero))
+      {
+        interface_[fC[celli]] = 1.0;
+        As_[fC[celli]] += pSf[celli]/V[fC[celli]];
+        alpha[fC[celli]] = alpha0[fC[celli]] - rb_[fC[celli]]*As_[fC[celli]]*dt;
+        if (alpha[fC[celli]] < 0)
+        {
+          alpha[fC[celli]] = Zero;
+          As_[fC[celli]] = (alpha0[fC[celli]] - alpha[fC[celli]])
+                            /(rb_[fC[celli]]*dt);
+        }
+      }
+      else continue;
+    }
   }
 }
 
