@@ -112,35 +112,38 @@ int main(int argc, char *argv[])
             fluid.correct();
 
             //***********  Start Find Propellant size ***********//
-            label purePropellantSize = 0;
+            if (propellantIndex != -1)
             {
-              const volScalarField& propellant = phases[propellantIndex];
-
-              forAll(propellant, i)
+              label purePropellantSize = 0;
               {
-                if (propellant[i] >= 0.99)
+                const volScalarField& propellant = phases[propellantIndex];
+
+                forAll(propellant, i)
                 {
-                  purePropellantSize++;
+                  if (propellant[i] >= 0.99)
+                  {
+                    purePropellantSize++;
+                  }
                 }
               }
-            }
-            labelList purePropellantCells(purePropellantSize);
-            scalarField setTemp
-            (
-              purePropellantSize,
-              fluid.getOrDefault<scalar>("Tset", 2000)
-            );
-            vectorField setVelocity(purePropellantSize, vector(0, 0, 0));
-            {
-              const volScalarField& propellant = phases[propellantIndex];
-
-              label j = 0;
-              forAll(propellant, i)
+              labelList purePropellantCells(purePropellantSize);
+              scalarField setTemp
+              (
+                purePropellantSize,
+                fluid.getOrDefault<scalar>("Tset", 2000)
+              );
+              vectorField setVelocity(purePropellantSize, vector(0, 0, 0));
               {
-                if (propellant[i] >= 0.99)
+                const volScalarField& propellant = phases[propellantIndex];
+
+                label j = 0;
+                forAll(propellant, i)
                 {
-                  purePropellantCells[j] = i;
-                  j++;
+                  if (propellant[i] >= 0.99)
+                  {
+                    purePropellantCells[j] = i;
+                    j++;
+                  }
                 }
               }
             }

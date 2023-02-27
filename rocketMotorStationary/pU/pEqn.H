@@ -8,6 +8,7 @@ forAll(phases, phasei)
     alphafs.set(phasei, fvc::interpolate(alpha).ptr());
     alphafs[phasei].rename("pEqn" + alphafs[phasei].name());
 }
+
 // Diagonal coefficients
 PtrList<volScalarField> rAUs(phases.size());
 forAll(fluid.movingPhases(), movingPhasei)
