@@ -316,7 +316,11 @@ void Foam::interfaceTrackingModels::subCellularInterfaceMotion::regress
   forAll(Own, i)
   {
     // case:1 Interface is present in the Neighbour Cell
-    if ((alpha0[Own[i]] == Zero && alpha0[Nei[i]] > Zero) && (Nei == Own + 1))
+    if
+    (
+      (alpha0[Own[i]] == Zero && alpha0[Nei[i]] > Zero) && 
+      (Nei[i] == Own[i] + 1)
+    )
     {
       interface_[Nei[i]] = 1;
 
