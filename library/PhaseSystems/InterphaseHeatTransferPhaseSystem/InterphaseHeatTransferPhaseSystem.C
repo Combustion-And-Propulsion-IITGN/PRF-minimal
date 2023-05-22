@@ -125,12 +125,6 @@ heatTransfer() const
       const tmp<volScalarField> tK(sharpInterfaceHeatTransferModelIter()->K());
       const volScalarField& K(tK());
 
-      const tmp<volScalarField> tKd(sharpInterfaceHeatTransferModelIter()->Kd());
-      const volScalarField& Kd(tKd());
-
-      const tmp<volScalarField> tKc(sharpInterfaceHeatTransferModelIter()->Kc());
-      const volScalarField& Kc(tKc());
-
       const tmp<volScalarField> tCp1(phase1.thermo().Cpv());
       const volScalarField& Cp1(tCp1());
 
@@ -147,6 +141,9 @@ heatTransfer() const
       const tmp<volScalarField> tT2(phase2.thermo().T());
       const volScalarField& T2(tT2());
 
+      // *eqns[phase1.name()] -= K*(T1 - T2);
+      // *eqns[phase2.name()] += K*(T1 - T2);
+
       *eqns[phase1.name()] -= K*(T1 - T2) - fvm::Sp(K/Cp1, he1) + K/Cp1*he1;
       *eqns[phase2.name()] += K*(T1 - T2) - fvm::Sp(K/Cp2, he2) + K/Cp2*he2;
 
@@ -156,26 +153,12 @@ heatTransfer() const
       // *eqns[phase2.name()] +=
       //       - fvm::Sp(K/Cp2, he2) + K/Cp1*he1;
 
-      // // Correction for Reference Enthalpy
-      // *eqns[phase1.name()] -=
-      //       - pos(alpha2-tol_)*K/phase1.thermo().Cpv()*(href)
-      //       + pos(alpha2-tol_)*K/phase2.thermo().Cpv()*(href);
-      // *eqns[phase2.name()] +=
-      //       - pos(alpha2-tol_)*K/phase1.thermo().Cpv()*(href)
-      //       + pos(alpha2-tol_)*K/phase2.thermo().Cpv()*(href);
-
       // Addition Heat diffusion in particle phase
       // *eqns[phase1.name()] -=
       //       - fvm::laplacian
       //         (
       //          fvc::interpolate(phase1*Kd/Cp1),
       //          he1
-      //         );
-      // *eqns[phase2.name()] -=
-      //       - fvm::laplacian
-      //         (
-      //           fvc::interpolate(phase2*Kc/Cp2),
-      //           he2
       //         );
     }
 

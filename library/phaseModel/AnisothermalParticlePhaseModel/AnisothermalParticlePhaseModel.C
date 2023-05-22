@@ -95,11 +95,23 @@ Foam::AnisothermalParticlePhaseModel<BasePhaseModel>::heEqn()
     const volScalarField& alpha = *this;
     const volScalarField& rho = this->rho();
 
+    const tmp<volVectorField> tU(this->U());
+    const volVectorField& U(tU());
+
     const tmp<surfaceScalarField> talphaRhoPhi(this->alphaRhoPhi());
     const surfaceScalarField& alphaRhoPhi(talphaRhoPhi());
 
     const tmp<volScalarField> tcontErr(this->continuityError());
     const volScalarField& contErr(tcontErr());
+
+    const tmp<volScalarField> tgradPU(fvc::grad(this->thermo().p())&U);
+    const volScalarField& gradPU(tgradPU());
+
+    const tmp<volScalarField> tDpDt
+    (
+      fvc::ddt(this->thermo().p()) + gradPU
+    );
+    const volScalarField& DpDt(tDpDt());
 
     volScalarField& he = this->thermo_->he();
 
@@ -108,13 +120,8 @@ Foam::AnisothermalParticlePhaseModel<BasePhaseModel>::heEqn()
         fvm::ddt(alpha, rho, he)
       + fvm::div(alphaRhoPhi, he)
       - fvm::Sp(contErr, he)
-
-      - fvm::laplacian
-        (
-            fvc::interpolate(alpha)
-           *fvc::interpolate(this->alphaEff()),
-            he
-        )
+      ==
+         alpha*DpDt
     );
 
     return tEEqn;
