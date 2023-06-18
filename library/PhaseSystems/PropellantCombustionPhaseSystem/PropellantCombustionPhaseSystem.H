@@ -104,6 +104,7 @@ protected:
         scalar epsilon;
 
         // Inlet velocity
+        bool thinFlimModel_;
         volVectorField Ug_;
         volVectorField Up_;
 
