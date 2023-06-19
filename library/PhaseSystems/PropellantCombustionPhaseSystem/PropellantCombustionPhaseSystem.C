@@ -119,6 +119,7 @@ Foam::PropellantCombustionPhaseSystem<BasePhaseSystem>::PropellantCombustionPhas
       )
     ),
     epsilon(this->template get<scalar>("trapingFactor")),
+    thinFlimModel_(this->template get<bool>("thinFlimModel")),
     Ug_
     (
       volVectorField
@@ -396,30 +397,31 @@ Foam::PropellantCombustionPhaseSystem<BasePhaseSystem>::momentumTransfer()
 {
   autoPtr<phaseSystem::momentumTransferTable> eqnsPtr =
                 BasePhaseSystem::momentumTransfer();
-
-  phaseSystem::momentumTransferTable& eqns = eqnsPtr();
-
-  forAllConstIter(rDmdtTable, rDmdt_, rDmdtIter)
+  if (thinFlimModel_)
   {
-    const phasePair& pair = this->phasePairs_[rDmdtIter.key()];
-    const volScalarField& rDmdt = *rDmdtIter();
+      phaseSystem::momentumTransferTable& eqns = eqnsPtr();
+      forAllConstIter(rDmdtTable, rDmdt_, rDmdtIter)
+      {
+          const phasePair& pair = this->phasePairs_[rDmdtIter.key()];
+          const volScalarField& rDmdt = *rDmdtIter();
 
-    const factors mtf(eta.massTransfer());
-    const scalar pcoeff = mtf.particles;
-    const scalar gcoeff = (mtf.H2 + mtf.H2O);
+          const factors mtf(eta.massTransfer());
+          const scalar pcoeff = mtf.particles;
+          const scalar gcoeff = (mtf.H2 + mtf.H2O);
 
-    const phaseModel& phase1 = pair.phase1();
-    const phaseModel& phase2 = pair.phase2();
+          const phaseModel& phase1 = pair.phase1();
+          const phaseModel& phase2 = pair.phase2();
 
-    // Equations
-    fvVectorMatrix& eqn1 = *eqns[phase1.name()];
-    fvVectorMatrix& eqn2 = *eqns[phase2.name()];
+          // Equations
+          fvVectorMatrix& eqn1 = *eqns[phase1.name()];
+          fvVectorMatrix& eqn2 = *eqns[phase2.name()];
 
-    // Momentum Source
-    eqn1 += - fvm::Sp((1.0 - retainer_)*pcoeff*rDmdt, eqn1.psi())
-            + (1.0 - retainer_)*pcoeff*rDmdt*Up_;
-    eqn2 += - fvm::Sp(gcoeff*rDmdt, eqn2.psi())
-            + gcoeff*rDmdt*Ug_;
+          // Momentum Source
+          eqn1 += - fvm::Sp((1.0 - retainer_)*pcoeff*rDmdt, eqn1.psi())
+                  + (1.0 - retainer_)*pcoeff*rDmdt*Up_;
+          eqn2 += - fvm::Sp(gcoeff*rDmdt, eqn2.psi())
+                  + gcoeff*rDmdt*Ug_;
+      }
   }
 
   return eqnsPtr;
@@ -560,7 +562,10 @@ void Foam::PropellantCombustionPhaseSystem<BasePhaseSystem>::correct()
     }
 
     // calculate velocity of the gas and particle source
-    calculateVelocity();
+    if (thinFlimModel_)
+    {
+        calculateVelocity();
+    }
 }
 
 template<class BasePhaseSystem>
