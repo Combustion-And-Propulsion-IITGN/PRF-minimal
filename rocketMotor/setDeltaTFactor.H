@@ -1,14 +1,19 @@
 if (adjustTimeStep)
 {
     scalar factor = 1.2;
-    scalar translimit = pimple.dict().get<scalar>("translimit");
     {
         // Propellant burning surface transition - Stabilization
         const scalarField iF(phases[propellantIndex].internalField());
-        const tmp<scalarField> tinterface((iF - 0.001)*(0.999 - iF));
-        const scalarField& interface(tinterface());
 
-        if (gSum(interface*pos0(interface))/surfaces > translimit)
+        // Algorithm for finding burning surface transition
+        scalar transition = 0.0;
+        forAll(iF, i)
+        {
+            if ((iF[i] < 1 - SMALL) && (iF[i] > 0.98)) transition = 1.0;
+        }
+        reduce(transition, sumOp<scalar>());
+
+        if (transition == 0)
         {
             maxCo = pimple.dict().get<scalar>("maxCo");
         }
