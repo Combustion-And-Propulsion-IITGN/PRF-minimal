@@ -40,5 +40,18 @@ inline void correctFlux(surfaceScalarField& flux, const volScalarField& propella
 
 inline void correctU(volVectorField& U, const volScalarField& propellant)
 {
-  U = neg(propellant - (1 - SMALL))*U;
+  const fvMesh& mesh(propellant.mesh());
+  const labelList& Own(mesh.owner());
+  const labelList& Nei(mesh.neighbour());
+  scalar One(1 - SMALL);
+
+  forAll(Own, i)
+  {
+    if(propellant[Own[i]] == One && propellant[Nei[i]] == One)
+    {
+       U[i] = vector(0, 0, 0);
+    }
+    else continue;
+  }
+  // U = neg(propellant - (1 - SMALL))*U;
 }
