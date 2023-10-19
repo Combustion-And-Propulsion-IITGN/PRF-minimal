@@ -25,7 +25,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "ControlledPropellantCombustionPhaseSystem.H"
+#include "EntrainedPropellantCombustionPhaseSystem.H"
 #include "interfaceTrackingModel.H"
 #include "fvmSup.H"
 #include "fvmDdt.H"
@@ -36,7 +36,7 @@ License
 
 template<class BasePhaseSystem>
 Foam::tmp<Foam::volScalarField>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::rDmdt
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::rDmdt
 (
     const phasePairKey& key
 ) const
@@ -54,7 +54,7 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::rDmdt
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class BasePhaseSystem>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::ControlledPropellantCombustionPhaseSystem
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::EntrainedPropellantCombustionPhaseSystem
 (
     const fvMesh& mesh
 )
@@ -135,22 +135,6 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::ControlledProp
       )
     ),
     epsilon(this->template get<scalar>("trapingFactor")),
-    rhoPropBed
-    (
-      volScalarField
-      (
-        IOobject
-        (
-          "rhoPropBed",
-          mesh.time().timeName(),
-          mesh,
-          IOobject::READ_IF_PRESENT,
-          IOobject::AUTO_WRITE
-        ),
-        mesh,
-        rhoPropellant
-      )
-    ),
     thinFlimModel_(this->template get<bool>("thinFlimModel")),
     Ug_
     (
@@ -255,29 +239,28 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::ControlledProp
 
     // clipping Regression Alpha
     regressionAlpha.clip(SMALL, 1-SMALL);
-
 }
 
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
 template<class BasePhaseSystem>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::
-~ControlledPropellantCombustionPhaseSystem()
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::
+~EntrainedPropellantCombustionPhaseSystem()
 {}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 template<class BasePhaseSystem>
 const Foam::saturationModel&
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::saturation() const
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::saturation() const
 {
     return saturationModel_();
 }
 
 template<class BasePhaseSystem>
 Foam::tmp<Foam::volScalarField>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::dmdt
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::dmdt
 (
     const phasePairKey& key
 ) const
@@ -289,7 +272,7 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::dmdt
 
 template<class BasePhaseSystem>
 Foam::PtrList<Foam::volScalarField>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::dmdts() const
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::dmdts() const
 {
     PtrList<volScalarField> dmdts(BasePhaseSystem::dmdts());
 
@@ -317,7 +300,7 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::dmdts() const
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::massTransferTable>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::massTransfer() const
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::massTransfer() const
 {
     // Create a mass transfer matrix for each species of each phase
     autoPtr<phaseSystem::massTransferTable> eqnsPtr
@@ -380,7 +363,7 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::massTransfer()
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::heatTransferTable>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::heatTransfer() const
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::heatTransfer() const
 {
   autoPtr<phaseSystem::heatTransferTable> eqnsPtr =
           BasePhaseSystem::heatTransfer();
@@ -432,7 +415,7 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::heatTransfer()
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::momentumTransferTable>
-Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::momentumTransfer()
+Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::momentumTransfer()
 {
   autoPtr<phaseSystem::momentumTransferTable> eqnsPtr =
                 BasePhaseSystem::momentumTransfer();
@@ -467,7 +450,7 @@ Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::momentumTransf
 }
 
 template<class BasePhaseSystem>
-void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::solve()
+void Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::solve()
 {
   // Regress Propellant surface (Manipulate propellant volume fraction)
   if (regress_)
@@ -532,7 +515,7 @@ void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::solve()
 }
 
 template<class BasePhaseSystem>
-void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::correct()
+void Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::correct()
 {
     BasePhaseSystem::correct();
 
@@ -608,7 +591,7 @@ void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::correct()
 }
 
 template<class BasePhaseSystem>
-void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::store()
+void Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::store()
 {
   BasePhaseSystem::store();
   alphaOld = regressionAlpha;
@@ -616,7 +599,7 @@ void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::store()
 }
 
 template<class BasePhaseSystem>
-void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::calculateVelocity()
+void Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::calculateVelocity()
 {
     //- Calculate velocity of the gas and particles comes
     //                into the combustion chamber
@@ -634,7 +617,7 @@ void Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::calculate
 }
 
 template<class BasePhaseSystem>
-bool Foam::ControlledPropellantCombustionPhaseSystem<BasePhaseSystem>::read()
+bool Foam::EntrainedPropellantCombustionPhaseSystem<BasePhaseSystem>::read()
 {
     if (BasePhaseSystem::read())
     {

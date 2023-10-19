@@ -24,22 +24,24 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::ControlledPropellantCombustionPhaseSystem
+    Foam::EntrainedPropellantCombustionPhaseSystem
 
 Description
     Class which models non-thermally-coupled mass transfers; i.e.,
     representation changes, rather than phase changes.
 
 SourceFiles
-    ControlledPropellantCombustionPhaseSystem.C
+    EntrainedPropellantCombustionPhaseSystem.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef ControlledPropellantCombustionPhaseSystem_H
-#define ControlledPropellantCombustionPhaseSystem_H
+#ifndef EntrainedPropellantCombustionPhaseSystem_H
+#define EntrainedPropellantCombustionPhaseSystem_H
 
 #include "phaseSystem.H"
 #include "saturationModel.H"
+#include "EntrainedSystem.H"
+#include "Surface.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -49,11 +51,11 @@ namespace Foam
 class interfaceTrackingModel;
 
 /*---------------------------------------------------------------------------*\
-                    Class ControlledPropellantCombustionPhaseSystem Declaration
+                    Class EntrainedPropellantCombustionPhaseSystem Declaration
 \*---------------------------------------------------------------------------*/
 
 template<class BasePhaseSystem>
-class ControlledPropellantCombustionPhaseSystem
+class EntrainedPropellantCombustionPhaseSystem
 :
     public BasePhaseSystem
 {
@@ -103,7 +105,6 @@ protected:
         volScalarField alphaOld;
         volScalarField regressionAlpha;
         scalar epsilon;
-        volScalarField rhoPropBed;
 
         // Inlet velocity
         bool thinFlimModel_;
@@ -134,11 +135,11 @@ public:
     // Constructors
 
         //- Construct from fvMesh
-        ControlledPropellantCombustionPhaseSystem(const fvMesh&);
+        EntrainedPropellantCombustionPhaseSystem(const fvMesh&);
 
 
     //- Destructor
-    virtual ~ControlledPropellantCombustionPhaseSystem();
+    virtual ~EntrainedPropellantCombustionPhaseSystem();
 
     typedef PtrListDictionary<phaseModel> phaseModelList;
 
@@ -189,7 +190,7 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
-    #include "ControlledPropellantCombustionPhaseSystem.C"
+    #include "EntrainedPropellantCombustionPhaseSystem.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
