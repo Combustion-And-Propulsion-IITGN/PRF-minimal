@@ -86,7 +86,7 @@ Foam::particleDragModel::particleDragModel
         )
     ),
     pair_(pair),
-    factor_("", dimless, dict.get<scalar>("factor"))
+    factor_("", dimless, dict.getOrDefault<scalar>("factor", 1.0))
 {}
 
 

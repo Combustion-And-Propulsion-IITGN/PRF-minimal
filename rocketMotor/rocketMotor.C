@@ -74,6 +74,11 @@ int main(int argc, char *argv[])
         pimple.dict().getOrDefault<Switch>("partialElimination", false)
     );
 
+    Switch solveRho
+    (
+	pimple.dict().getOrDefault<Switch>("solveRho", false)
+    );
+
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;

@@ -24,7 +24,7 @@ inline void ImposeWall(volScalarField& psi, const volScalarField& alpha)
     {
       const processorPolyPatch& pp
           = refCast<const processorPolyPatch>(psi.mesh().boundaryMesh()[patchi]);
-      if (pp.neighbour())
+      if (pp.owner())
       {
         const scalarField& psibF(psi.boundaryField()[patchi].patchNeighbourField());
         const scalarField& alphaF(alpha.boundaryField()[patchi].patchInternalField());
@@ -59,6 +59,28 @@ inline void correctFlux(surfaceScalarField& flux, const volScalarField& propella
       }
       else continue;
     }
+
+    forAll(mesh.boundary(),patchi)
+    {
+      if (isType<processorFvPatch>(mesh.boundary()[patchi]))
+      {
+        const processorPolyPatch& pp
+            = refCast<const processorPolyPatch>(mesh.boundaryMesh()[patchi]);
+        if (pp.neighbour())
+        {
+          const scalarField& alphaF(propellant.boundaryField()[patchi].patchInternalField());
+          const scalarField& alphabF(propellant.boundaryField()[patchi].patchNeighbourField());
+          scalarField& psi(flux.boundaryFieldRef()[patchi]);
+          forAll(psi, i)
+          {
+            if ((alphabF[i] == One) || (alphaF[i] == One))
+            {
+              psi[i] = 0;
+            }
+          }
+        }
+      }
+    }
     /***/
 }
 
@@ -73,6 +95,30 @@ inline void correctU(volVectorField& U, const volScalarField& propellant)
        U[i] = vector(0, 0, 0);
     }
     else continue;
+  }
+
+
+  const fvMesh& mesh(propellant.mesh());
+  forAll(mesh.boundary(),patchi)
+  {
+    if (isType<processorFvPatch>(mesh.boundary()[patchi]))
+    {
+      const processorPolyPatch& pp
+          = refCast<const processorPolyPatch>(mesh.boundaryMesh()[patchi]);
+      if (pp.neighbour())
+      {
+        const scalarField& alphaF(propellant.boundaryField()[patchi].patchInternalField());
+        const scalarField& alphabF(propellant.boundaryField()[patchi].patchNeighbourField());
+        vectorField& Uf(U.boundaryFieldRef()[patchi]);
+        forAll(Uf, i)
+        {
+          if ((alphabF[i] == One) || (alphaF[i] == One))
+          {
+              Uf[i] = vector(0, 0, 0);
+          }
+        }
+      }
+    }
   }
   // U = neg(propellant - (1 - SMALL))*U;
 }

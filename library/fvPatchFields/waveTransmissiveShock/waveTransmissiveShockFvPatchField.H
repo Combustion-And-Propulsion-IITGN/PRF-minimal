@@ -112,7 +112,10 @@ class waveTransmissiveShockFvPatchField
 
         //- Supersonic to subsonic switch
         bool supersonic;
-        scalarField transition_;
+
+
+	//- Transition
+	bool transition = false;
 
 public:
 

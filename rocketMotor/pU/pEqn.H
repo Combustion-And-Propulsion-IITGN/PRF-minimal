@@ -392,7 +392,7 @@ while (pimple.correct())
             );
 
             // ImposeWall
-            // ImposeWall(p_rgh, phases[propellantIndex]);
+            ImposeWall(p_rgh, phases[propellantIndex]);
         }
 
         // Correct fluxes and velocities on last non-orthogonal iteration
@@ -481,7 +481,7 @@ while (pimple.correct())
         phaseModel& phase = phases[phasei];
         phase.thermoRef().rho() += phase.thermo().psi()*(p_rgh - p_rgh_0);
 
-        if ((phasei == 2) && (phases.size() > 2))
+        if ((phasei == 2) && (phases.size() > 2) && (solveRho))
         {
             // Solve mass conservation for propellant
             PtrList<volScalarField> dmdts(fluid.dmdts());
