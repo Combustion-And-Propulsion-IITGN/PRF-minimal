@@ -189,6 +189,20 @@ Foam::RASModels::multiphaseKineticTheoryModel::multiphaseKineticTheoryModel
     {
         printCoeffs(type);
     }
+
+    volScalarField Pp(
+        max(Theta_, ThetaSmall)*
+        granularPressureModel_->granularPressureCoeff
+        (
+            alpha,
+            radialModel_->g0(alpha, alphaMinFriction_, alphaMax_),
+            rho,
+            e_
+        )
+    );
+    Info << "min/max Pp: " << min(Pp).value() << " - " << max(Pp).value() << endl;
+    Info << "min/max P: " << min(otherPhase_.thermo().p()).value() << " - " << max(otherPhase_.thermo().p()).value() << endl;
+    Info << "min/max Theta: " << min(Theta_).value() << " - " << max(Theta_).value() << endl;
 }
 
 

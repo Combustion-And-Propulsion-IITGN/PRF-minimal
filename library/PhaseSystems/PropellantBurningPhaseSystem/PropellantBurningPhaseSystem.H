@@ -61,21 +61,21 @@ protected:
 
     // Protected typedefs
 
-        typedef HashTable
-        <
-            autoPtr<burningRateModel>,
-            phasePairKey,
-            phasePairKey::hash
-        > burningRateModelTable;
+        // typedef HashTable
+        // <
+        //     autoPtr<burningRateModel>,
+        //     phasePairKey,
+        //     phasePairKey::hash
+        // > burningRateModelTable;
 
-        typedef HashPtrTable<volScalarField, phasePairKey, phasePairKey::hash>
-            rDmdtTable;
+        // typedef HashPtrTable<volScalarField, phasePairKey, phasePairKey::hash>
+        //     rDmdtTable;
 
-        typedef HashPtrTable<volVectorField, phasePairKey, phasePairKey::hash>
-            interfaceTable;
+        // typedef HashPtrTable<volVectorField, phasePairKey, phasePairKey::hash>
+        //     interfaceTable;
 
-        typedef HashTable<scalar, phasePairKey, phasePairKey::hash>
-            coeffTable;
+        // typedef HashTable<scalar, phasePairKey, phasePairKey::hash>
+        //     coeffTable;
 
     // Protected data
 
