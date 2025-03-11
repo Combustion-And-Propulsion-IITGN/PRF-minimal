@@ -175,6 +175,29 @@ Foam::label Foam::Surface::findNeighbour
     return -1;
 }
 
+Foam::label Foam::Surface::findNeighbourSurface
+(
+    const volScalarField& alpha,
+    scalar Owner, 
+    scalar Neighbour
+)
+{
+    // Finds neighbour cell
+    const fvMesh& mesh = alpha.mesh();
+    const labelList& Own = mesh.owner();
+    const labelList& Nei = mesh.neighbour();
+    const scalar One(1 - SMALL);
+
+    forAll(Own, i)
+    {
+        if ((Own[i] == Owner) && (Nei[i] == Neighbour))
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void Foam::Surface::findInterface()
 {
     // -If found interface -> interface_ = 1
@@ -304,7 +327,18 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
           iOwners[k] = Own[i];
           iNeighbours[k] = Nei[i];
 
-          As_[Nei[i]] = Sf[i]/V[Nei[i]];  // Area of face between owner and neighbour
+          // Constant Area ------------------
+          // As_[Nei[i]] = Sf[i]/V[Nei[i]];  // Area of face between owner and neighbour
+          
+          // Linear Interpolation of Area -----------------
+          scalar Asi = Sf[i];
+          label NNei = findNeighbour(alpha0, Nei[i]);
+          label j = findNeighbourSurface(alpha0, Nei[i], NNei);
+          scalar Asip1 = Sf[j];
+          scalar Sfj = alpha0[Nei[i]]*Asi + (1 - alpha0[Nei[i]])*Asip1;
+          As_[Nei[i]] = Sfj/V[Nei[i]];  // Area of face between owner and neighbour
+          // ----------------------------------------------
+          
           rb_[Nei[i]] = rb(p[bed[k]]);  // burning Rate
           dmdt_[Nei[i]] = rb_[Nei[i]]*As_[Nei[i]];
           nHat_[Nei[i]] = vector(1, 0, 0);
@@ -317,7 +351,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
 
               // Find Neighbour of Neighbour cell
               bool isFound = false;
-              label NNei = findNeighbour(alpha0, Nei[i]);
+            //   label NNei = findNeighbour(alpha0, Nei[i]);
 
               if (NNei != -1)
               {
@@ -423,6 +457,16 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
             iNeighbours[k] = Nei[i];
 
             As_[Nei[i]] = Sf[i]/V[Nei[i]];  // Area of face between owner and neighbour
+            
+            // Linear Interpolation of Area -----------------
+            scalar Asi = Sf[i];
+            label NNei = findNeighbour(alpha0, Nei[i]);
+            label j = findNeighbourSurface(alpha0, Nei[i], NNei);
+            scalar Asip1 = Sf[j];
+            scalar Sfj = alpha0[Nei[i]]*Asi + (1 - alpha0[Nei[i]])*Asip1;
+            As_[Nei[i]] = Sfj/V[Nei[i]];  // Area of face between owner and neighbour
+            // ----------------------------------------------
+
             rb_[Nei[i]] = rb(p[Nei[i]]);  // burning Rate
             dmdt_[Nei[i]] = (1 - alpha0[Nei[i]])*dmdtflame*Vflame/V[Nei[i]];
             nHat_[Nei[i]] = vector(1, 0, 0);
@@ -444,7 +488,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
 
                 // Find Neighbour of Neighbour cell
                 bool isFound = false;
-                label NNei = findNeighbour(alpha0, Nei[i]);
+                // label NNei = findNeighbour(alpha0, Nei[i]);
 
                 if (NNei != -1)
                 {
