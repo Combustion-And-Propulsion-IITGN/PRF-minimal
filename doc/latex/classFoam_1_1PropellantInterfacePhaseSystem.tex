@@ -1,0 +1,244 @@
+\hypertarget{classFoam_1_1PropellantInterfacePhaseSystem}{}\doxysection{Foam\+::Propellant\+Interface\+Phase\+System$<$ Base\+Phase\+System $>$ Class Template Reference}
+\label{classFoam_1_1PropellantInterfacePhaseSystem}\index{Foam::PropellantInterfacePhaseSystem$<$ BasePhaseSystem $>$@{Foam::PropellantInterfacePhaseSystem$<$ BasePhaseSystem $>$}}
+
+
+Inheritance diagram for Foam\+::Propellant\+Interface\+Phase\+System$<$ Base\+Phase\+System $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{classFoam_1_1PropellantInterfacePhaseSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Foam\+::Propellant\+Interface\+Phase\+System$<$ Base\+Phase\+System $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{classFoam_1_1PropellantInterfacePhaseSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a6dfa537be140f3db6c71799278c61b96}\label{classFoam_1_1PropellantInterfacePhaseSystem_a6dfa537be140f3db6c71799278c61b96}} 
+typedef Ptr\+List\+Dictionary$<$ phase\+Model $>$ {\bfseries phase\+Model\+List}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a6dfa537be140f3db6c71799278c61b96}\label{classFoam_1_1PropellantInterfacePhaseSystem_a6dfa537be140f3db6c71799278c61b96}} 
+typedef Ptr\+List\+Dictionary$<$ phase\+Model $>$ {\bfseries phase\+Model\+List}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a42a760fcafb19de03357cde88de4d7c6}\label{classFoam_1_1PropellantInterfacePhaseSystem_a42a760fcafb19de03357cde88de4d7c6}} 
+{\bfseries Propellant\+Interface\+Phase\+System} (const fv\+Mesh \&)
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ad45ba20971df84a90461083f494e621b}\label{classFoam_1_1PropellantInterfacePhaseSystem_ad45ba20971df84a90461083f494e621b}} 
+const saturation\+Model \& {\bfseries saturation} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ab9667876d2176d13fd5e9097b09681ef}\label{classFoam_1_1PropellantInterfacePhaseSystem_ab9667876d2176d13fd5e9097b09681ef}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries dmdt} (const phase\+Pair\+Key \&key) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ab83ef4e3491da2027141d050738e3b5f}\label{classFoam_1_1PropellantInterfacePhaseSystem_ab83ef4e3491da2027141d050738e3b5f}} 
+virtual Ptr\+List$<$ vol\+Scalar\+Field $>$ {\bfseries dmdts} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_acc7d0d9c879ed6efc8c9c85a9b3128b4}\label{classFoam_1_1PropellantInterfacePhaseSystem_acc7d0d9c879ed6efc8c9c85a9b3128b4}} 
+virtual auto\+Ptr$<$ phase\+System\+::mass\+Transfer\+Table $>$ {\bfseries mass\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ac762e2578f9f2041761bdb2c472786f3}\label{classFoam_1_1PropellantInterfacePhaseSystem_ac762e2578f9f2041761bdb2c472786f3}} 
+virtual auto\+Ptr$<$ phase\+System\+::heat\+Transfer\+Table $>$ {\bfseries heat\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a828862c54fd4b0f85c5dc3804f7ff2f8}\label{classFoam_1_1PropellantInterfacePhaseSystem_a828862c54fd4b0f85c5dc3804f7ff2f8}} 
+virtual auto\+Ptr$<$ phase\+System\+::momentum\+Transfer\+Table $>$ {\bfseries momentum\+Transfer} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a4cf05250205267e47438c3e4d69e15a3}\label{classFoam_1_1PropellantInterfacePhaseSystem_a4cf05250205267e47438c3e4d69e15a3}} 
+virtual void {\bfseries solve} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a3fdb728580a7da13651423ab6ba9cc16}\label{classFoam_1_1PropellantInterfacePhaseSystem_a3fdb728580a7da13651423ab6ba9cc16}} 
+virtual void {\bfseries store} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ab6097c01a1b891e8d4863f41b5d024d1}\label{classFoam_1_1PropellantInterfacePhaseSystem_ab6097c01a1b891e8d4863f41b5d024d1}} 
+virtual void {\bfseries correct} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a3b2c49cfbd3b0e3213b58adaefd05458}\label{classFoam_1_1PropellantInterfacePhaseSystem_a3b2c49cfbd3b0e3213b58adaefd05458}} 
+void {\bfseries calculate\+Velocity} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a2023eda1ed41f9b93ad8abd3f4ae3699}\label{classFoam_1_1PropellantInterfacePhaseSystem_a2023eda1ed41f9b93ad8abd3f4ae3699}} 
+virtual bool {\bfseries read} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a42a760fcafb19de03357cde88de4d7c6}\label{classFoam_1_1PropellantInterfacePhaseSystem_a42a760fcafb19de03357cde88de4d7c6}} 
+{\bfseries Propellant\+Interface\+Phase\+System} (const fv\+Mesh \&)
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_abcb6af00f750bf444af82d4cc19b5ebe}\label{classFoam_1_1PropellantInterfacePhaseSystem_abcb6af00f750bf444af82d4cc19b5ebe}} 
+const saturation\+Model \& {\bfseries saturation} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ad8a10226255cebd1a38936368d0707a2}\label{classFoam_1_1PropellantInterfacePhaseSystem_ad8a10226255cebd1a38936368d0707a2}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries dmdt} (const phase\+Pair\+Key \&key) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a20084b102e64670fa6b0d3a4bddfa392}\label{classFoam_1_1PropellantInterfacePhaseSystem_a20084b102e64670fa6b0d3a4bddfa392}} 
+virtual Ptr\+List$<$ vol\+Scalar\+Field $>$ {\bfseries dmdts} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a3e43392fe1b66e82bcebde9c4fce23c9}\label{classFoam_1_1PropellantInterfacePhaseSystem_a3e43392fe1b66e82bcebde9c4fce23c9}} 
+virtual auto\+Ptr$<$ phase\+System\+::mass\+Transfer\+Table $>$ {\bfseries mass\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aded67cdb6c6bb23b635ae62406a6dad6}\label{classFoam_1_1PropellantInterfacePhaseSystem_aded67cdb6c6bb23b635ae62406a6dad6}} 
+virtual auto\+Ptr$<$ phase\+System\+::heat\+Transfer\+Table $>$ {\bfseries heat\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aecdf1a4aa68de4d63922077cf7717293}\label{classFoam_1_1PropellantInterfacePhaseSystem_aecdf1a4aa68de4d63922077cf7717293}} 
+virtual auto\+Ptr$<$ phase\+System\+::momentum\+Transfer\+Table $>$ {\bfseries momentum\+Transfer} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a0388f7ed16e541d9006d37d36c2219e5}\label{classFoam_1_1PropellantInterfacePhaseSystem_a0388f7ed16e541d9006d37d36c2219e5}} 
+virtual void {\bfseries solve} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aa5855dc0feb4bb34160fd84479e7268e}\label{classFoam_1_1PropellantInterfacePhaseSystem_aa5855dc0feb4bb34160fd84479e7268e}} 
+virtual void {\bfseries store} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a972ff5e2504e60d226fa5da186566c46}\label{classFoam_1_1PropellantInterfacePhaseSystem_a972ff5e2504e60d226fa5da186566c46}} 
+virtual void {\bfseries correct} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a3b2c49cfbd3b0e3213b58adaefd05458}\label{classFoam_1_1PropellantInterfacePhaseSystem_a3b2c49cfbd3b0e3213b58adaefd05458}} 
+void {\bfseries calculate\+Velocity} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a014192ee25f98c89a65b656f89141613}\label{classFoam_1_1PropellantInterfacePhaseSystem_a014192ee25f98c89a65b656f89141613}} 
+virtual bool {\bfseries read} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a3bb51854914ca9feaaf6a681e950a27a}\label{classFoam_1_1PropellantInterfacePhaseSystem_a3bb51854914ca9feaaf6a681e950a27a}} 
+typedef Hash\+Table$<$ auto\+Ptr$<$ \mbox{\hyperlink{classFoam_1_1interfaceTrackingModel}{interface\+Tracking\+Model}} $>$, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Tracking\+Model\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a6d12ab2ce811d787ab10b6a3d0303443}\label{classFoam_1_1PropellantInterfacePhaseSystem_a6d12ab2ce811d787ab10b6a3d0303443}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Scalar\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries r\+Dmdt\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a4b2bab57f40774a1d93491efa60a7f0c}\label{classFoam_1_1PropellantInterfacePhaseSystem_a4b2bab57f40774a1d93491efa60a7f0c}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Vector\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a7f65ee7f6a3e8a193d20943616dd7f6d}\label{classFoam_1_1PropellantInterfacePhaseSystem_a7f65ee7f6a3e8a193d20943616dd7f6d}} 
+typedef Hash\+Table$<$ scalar, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries coeff\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a3bb51854914ca9feaaf6a681e950a27a}\label{classFoam_1_1PropellantInterfacePhaseSystem_a3bb51854914ca9feaaf6a681e950a27a}} 
+typedef Hash\+Table$<$ auto\+Ptr$<$ \mbox{\hyperlink{classFoam_1_1interfaceTrackingModel}{interface\+Tracking\+Model}} $>$, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Tracking\+Model\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a6d12ab2ce811d787ab10b6a3d0303443}\label{classFoam_1_1PropellantInterfacePhaseSystem_a6d12ab2ce811d787ab10b6a3d0303443}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Scalar\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries r\+Dmdt\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a4b2bab57f40774a1d93491efa60a7f0c}\label{classFoam_1_1PropellantInterfacePhaseSystem_a4b2bab57f40774a1d93491efa60a7f0c}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Vector\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a7f65ee7f6a3e8a193d20943616dd7f6d}\label{classFoam_1_1PropellantInterfacePhaseSystem_a7f65ee7f6a3e8a193d20943616dd7f6d}} 
+typedef Hash\+Table$<$ scalar, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries coeff\+Table}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a638480de6ada13fa18e89916adfe7361}\label{classFoam_1_1PropellantInterfacePhaseSystem_a638480de6ada13fa18e89916adfe7361}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries r\+Dmdt} (const phase\+Pair\+Key \&key) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aeb656a8552e8ea5c38ca7c0a8bcf036d}\label{classFoam_1_1PropellantInterfacePhaseSystem_aeb656a8552e8ea5c38ca7c0a8bcf036d}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries r\+Dmdt} (const phase\+Pair\+Key \&key) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a5b00efe8f9830122a7815c13e3a93357}\label{classFoam_1_1PropellantInterfacePhaseSystem_a5b00efe8f9830122a7815c13e3a93357}} 
+dictionary {\bfseries molecular\+Weights\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a9e86c4b91c07b66c3b091f9930dec6fb}\label{classFoam_1_1PropellantInterfacePhaseSystem_a9e86c4b91c07b66c3b091f9930dec6fb}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>scalar {\bfseries Al}\\
+\>scalar {\bfseries Al2O3}\\
+\>scalar {\bfseries H2O}\\
+\>scalar {\bfseries H2}\\
+\>scalar {\bfseries Prop}\\
+\} {\bfseries MW\_}\\
+
+\end{tabbing}\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_acd6389cadcf62b081e5e22433f345107}\label{classFoam_1_1PropellantInterfacePhaseSystem_acd6389cadcf62b081e5e22433f345107}} 
+scalar {\bfseries A\+Al\+C\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a5e93cb3ed0fb1ab09f2642a033bfc310}\label{classFoam_1_1PropellantInterfacePhaseSystem_a5e93cb3ed0fb1ab09f2642a033bfc310}} 
+scalar {\bfseries K\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a9ed4f1634a87d41f43c9c473adfbb951}\label{classFoam_1_1PropellantInterfacePhaseSystem_a9ed4f1634a87d41f43c9c473adfbb951}} 
+scalar {\bfseries eq\+R\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a8bea0e6fe56c3dd73fdf75f1aecbc650}\label{classFoam_1_1PropellantInterfacePhaseSystem_a8bea0e6fe56c3dd73fdf75f1aecbc650}} 
+vol\+Scalar\+Field {\bfseries Tad}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ae5cf5fd5e53f01aae7d13da809923eb9}\label{classFoam_1_1PropellantInterfacePhaseSystem_ae5cf5fd5e53f01aae7d13da809923eb9}} 
+scalar {\bfseries zeta}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a9fd5eadd35754620e1320d29f825c4ba}\label{classFoam_1_1PropellantInterfacePhaseSystem_a9fd5eadd35754620e1320d29f825c4ba}} 
+vol\+Scalar\+Field {\bfseries rb\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a46be9e4662309cd80e852eb6625ac9d5}\label{classFoam_1_1PropellantInterfacePhaseSystem_a46be9e4662309cd80e852eb6625ac9d5}} 
+dimensioned\+Scalar {\bfseries R\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ac15a719dd8f7bd8a5a56fc93928e4262}\label{classFoam_1_1PropellantInterfacePhaseSystem_ac15a719dd8f7bd8a5a56fc93928e4262}} 
+dimensioned\+Scalar {\bfseries rho\+Propellant}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aca3152f2c8bd5b37f26b71c875848ca0}\label{classFoam_1_1PropellantInterfacePhaseSystem_aca3152f2c8bd5b37f26b71c875848ca0}} 
+dimensioned\+Scalar {\bfseries rho\+Particle}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a4ecc8ce063ee982098a14f7a626dc705}\label{classFoam_1_1PropellantInterfacePhaseSystem_a4ecc8ce063ee982098a14f7a626dc705}} 
+dimensioned\+Scalar {\bfseries alpha\+Rho\+Al}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ae45477a4184537d16ff46ab92f350842}\label{classFoam_1_1PropellantInterfacePhaseSystem_ae45477a4184537d16ff46ab92f350842}} 
+bool {\bfseries regress\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a1b09aab31a3b01ca27333cb9981b4a6c}\label{classFoam_1_1PropellantInterfacePhaseSystem_a1b09aab31a3b01ca27333cb9981b4a6c}} 
+vol\+Scalar\+Field {\bfseries alpha\+Old}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a8b7f0dc070b8f13e70c2c2ea30767812}\label{classFoam_1_1PropellantInterfacePhaseSystem_a8b7f0dc070b8f13e70c2c2ea30767812}} 
+vol\+Scalar\+Field {\bfseries regression\+Alpha}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a928d74d44efc412dcc98df5df5d083f8}\label{classFoam_1_1PropellantInterfacePhaseSystem_a928d74d44efc412dcc98df5df5d083f8}} 
+scalar {\bfseries epsilon}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ae71206d2f0eb76509b7d89dd9aa35d30}\label{classFoam_1_1PropellantInterfacePhaseSystem_ae71206d2f0eb76509b7d89dd9aa35d30}} 
+vol\+Vector\+Field {\bfseries Ug\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a48cdfcba1ef50d71da3fe82aee9368c9}\label{classFoam_1_1PropellantInterfacePhaseSystem_a48cdfcba1ef50d71da3fe82aee9368c9}} 
+vol\+Vector\+Field {\bfseries Up\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a42460223e6b6e8f7b6ac8a285b44babc}\label{classFoam_1_1PropellantInterfacePhaseSystem_a42460223e6b6e8f7b6ac8a285b44babc}} 
+interface\+Tracking\+Model\+Table {\bfseries interface\+Tracking\+Models\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ad6f59fa846ccc6697ba76045dd37ce48}\label{classFoam_1_1PropellantInterfacePhaseSystem_ad6f59fa846ccc6697ba76045dd37ce48}} 
+r\+Dmdt\+Table {\bfseries r\+Dmdt\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ae95b452cef28290d39668bebe48b0629}\label{classFoam_1_1PropellantInterfacePhaseSystem_ae95b452cef28290d39668bebe48b0629}} 
+interface\+Table {\bfseries n\+Hat\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aea9dac1a9e40723b7179fb5c6f79caf8}\label{classFoam_1_1PropellantInterfacePhaseSystem_aea9dac1a9e40723b7179fb5c6f79caf8}} 
+coeff\+Table {\bfseries p\+Coeff\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_ae90accbee7c7c4b2a5c393ee332e0fc6}\label{classFoam_1_1PropellantInterfacePhaseSystem_ae90accbee7c7c4b2a5c393ee332e0fc6}} 
+coeff\+Table {\bfseries g\+Coeff\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_a24ace10564c66c760b3ddcd089918837}\label{classFoam_1_1PropellantInterfacePhaseSystem_a24ace10564c66c760b3ddcd089918837}} 
+auto\+Ptr$<$ saturation\+Model $>$ {\bfseries saturation\+Model\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1PropellantInterfacePhaseSystem_aa44f313f1f05cbc47840732193eba510}\label{classFoam_1_1PropellantInterfacePhaseSystem_aa44f313f1f05cbc47840732193eba510}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>scalar {\bfseries Al}\\
+\>scalar {\bfseries Al2O3}\\
+\>scalar {\bfseries H2O}\\
+\>scalar {\bfseries H2}\\
+\>scalar {\bfseries Prop}\\
+\} {\bfseries MW\_}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Propellant\+Interface\+Phase\+System.\+H\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Propellant\+Interface\+Phase\+System.\+C\end{DoxyCompactItemize}

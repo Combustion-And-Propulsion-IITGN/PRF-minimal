@@ -1,0 +1,250 @@
+\hypertarget{classFoam_1_1StaticPhaseModel}{}\doxysection{Foam\+::Static\+Phase\+Model$<$ Base\+Phase\+Model $>$ Class Template Reference}
+\label{classFoam_1_1StaticPhaseModel}\index{Foam::StaticPhaseModel$<$ BasePhaseModel $>$@{Foam::StaticPhaseModel$<$ BasePhaseModel $>$}}
+
+
+Inheritance diagram for Foam\+::Static\+Phase\+Model$<$ Base\+Phase\+Model $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classFoam_1_1StaticPhaseModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Foam\+::Static\+Phase\+Model$<$ Base\+Phase\+Model $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classFoam_1_1StaticPhaseModel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a6e905ff696a3a5489e3eefaadc5eb74e}\label{classFoam_1_1StaticPhaseModel_a6e905ff696a3a5489e3eefaadc5eb74e}} 
+{\bfseries Static\+Phase\+Model} (const phase\+System \&fluid, const word \&phase\+Name, const label index)
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a9cf16b44c1ad60735da563e8a176057b}\label{classFoam_1_1StaticPhaseModel_a9cf16b44c1ad60735da563e8a176057b}} 
+virtual bool {\bfseries stationary} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_af581a631d63b667baf403432b712aecb}\label{classFoam_1_1StaticPhaseModel_af581a631d63b667baf403432b712aecb}} 
+virtual bool {\bfseries moving} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ac88adcef89beb4907e5f11ebcdc79cbe}\label{classFoam_1_1StaticPhaseModel_ac88adcef89beb4907e5f11ebcdc79cbe}} 
+virtual tmp$<$ fv\+Vector\+Matrix $>$ {\bfseries U\+Eqn} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a53329e179d9c54403ed181b826458cc5}\label{classFoam_1_1StaticPhaseModel_a53329e179d9c54403ed181b826458cc5}} 
+virtual tmp$<$ fv\+Vector\+Matrix $>$ {\bfseries Uf\+Eqn} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a12bc14f4d13b83d69ecf0da5375d7398}\label{classFoam_1_1StaticPhaseModel_a12bc14f4d13b83d69ecf0da5375d7398}} 
+virtual tmp$<$ vol\+Vector\+Field $>$ {\bfseries U} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_afa9ea6df7c67ea46cbb3ca958acfe0a1}\label{classFoam_1_1StaticPhaseModel_afa9ea6df7c67ea46cbb3ca958acfe0a1}} 
+virtual vol\+Vector\+Field \& {\bfseries U\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_acc0f0d1adafeb66340493c2f5c87e24c}\label{classFoam_1_1StaticPhaseModel_acc0f0d1adafeb66340493c2f5c87e24c}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries phi} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ae70d24718459330d6c4b53f44d550df2}\label{classFoam_1_1StaticPhaseModel_ae70d24718459330d6c4b53f44d550df2}} 
+virtual surface\+Scalar\+Field \& {\bfseries phi\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a2742d4774d547b7c8d9d9645580a3622}\label{classFoam_1_1StaticPhaseModel_a2742d4774d547b7c8d9d9645580a3622}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries alpha\+Phi} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a3291291680178164dcb5b038ba2ef225}\label{classFoam_1_1StaticPhaseModel_a3291291680178164dcb5b038ba2ef225}} 
+virtual surface\+Scalar\+Field \& {\bfseries alpha\+Phi\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_aabec87ea09d7f4de02d5092161396f6f}\label{classFoam_1_1StaticPhaseModel_aabec87ea09d7f4de02d5092161396f6f}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries alpha\+Rho\+Phi} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a9a41ef410d6d59459f3efb180a9dd00a}\label{classFoam_1_1StaticPhaseModel_a9a41ef410d6d59459f3efb180a9dd00a}} 
+virtual surface\+Scalar\+Field \& {\bfseries alpha\+Rho\+Phi\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a95efdff70471f701aa23791f38d377a4}\label{classFoam_1_1StaticPhaseModel_a95efdff70471f701aa23791f38d377a4}} 
+virtual tmp$<$ vol\+Vector\+Field $>$ {\bfseries D\+U\+Dt} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a248cffc963e9c90383626a279744a60e}\label{classFoam_1_1StaticPhaseModel_a248cffc963e9c90383626a279744a60e}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries D\+U\+Dtf} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a12d39af86530bea1fc4572a6924536a4}\label{classFoam_1_1StaticPhaseModel_a12d39af86530bea1fc4572a6924536a4}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries continuity\+Error} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_aa295cd771844e909f71bf0a49afd6881}\label{classFoam_1_1StaticPhaseModel_aa295cd771844e909f71bf0a49afd6881}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries continuity\+Error\+Flow} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a0415b31faa7d5ecf4cb73df667d11f7a}\label{classFoam_1_1StaticPhaseModel_a0415b31faa7d5ecf4cb73df667d11f7a}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries continuity\+Error\+Sources} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a3bb29b19da06d2006dc59ce217fd02e8}\label{classFoam_1_1StaticPhaseModel_a3bb29b19da06d2006dc59ce217fd02e8}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries K} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ae42a09861cf7acf7ba4f1a60352835bb}\label{classFoam_1_1StaticPhaseModel_ae42a09861cf7acf7ba4f1a60352835bb}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries dev\+Rho\+Reff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_adcdb77a67028d3f06834625fec096a84}\label{classFoam_1_1StaticPhaseModel_adcdb77a67028d3f06834625fec096a84}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries divU} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a26473e1f2716a73539601a61f7f66444}\label{classFoam_1_1StaticPhaseModel_a26473e1f2716a73539601a61f7f66444}} 
+virtual void {\bfseries divU} (tmp$<$ vol\+Scalar\+Field $>$ divU)
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a32fc1fe44f4fae976e795617bd7c4fed}\label{classFoam_1_1StaticPhaseModel_a32fc1fe44f4fae976e795617bd7c4fed}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries mut} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a73ff0482ae587f6098ae93d73e2524fc}\label{classFoam_1_1StaticPhaseModel_a73ff0482ae587f6098ae93d73e2524fc}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries mu\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a469c7873d8e02a95f84741c24337a011}\label{classFoam_1_1StaticPhaseModel_a469c7873d8e02a95f84741c24337a011}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries nut} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a394938ba91bb0b02dc6390c4b09f805c}\label{classFoam_1_1StaticPhaseModel_a394938ba91bb0b02dc6390c4b09f805c}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries nu\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a3eacddc4d6aea962db974b941c5bef64}\label{classFoam_1_1StaticPhaseModel_a3eacddc4d6aea962db974b941c5bef64}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries kappa\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a327c4912aec8759fd5209479425bd73b}\label{classFoam_1_1StaticPhaseModel_a327c4912aec8759fd5209479425bd73b}} 
+virtual tmp$<$ scalar\+Field $>$ {\bfseries kappa\+Eff} (const label patchi) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a5f9fb518a22e6d6635015b5165ed5ace}\label{classFoam_1_1StaticPhaseModel_a5f9fb518a22e6d6635015b5165ed5ace}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries alpha\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a403f7f2a5182ad7c0b736499fd00b31f}\label{classFoam_1_1StaticPhaseModel_a403f7f2a5182ad7c0b736499fd00b31f}} 
+virtual tmp$<$ scalar\+Field $>$ {\bfseries alpha\+Eff} (const label patchi) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ab88363b0d69d8341ac5e6b31abf5c1f2}\label{classFoam_1_1StaticPhaseModel_ab88363b0d69d8341ac5e6b31abf5c1f2}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries k} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a66088ffa011929fd17f94e1cf9c6eb87}\label{classFoam_1_1StaticPhaseModel_a66088ffa011929fd17f94e1cf9c6eb87}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries p\+Prime} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a6e905ff696a3a5489e3eefaadc5eb74e}\label{classFoam_1_1StaticPhaseModel_a6e905ff696a3a5489e3eefaadc5eb74e}} 
+{\bfseries Static\+Phase\+Model} (const phase\+System \&fluid, const word \&phase\+Name, const label index)
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a28c27f576fbc787a01037a1d4726fe85}\label{classFoam_1_1StaticPhaseModel_a28c27f576fbc787a01037a1d4726fe85}} 
+virtual bool {\bfseries stationary} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ad74d7580fac2a0ecc70ba6eeefd233c9}\label{classFoam_1_1StaticPhaseModel_ad74d7580fac2a0ecc70ba6eeefd233c9}} 
+virtual bool {\bfseries moving} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a1abf145d0400f5db702ad809dc681824}\label{classFoam_1_1StaticPhaseModel_a1abf145d0400f5db702ad809dc681824}} 
+virtual tmp$<$ fv\+Vector\+Matrix $>$ {\bfseries U\+Eqn} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_addcc18f2be7a2c6efcfc7c3838ae0d97}\label{classFoam_1_1StaticPhaseModel_addcc18f2be7a2c6efcfc7c3838ae0d97}} 
+virtual tmp$<$ fv\+Vector\+Matrix $>$ {\bfseries Uf\+Eqn} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a0e733b2eb53d6d5f35f30df6fab1a939}\label{classFoam_1_1StaticPhaseModel_a0e733b2eb53d6d5f35f30df6fab1a939}} 
+virtual tmp$<$ vol\+Vector\+Field $>$ {\bfseries U} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ae895d68a65d693cfff5378e95175aa72}\label{classFoam_1_1StaticPhaseModel_ae895d68a65d693cfff5378e95175aa72}} 
+virtual vol\+Vector\+Field \& {\bfseries U\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a14c218e428928830dab0f913057e50d3}\label{classFoam_1_1StaticPhaseModel_a14c218e428928830dab0f913057e50d3}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries phi} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a096e7f4d394e12780689071d2638200f}\label{classFoam_1_1StaticPhaseModel_a096e7f4d394e12780689071d2638200f}} 
+virtual surface\+Scalar\+Field \& {\bfseries phi\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a7cc2082ef9799169b06c2447977cbd46}\label{classFoam_1_1StaticPhaseModel_a7cc2082ef9799169b06c2447977cbd46}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries alpha\+Phi} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a47dca194d837499f21df98f0ef3756f4}\label{classFoam_1_1StaticPhaseModel_a47dca194d837499f21df98f0ef3756f4}} 
+virtual surface\+Scalar\+Field \& {\bfseries alpha\+Phi\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ad8a85f40d260e42a7f5bacfde3e68391}\label{classFoam_1_1StaticPhaseModel_ad8a85f40d260e42a7f5bacfde3e68391}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries alpha\+Rho\+Phi} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a5f75b202f9cab70a23dd84c68c6d0fb1}\label{classFoam_1_1StaticPhaseModel_a5f75b202f9cab70a23dd84c68c6d0fb1}} 
+virtual surface\+Scalar\+Field \& {\bfseries alpha\+Rho\+Phi\+Ref} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a2a91c8c77da497773020dd0e5f544b9a}\label{classFoam_1_1StaticPhaseModel_a2a91c8c77da497773020dd0e5f544b9a}} 
+virtual tmp$<$ vol\+Vector\+Field $>$ {\bfseries D\+U\+Dt} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a532512b7b26394fed78df4ca4c9fb80c}\label{classFoam_1_1StaticPhaseModel_a532512b7b26394fed78df4ca4c9fb80c}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries D\+U\+Dtf} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a7de98294bf240f74b49c98d9418a6d72}\label{classFoam_1_1StaticPhaseModel_a7de98294bf240f74b49c98d9418a6d72}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries continuity\+Error} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a57ed3c381ef9a0696f74cf986c1241ba}\label{classFoam_1_1StaticPhaseModel_a57ed3c381ef9a0696f74cf986c1241ba}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries continuity\+Error\+Flow} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a19151ca9cdb89edd428f31adf0f2ad75}\label{classFoam_1_1StaticPhaseModel_a19151ca9cdb89edd428f31adf0f2ad75}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries continuity\+Error\+Sources} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a7f644fb66b2d3a12ca6a39f2ed6e18c3}\label{classFoam_1_1StaticPhaseModel_a7f644fb66b2d3a12ca6a39f2ed6e18c3}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries K} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_aabc3ad45135e4b6f1a4e74239fabe134}\label{classFoam_1_1StaticPhaseModel_aabc3ad45135e4b6f1a4e74239fabe134}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries dev\+Rho\+Reff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a812f6ebc5458b5eddbeb279e3cb9b062}\label{classFoam_1_1StaticPhaseModel_a812f6ebc5458b5eddbeb279e3cb9b062}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries divU} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_afc0423a1dfe5f29f68514f2ceff33f55}\label{classFoam_1_1StaticPhaseModel_afc0423a1dfe5f29f68514f2ceff33f55}} 
+virtual void {\bfseries divU} (tmp$<$ vol\+Scalar\+Field $>$ divU)
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a3ee1a2fe262aaba68e263e5c0e8856cd}\label{classFoam_1_1StaticPhaseModel_a3ee1a2fe262aaba68e263e5c0e8856cd}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries mut} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a70f44b7581357764fc001a899580a794}\label{classFoam_1_1StaticPhaseModel_a70f44b7581357764fc001a899580a794}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries mu\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ae1e67813e0d84dcfa89e83f337ae3c67}\label{classFoam_1_1StaticPhaseModel_ae1e67813e0d84dcfa89e83f337ae3c67}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries nut} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a909dce1fa544117bbcf07f0c2173d410}\label{classFoam_1_1StaticPhaseModel_a909dce1fa544117bbcf07f0c2173d410}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries nu\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ad3d5b42eb14a156d1bfe3b722477b55e}\label{classFoam_1_1StaticPhaseModel_ad3d5b42eb14a156d1bfe3b722477b55e}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries kappa\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a2d21ddf834d4b4212bd217039699b33f}\label{classFoam_1_1StaticPhaseModel_a2d21ddf834d4b4212bd217039699b33f}} 
+virtual tmp$<$ scalar\+Field $>$ {\bfseries kappa\+Eff} (const label patchi) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a747b0d9d7643d42e6e40b6f4541ee389}\label{classFoam_1_1StaticPhaseModel_a747b0d9d7643d42e6e40b6f4541ee389}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries alpha\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_af8ea396353e1a215a8437e6718fff4d6}\label{classFoam_1_1StaticPhaseModel_af8ea396353e1a215a8437e6718fff4d6}} 
+virtual tmp$<$ scalar\+Field $>$ {\bfseries alpha\+Eff} (const label patchi) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ab727e6b56dc07501d81ec6b5043170a8}\label{classFoam_1_1StaticPhaseModel_ab727e6b56dc07501d81ec6b5043170a8}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries k} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a2d90d9bdc0ee6a5ca106cd28d196e4dd}\label{classFoam_1_1StaticPhaseModel_a2d90d9bdc0ee6a5ca106cd28d196e4dd}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries p\+Prime} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ab37c0a5ffcb7b155f0c6bb191c637abe}\label{classFoam_1_1StaticPhaseModel_ab37c0a5ffcb7b155f0c6bb191c637abe}} 
+{\footnotesize template$<$class Type , template$<$ class $>$ class Patch\+Field, class Geo\+Mesh $>$ }\\Foam\+::tmp$<$ Foam\+::\+Geometric\+Field$<$ Type, Patch\+Field, Geo\+Mesh $>$ $>$ {\bfseries zero\+Field} (const word \&name, const dimension\+Set \&dims, const bool cache) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_af0d1df4b82a4a7fb45f741bf528ce2ae}\label{classFoam_1_1StaticPhaseModel_af0d1df4b82a4a7fb45f741bf528ce2ae}} 
+{\footnotesize template$<$class Type $>$ }\\Foam\+::tmp$<$ Foam\+::\+Geometric\+Field$<$ Type, Foam\+::fv\+Patch\+Field, Foam\+::vol\+Mesh $>$ $>$ {\bfseries zero\+Vol\+Field} (const word \&name, const dimension\+Set \&dims, const bool cache) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a4c7e9fb3392ec4768e525c2cfad9016a}\label{classFoam_1_1StaticPhaseModel_a4c7e9fb3392ec4768e525c2cfad9016a}} 
+{\footnotesize template$<$class Type $>$ }\\Foam\+::tmp$<$ Foam\+::\+Geometric\+Field$<$ Type, Foam\+::fvs\+Patch\+Field, Foam\+::surface\+Mesh $>$ $>$ {\bfseries zero\+Surface\+Field} (const word \&name, const dimension\+Set \&dims, const bool cache) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a7eb6e6ccfe05d5828ddf2e3fce9f68ed}\label{classFoam_1_1StaticPhaseModel_a7eb6e6ccfe05d5828ddf2e3fce9f68ed}} 
+vol\+Vector\+Field {\bfseries U\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_a20271f1b34e4a8bfff93371623fde333}\label{classFoam_1_1StaticPhaseModel_a20271f1b34e4a8bfff93371623fde333}} 
+surface\+Scalar\+Field {\bfseries phi\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ac723c4bcd0ebd1dae8558b168b246989}\label{classFoam_1_1StaticPhaseModel_ac723c4bcd0ebd1dae8558b168b246989}} 
+surface\+Scalar\+Field {\bfseries alpha\+Phi\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_abcd82a16c8e95f4d2a64fba037d8c2a9}\label{classFoam_1_1StaticPhaseModel_abcd82a16c8e95f4d2a64fba037d8c2a9}} 
+surface\+Scalar\+Field {\bfseries alpha\+Rho\+Phi\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1StaticPhaseModel_ac4c326ebd397ce978ec74e92eaf8f887}\label{classFoam_1_1StaticPhaseModel_ac4c326ebd397ce978ec74e92eaf8f887}} 
+tmp$<$ vol\+Scalar\+Field $>$ {\bfseries div\+U\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Static\+Phase\+Model.\+H\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Static\+Phase\+Model.\+C\end{DoxyCompactItemize}

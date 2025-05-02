@@ -1,0 +1,121 @@
+\hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel}{}\doxysection{Foam\+::R\+A\+S\+Models\+::multiphase\+Kinetic\+Theory\+Model Class Reference}
+\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel}\index{Foam::RASModels::multiphaseKineticTheoryModel@{Foam::RASModels::multiphaseKineticTheoryModel}}
+
+
+Inheritance diagram for Foam\+::R\+A\+S\+Models\+::multiphase\+Kinetic\+Theory\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Foam\+::R\+A\+S\+Models\+::multiphase\+Kinetic\+Theory\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a282a619db29112ec286edd482ebffe52}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a282a619db29112ec286edd482ebffe52}} 
+{\bfseries Type\+Name} (\char`\"{}multiphase\+Kinetic\+Theory\char`\"{})
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ab80495937fe45aad6098c26f7c07a398}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ab80495937fe45aad6098c26f7c07a398}} 
+{\bfseries multiphase\+Kinetic\+Theory\+Model} (const vol\+Scalar\+Field \&alpha, const vol\+Scalar\+Field \&rho, const vol\+Vector\+Field \&U, const surface\+Scalar\+Field \&alpha\+Rho\+Phi, const surface\+Scalar\+Field \&phi, const phase\+Model \&transport, const word \&properties\+Name=turbulence\+Model\+::properties\+Name, const word \&type=type\+Name)
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_abada2f72e74a295c47cb2b6e3e96f7c1}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_abada2f72e74a295c47cb2b6e3e96f7c1}} 
+virtual bool {\bfseries read} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a1bb7c2023e231530014b589387a178af}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a1bb7c2023e231530014b589387a178af}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries nu\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a5e588accd8da69101a6b9a1decca7779}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a5e588accd8da69101a6b9a1decca7779}} 
+virtual tmp$<$ scalar\+Field $>$ {\bfseries nu\+Eff} (const label patchi) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aad5a8a940f1d371cd840a2c0a1959395}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aad5a8a940f1d371cd840a2c0a1959395}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries k} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a564bc665d9b39fca2d636ff0ddd3468b}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a564bc665d9b39fca2d636ff0ddd3468b}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries epsilon} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a7cb5ff39640f1ece380ad967ac763c61}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a7cb5ff39640f1ece380ad967ac763c61}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries omega} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a94e728afc8a30fc60710fe0410bad101}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a94e728afc8a30fc60710fe0410bad101}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries R} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a682d07f718db4e18ab364636282c8e96}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a682d07f718db4e18ab364636282c8e96}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries p\+Prime} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ab4e7c257b1d405ac4651f6f41d801ac9}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ab4e7c257b1d405ac4651f6f41d801ac9}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries p\+Primef} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_adf428a890d511c92be92431601165627}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_adf428a890d511c92be92431601165627}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries dev\+Rho\+Reff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a66d6abf281085cbaa2afca9d2e69e2c4}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a66d6abf281085cbaa2afca9d2e69e2c4}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries dev\+Rho\+Reff} (const vol\+Vector\+Field \&U) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aec7cb1708c576b968ce1c25f2ae14eeb}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aec7cb1708c576b968ce1c25f2ae14eeb}} 
+virtual tmp$<$ fv\+Vector\+Matrix $>$ {\bfseries div\+Dev\+Rho\+Reff} (vol\+Vector\+Field \&U) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_af437482326a240eaf476b81be77bb13d}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_af437482326a240eaf476b81be77bb13d}} 
+virtual void {\bfseries correct} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a282a619db29112ec286edd482ebffe52}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a282a619db29112ec286edd482ebffe52}} 
+{\bfseries Type\+Name} (\char`\"{}multiphase\+Kinetic\+Theory\char`\"{})
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ab80495937fe45aad6098c26f7c07a398}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ab80495937fe45aad6098c26f7c07a398}} 
+{\bfseries multiphase\+Kinetic\+Theory\+Model} (const vol\+Scalar\+Field \&alpha, const vol\+Scalar\+Field \&rho, const vol\+Vector\+Field \&U, const surface\+Scalar\+Field \&alpha\+Rho\+Phi, const surface\+Scalar\+Field \&phi, const phase\+Model \&transport, const word \&properties\+Name=turbulence\+Model\+::properties\+Name, const word \&type=type\+Name)
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a8d1796029895e7afd7f5bfd682fbb063}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a8d1796029895e7afd7f5bfd682fbb063}} 
+virtual bool {\bfseries read} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a1bb7c2023e231530014b589387a178af}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a1bb7c2023e231530014b589387a178af}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries nu\+Eff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a5e588accd8da69101a6b9a1decca7779}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a5e588accd8da69101a6b9a1decca7779}} 
+virtual tmp$<$ scalar\+Field $>$ {\bfseries nu\+Eff} (const label patchi) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a182f9e2c974131b5b7bb52a9680d6b23}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a182f9e2c974131b5b7bb52a9680d6b23}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries k} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aa9263dc0ab3d02b09a261d7d23d799a2}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aa9263dc0ab3d02b09a261d7d23d799a2}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries epsilon} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a79c505bc7009184b843a676781da610a}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a79c505bc7009184b843a676781da610a}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries omega} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_afa643171c8d755eba60497bdadd3142d}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_afa643171c8d755eba60497bdadd3142d}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries R} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ae797710d89c3b00b4288cdbe026bc925}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ae797710d89c3b00b4288cdbe026bc925}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries p\+Prime} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_afaec266aaa147727b6e5a1692f14b4b4}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_afaec266aaa147727b6e5a1692f14b4b4}} 
+virtual tmp$<$ surface\+Scalar\+Field $>$ {\bfseries p\+Primef} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ad7b0adefb1386a5d7a6468cab6675308}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ad7b0adefb1386a5d7a6468cab6675308}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries dev\+Rho\+Reff} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a7c6c913d68c291e1695d7f7b2d3d6fb5}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_a7c6c913d68c291e1695d7f7b2d3d6fb5}} 
+virtual tmp$<$ vol\+Symm\+Tensor\+Field $>$ {\bfseries dev\+Rho\+Reff} (const vol\+Vector\+Field \&U) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ad3f2c62b68218dda31315082bf175ed8}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_ad3f2c62b68218dda31315082bf175ed8}} 
+virtual tmp$<$ fv\+Vector\+Matrix $>$ {\bfseries div\+Dev\+Rho\+Reff} (vol\+Vector\+Field \&U) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aaf5c541a5b668f02073104317117f9d5}\label{classFoam_1_1RASModels_1_1multiphaseKineticTheoryModel_aaf5c541a5b668f02073104317117f9d5}} 
+virtual void {\bfseries correct} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/multiphase\+Kinetic\+Theory\+Model.\+H\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/multiphase\+Kinetic\+Theory\+Model.\+C\end{DoxyCompactItemize}

@@ -1,0 +1,217 @@
+\hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem}{}\doxysection{Foam\+::Entrained\+Propellant\+Combustion\+Phase\+System$<$ Base\+Phase\+System $>$ Class Template Reference}
+\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem}\index{Foam::EntrainedPropellantCombustionPhaseSystem$<$ BasePhaseSystem $>$@{Foam::EntrainedPropellantCombustionPhaseSystem$<$ BasePhaseSystem $>$}}
+
+
+Inheritance diagram for Foam\+::Entrained\+Propellant\+Combustion\+Phase\+System$<$ Base\+Phase\+System $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classFoam_1_1EntrainedPropellantCombustionPhaseSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Foam\+::Entrained\+Propellant\+Combustion\+Phase\+System$<$ Base\+Phase\+System $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFoam_1_1EntrainedPropellantCombustionPhaseSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1d3da9741f0c9ceecfae548413a4fbf5}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1d3da9741f0c9ceecfae548413a4fbf5}} 
+typedef Ptr\+List\+Dictionary$<$ phase\+Model $>$ {\bfseries phase\+Model\+List}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1d3da9741f0c9ceecfae548413a4fbf5}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1d3da9741f0c9ceecfae548413a4fbf5}} 
+typedef Ptr\+List\+Dictionary$<$ phase\+Model $>$ {\bfseries phase\+Model\+List}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a609abc1ab8fc31360569c022c97db5d3}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a609abc1ab8fc31360569c022c97db5d3}} 
+{\bfseries Entrained\+Propellant\+Combustion\+Phase\+System} (const fv\+Mesh \&)
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a606819a0137eae1f20a2619999b84bb6}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a606819a0137eae1f20a2619999b84bb6}} 
+const saturation\+Model \& {\bfseries saturation} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a3a0cb2a542e274981bd13ffe62625b19}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a3a0cb2a542e274981bd13ffe62625b19}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries dmdt} (const phase\+Pair\+Key \&key) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a2667e475b5abe951a36a24143b719532}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a2667e475b5abe951a36a24143b719532}} 
+virtual Ptr\+List$<$ vol\+Scalar\+Field $>$ {\bfseries dmdts} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7e5c409705d199f30ef53049a8d29e47}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7e5c409705d199f30ef53049a8d29e47}} 
+virtual auto\+Ptr$<$ phase\+System\+::mass\+Transfer\+Table $>$ {\bfseries mass\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1a38083927f15850a9bba197af5801a3}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1a38083927f15850a9bba197af5801a3}} 
+virtual auto\+Ptr$<$ phase\+System\+::heat\+Transfer\+Table $>$ {\bfseries heat\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a950e8a919ff831018ba25cbe21a71f71}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a950e8a919ff831018ba25cbe21a71f71}} 
+virtual auto\+Ptr$<$ phase\+System\+::momentum\+Transfer\+Table $>$ {\bfseries momentum\+Transfer} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a18e155bce22e017b8539549936326edd}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a18e155bce22e017b8539549936326edd}} 
+virtual void {\bfseries solve} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a480624925e12273f0ff1aca00a42e522}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a480624925e12273f0ff1aca00a42e522}} 
+virtual void {\bfseries store} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a20a857f4aa8d06ef15c4d34cedb0beca}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a20a857f4aa8d06ef15c4d34cedb0beca}} 
+virtual void {\bfseries correct} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a2c24d2db1a6c2f620bf31b8ce84743d6}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a2c24d2db1a6c2f620bf31b8ce84743d6}} 
+void {\bfseries calculate\+Velocity} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7157e5368c3c1d71cad327bf4584942b}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7157e5368c3c1d71cad327bf4584942b}} 
+virtual bool {\bfseries read} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a609abc1ab8fc31360569c022c97db5d3}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a609abc1ab8fc31360569c022c97db5d3}} 
+{\bfseries Entrained\+Propellant\+Combustion\+Phase\+System} (const fv\+Mesh \&)
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_acf3c1b0d846ca5705f1d25574c784eef}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_acf3c1b0d846ca5705f1d25574c784eef}} 
+const saturation\+Model \& {\bfseries saturation} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a0c318c4ee0fb1826785fa1b6aef926a2}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a0c318c4ee0fb1826785fa1b6aef926a2}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries dmdt} (const phase\+Pair\+Key \&key) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ab16144c70a073fde2900af4d07ae4942}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ab16144c70a073fde2900af4d07ae4942}} 
+virtual Ptr\+List$<$ vol\+Scalar\+Field $>$ {\bfseries dmdts} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a4228c8dced3ca5b091d005f7050254ad}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a4228c8dced3ca5b091d005f7050254ad}} 
+virtual auto\+Ptr$<$ phase\+System\+::mass\+Transfer\+Table $>$ {\bfseries mass\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aeb9bf482a35949aeeac50824b7c2b344}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aeb9bf482a35949aeeac50824b7c2b344}} 
+virtual auto\+Ptr$<$ phase\+System\+::heat\+Transfer\+Table $>$ {\bfseries heat\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a407b8a2ac8452bde7173eaab89442db1}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a407b8a2ac8452bde7173eaab89442db1}} 
+virtual auto\+Ptr$<$ phase\+System\+::momentum\+Transfer\+Table $>$ {\bfseries momentum\+Transfer} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a546e1e368ba04d3602c9ffb1466a82fc}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a546e1e368ba04d3602c9ffb1466a82fc}} 
+virtual void {\bfseries solve} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aff5f5686d90810bc0e663bbb3750dccf}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aff5f5686d90810bc0e663bbb3750dccf}} 
+virtual void {\bfseries store} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a9d89e9f7e2c9ca8aeb64bff4018e82db}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a9d89e9f7e2c9ca8aeb64bff4018e82db}} 
+virtual void {\bfseries correct} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a2c24d2db1a6c2f620bf31b8ce84743d6}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a2c24d2db1a6c2f620bf31b8ce84743d6}} 
+void {\bfseries calculate\+Velocity} ()
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a8c1060caeae31e5b7bbc025f459bb82f}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a8c1060caeae31e5b7bbc025f459bb82f}} 
+virtual bool {\bfseries read} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ad93c952b645e279f036f7833974ba4d1}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ad93c952b645e279f036f7833974ba4d1}} 
+\mbox{\hyperlink{classFoam_1_1EntrainedSystem}{Entrained\+System}} {\bfseries eta}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ada3cb7fa3cf35546aec0223ecf8b68e7}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ada3cb7fa3cf35546aec0223ecf8b68e7}} 
+typedef Hash\+Table$<$ auto\+Ptr$<$ \mbox{\hyperlink{classFoam_1_1interfaceTrackingModel}{interface\+Tracking\+Model}} $>$, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Tracking\+Model\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_abee3396f6883eeaf4840e31f59718822}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_abee3396f6883eeaf4840e31f59718822}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Scalar\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries r\+Dmdt\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7c928357848ba89b9879fa30843e0b23}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7c928357848ba89b9879fa30843e0b23}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Vector\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a9be6065c1a81eb1afd3d126d4a2e7db8}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a9be6065c1a81eb1afd3d126d4a2e7db8}} 
+typedef Hash\+Table$<$ scalar, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries coeff\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ada3cb7fa3cf35546aec0223ecf8b68e7}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ada3cb7fa3cf35546aec0223ecf8b68e7}} 
+typedef Hash\+Table$<$ auto\+Ptr$<$ \mbox{\hyperlink{classFoam_1_1interfaceTrackingModel}{interface\+Tracking\+Model}} $>$, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Tracking\+Model\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_abee3396f6883eeaf4840e31f59718822}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_abee3396f6883eeaf4840e31f59718822}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Scalar\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries r\+Dmdt\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7c928357848ba89b9879fa30843e0b23}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a7c928357848ba89b9879fa30843e0b23}} 
+typedef Hash\+Ptr\+Table$<$ vol\+Vector\+Field, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries interface\+Table}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a9be6065c1a81eb1afd3d126d4a2e7db8}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a9be6065c1a81eb1afd3d126d4a2e7db8}} 
+typedef Hash\+Table$<$ scalar, phase\+Pair\+Key, phase\+Pair\+Key\+::hash $>$ {\bfseries coeff\+Table}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a12d9f050f63365ba152c3168af96de63}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a12d9f050f63365ba152c3168af96de63}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries r\+Dmdt} (const phase\+Pair\+Key \&key) const
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a690ea6d7ba5f06d6f3c4c03b69ae7e56}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a690ea6d7ba5f06d6f3c4c03b69ae7e56}} 
+virtual tmp$<$ vol\+Scalar\+Field $>$ {\bfseries r\+Dmdt} (const phase\+Pair\+Key \&key) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_af0c4db71e95cf62b022317e0c2861444}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_af0c4db71e95cf62b022317e0c2861444}} 
+dictionary {\bfseries phase\+Properties}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aaffd02c060e6c9f646e101dd2bca7c9e}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aaffd02c060e6c9f646e101dd2bca7c9e}} 
+vol\+Scalar\+Field {\bfseries Tad}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_afbb8286e7e710e5510e7ad9a323b71b6}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_afbb8286e7e710e5510e7ad9a323b71b6}} 
+vol\+Scalar\+Field {\bfseries Hs1}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a0cbc10027384d087693e8fc670b926c6}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a0cbc10027384d087693e8fc670b926c6}} 
+vol\+Scalar\+Field {\bfseries Hs2}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aecc21a3f94ebbd07df618bbdcc15d8e7}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aecc21a3f94ebbd07df618bbdcc15d8e7}} 
+vol\+Scalar\+Field {\bfseries rb\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a0d04cb8e5856fd010af603fed10bd678}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a0d04cb8e5856fd010af603fed10bd678}} 
+dimensioned\+Scalar {\bfseries rho\+Propellant}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a5699c069d0ca75ed17b253d1b619966a}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a5699c069d0ca75ed17b253d1b619966a}} 
+bool {\bfseries regress\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a3106dc04e628c0c34ead3328e9c465ae}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a3106dc04e628c0c34ead3328e9c465ae}} 
+word {\bfseries check\+And\+Regress\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ae1332d259a6ef7a5da2d4ef7be239412}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ae1332d259a6ef7a5da2d4ef7be239412}} 
+scalar {\bfseries stop\+Regress\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a6a69e88f047ef5df628995bf09a41208}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a6a69e88f047ef5df628995bf09a41208}} 
+scalar {\bfseries intial\+V\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a163c94a50ca77d3e8a19f681d6a23b32}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a163c94a50ca77d3e8a19f681d6a23b32}} 
+dimensioned\+Scalar {\bfseries M\+R\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ae82ebbe643f40126ce42743747d31d96}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_ae82ebbe643f40126ce42743747d31d96}} 
+vol\+Scalar\+Field {\bfseries alpha\+Old}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_af867f7643f6f8990dae6aba2f98deb31}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_af867f7643f6f8990dae6aba2f98deb31}} 
+vol\+Scalar\+Field {\bfseries regression\+Alpha}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1a19e76dc9b3b4269c54362b1aedc12d}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a1a19e76dc9b3b4269c54362b1aedc12d}} 
+scalar {\bfseries epsilon}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a079a2c9508d1ea3da403c1a148787b18}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a079a2c9508d1ea3da403c1a148787b18}} 
+bool {\bfseries thin\+Flim\+Model\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aff37d98da21d682d0292c758d4af24d7}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_aff37d98da21d682d0292c758d4af24d7}} 
+vol\+Vector\+Field {\bfseries Ug\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a74365402facfc3c29a6a5c021d4a3b7e}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a74365402facfc3c29a6a5c021d4a3b7e}} 
+vol\+Vector\+Field {\bfseries Up\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a864145a4195810be15b55b4d97c388ea}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a864145a4195810be15b55b4d97c388ea}} 
+interface\+Tracking\+Model\+Table {\bfseries interface\+Tracking\+Models\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a18a5283e58ceea88fd450e2c51dabf88}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a18a5283e58ceea88fd450e2c51dabf88}} 
+r\+Dmdt\+Table {\bfseries r\+Dmdt\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a5cfd5c598bbc25d6fcbabb2455905c8c}\label{classFoam_1_1EntrainedPropellantCombustionPhaseSystem_a5cfd5c598bbc25d6fcbabb2455905c8c}} 
+auto\+Ptr$<$ saturation\+Model $>$ {\bfseries saturation\+Model\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Entrained\+Propellant\+Combustion\+Phase\+System.\+H\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Entrained\+Propellant\+Combustion\+Phase\+System.\+C\end{DoxyCompactItemize}

@@ -1,0 +1,101 @@
+\hypertarget{classFoam_1_1chemicalEfficiency}{}\doxysection{Foam\+::chemical\+Efficiency Class Reference}
+\label{classFoam_1_1chemicalEfficiency}\index{Foam::chemicalEfficiency@{Foam::chemicalEfficiency}}
+
+
+Collaboration diagram for Foam\+::chemical\+Efficiency\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFoam_1_1chemicalEfficiency__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a38daaf076610fb47ebbb184c24bb57ef}\label{classFoam_1_1chemicalEfficiency_a38daaf076610fb47ebbb184c24bb57ef}} 
+{\bfseries chemical\+Efficiency} (const dictionary \&dict)
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a0236824b72817c61b3c7a9e9a6bc2eb7}\label{classFoam_1_1chemicalEfficiency_a0236824b72817c61b3c7a9e9a6bc2eb7}} 
+struct \mbox{\hyperlink{structFoam_1_1factors}{factors}} {\bfseries mass\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a34edba44808668e601b17f8d2ee7003b}\label{classFoam_1_1chemicalEfficiency_a34edba44808668e601b17f8d2ee7003b}} 
+void {\bfseries gas\+Velocity} (const vol\+Vector\+Field \&n\+Hat, const vol\+Scalar\+Field \&P, const vol\+Scalar\+Field \&rb, vol\+Vector\+Field \&Ug)
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a4460ab591b23f4fbac419570196d787c}\label{classFoam_1_1chemicalEfficiency_a4460ab591b23f4fbac419570196d787c}} 
+void {\bfseries get\+Adiabatic\+Temperature} (const vol\+Scalar\+Field \&P, vol\+Scalar\+Field \&Tad)
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a38daaf076610fb47ebbb184c24bb57ef}\label{classFoam_1_1chemicalEfficiency_a38daaf076610fb47ebbb184c24bb57ef}} 
+{\bfseries chemical\+Efficiency} (const dictionary \&dict)
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a0236824b72817c61b3c7a9e9a6bc2eb7}\label{classFoam_1_1chemicalEfficiency_a0236824b72817c61b3c7a9e9a6bc2eb7}} 
+struct \mbox{\hyperlink{structFoam_1_1factors}{factors}} {\bfseries mass\+Transfer} () const
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a34edba44808668e601b17f8d2ee7003b}\label{classFoam_1_1chemicalEfficiency_a34edba44808668e601b17f8d2ee7003b}} 
+void {\bfseries gas\+Velocity} (const vol\+Vector\+Field \&n\+Hat, const vol\+Scalar\+Field \&P, const vol\+Scalar\+Field \&rb, vol\+Vector\+Field \&Ug)
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a4460ab591b23f4fbac419570196d787c}\label{classFoam_1_1chemicalEfficiency_a4460ab591b23f4fbac419570196d787c}} 
+void {\bfseries get\+Adiabatic\+Temperature} (const vol\+Scalar\+Field \&P, vol\+Scalar\+Field \&Tad)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_ad0da3e8544ecd0324f6802ebe1466e9a}\label{classFoam_1_1chemicalEfficiency_ad0da3e8544ecd0324f6802ebe1466e9a}} 
+dictionary {\bfseries molecular\+Weights}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a6782d85b82f4c7ec2a1a20dcaf8c951f}\label{classFoam_1_1chemicalEfficiency_a6782d85b82f4c7ec2a1a20dcaf8c951f}} 
+\mbox{\hyperlink{structFoam_1_1molecularWeight}{molecular\+Weight}} {\bfseries MW}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_aba9241c9c522fae71c27ddc54252b8ec}\label{classFoam_1_1chemicalEfficiency_aba9241c9c522fae71c27ddc54252b8ec}} 
+\mbox{\hyperlink{structFoam_1_1moles}{moles}} {\bfseries n}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a6bc667aded3f443814f14ce09987ec35}\label{classFoam_1_1chemicalEfficiency_a6bc667aded3f443814f14ce09987ec35}} 
+dimensioned\+Scalar {\bfseries rho\+Propellant}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a75581a5d609b73e0c744c88e9d7d7bab}\label{classFoam_1_1chemicalEfficiency_a75581a5d609b73e0c744c88e9d7d7bab}} 
+scalar {\bfseries A\+AlC}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a28fea36e9bd3fe677edf4f564b8920f4}\label{classFoam_1_1chemicalEfficiency_a28fea36e9bd3fe677edf4f564b8920f4}} 
+scalar {\bfseries K}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a0090c6f3467d34e57836c9ccffb11cdf}\label{classFoam_1_1chemicalEfficiency_a0090c6f3467d34e57836c9ccffb11cdf}} 
+scalar {\bfseries phi}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_ac60335e9e1eb4ec1d2265c9380fe79d4}\label{classFoam_1_1chemicalEfficiency_ac60335e9e1eb4ec1d2265c9380fe79d4}} 
+scalar {\bfseries zeta}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a6c6af8dd5065d5af7c607771e2ec9341}\label{classFoam_1_1chemicalEfficiency_a6c6af8dd5065d5af7c607771e2ec9341}} 
+scalar {\bfseries Tad}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_ad286df407664b7daee16437c39727d95}\label{classFoam_1_1chemicalEfficiency_ad286df407664b7daee16437c39727d95}} 
+scalar {\bfseries eta}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a876c4161fb3d36f8cfb0490298286624}\label{classFoam_1_1chemicalEfficiency_a876c4161fb3d36f8cfb0490298286624}} 
+\mbox{\hyperlink{structFoam_1_1factors}{factors}} {\bfseries mtf}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a91bb6dfb0af2e98f3958b75993f7a44b}\label{classFoam_1_1chemicalEfficiency_a91bb6dfb0af2e98f3958b75993f7a44b}} 
+dimensioned\+Scalar {\bfseries rhoP}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_ae974c1641cc02007f05c381d2f04c021}\label{classFoam_1_1chemicalEfficiency_ae974c1641cc02007f05c381d2f04c021}} 
+dimensioned\+Scalar {\bfseries alpha\+Rho\+Alp}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a5aca668b8fdb66be30f9b43ba9b6fb48}\label{classFoam_1_1chemicalEfficiency_a5aca668b8fdb66be30f9b43ba9b6fb48}} 
+dimensioned\+Scalar {\bfseries alphaP}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a5e47813eabaaaa4a8f832c359b1e7ab2}\label{classFoam_1_1chemicalEfficiency_a5e47813eabaaaa4a8f832c359b1e7ab2}} 
+dimensioned\+Scalar {\bfseries RT}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a2a45821cf621151bb3ab77653ddec629}\label{classFoam_1_1chemicalEfficiency_a2a45821cf621151bb3ab77653ddec629}} 
+scalar {\bfseries A\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a88d0876fded27856557ff70709e913cd}\label{classFoam_1_1chemicalEfficiency_a88d0876fded27856557ff70709e913cd}} 
+scalar {\bfseries B\+\_\+}
+\item 
+\mbox{\Hypertarget{classFoam_1_1chemicalEfficiency_a9166cd89aef540a21fdf2f6044ec5610}\label{classFoam_1_1chemicalEfficiency_a9166cd89aef540a21fdf2f6044ec5610}} 
+scalar {\bfseries C\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/ganeshkumar/\+Open\+F\+O\+A\+M/ganeshkumar-\/v2112/src/phase\+System\+Models/reacting\+Euler/\+Propellant-\/\+Regression-\/\+Framework/library/ln\+Include/Chemical\+Efficiency.\+H\end{DoxyCompactItemize}
