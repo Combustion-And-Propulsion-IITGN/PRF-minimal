@@ -104,9 +104,6 @@ Public Types</h2></td></tr>
 <tr class="memitem:ae93bbb4ed08fc0a62e685bbc88e432ec"><td class="memItemLeft" align="right" valign="top"><a id="ae93bbb4ed08fc0a62e685bbc88e432ec"></a>
 typedef PtrListDictionary&lt; phaseModel &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>phaseModelList</b></td></tr>
 <tr class="separator:ae93bbb4ed08fc0a62e685bbc88e432ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae93bbb4ed08fc0a62e685bbc88e432ec"><td class="memItemLeft" align="right" valign="top"><a id="ae93bbb4ed08fc0a62e685bbc88e432ec"></a>
-typedef PtrListDictionary&lt; phaseModel &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>phaseModelList</b></td></tr>
-<tr class="separator:ae93bbb4ed08fc0a62e685bbc88e432ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -146,42 +143,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateVelocity</b>
 <tr class="memitem:ae57e090c8695c0062872dc6c643e1085"><td class="memItemLeft" align="right" valign="top"><a id="ae57e090c8695c0062872dc6c643e1085"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
 <tr class="separator:ae57e090c8695c0062872dc6c643e1085"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13cd755aa1fa1dc79ba72a5f7e4789aa"><td class="memItemLeft" align="right" valign="top"><a id="a13cd755aa1fa1dc79ba72a5f7e4789aa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EntrainedGCPCombustionPhaseSystem</b> (const fvMesh &amp;)</td></tr>
-<tr class="separator:a13cd755aa1fa1dc79ba72a5f7e4789aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3f9060a78749f55e08f0d122a903b78"><td class="memItemLeft" align="right" valign="top"><a id="ae3f9060a78749f55e08f0d122a903b78"></a>
-const saturationModel &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>saturation</b> () const</td></tr>
-<tr class="separator:ae3f9060a78749f55e08f0d122a903b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ad78378761302aced88f8724d018ad1"><td class="memItemLeft" align="right" valign="top"><a id="a6ad78378761302aced88f8724d018ad1"></a>
-virtual tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dmdt</b> (const phasePairKey &amp;key) const</td></tr>
-<tr class="separator:a6ad78378761302aced88f8724d018ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace54a3cde9ffa6f725356bbdb76e54e9"><td class="memItemLeft" align="right" valign="top"><a id="ace54a3cde9ffa6f725356bbdb76e54e9"></a>
-virtual PtrList&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dmdts</b> () const</td></tr>
-<tr class="separator:ace54a3cde9ffa6f725356bbdb76e54e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78609b9bad584f082904fc68666da826"><td class="memItemLeft" align="right" valign="top"><a id="a78609b9bad584f082904fc68666da826"></a>
-virtual autoPtr&lt; phaseSystem::massTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>massTransfer</b> () const</td></tr>
-<tr class="separator:a78609b9bad584f082904fc68666da826"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf3d5763e7fa2170cb2006565e41ee9e"><td class="memItemLeft" align="right" valign="top"><a id="aaf3d5763e7fa2170cb2006565e41ee9e"></a>
-virtual autoPtr&lt; phaseSystem::heatTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>heatTransfer</b> () const</td></tr>
-<tr class="separator:aaf3d5763e7fa2170cb2006565e41ee9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae99a3c798fbf20cd5dc9cfb0a3884924"><td class="memItemLeft" align="right" valign="top"><a id="ae99a3c798fbf20cd5dc9cfb0a3884924"></a>
-virtual autoPtr&lt; phaseSystem::momentumTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>momentumTransfer</b> ()</td></tr>
-<tr class="separator:ae99a3c798fbf20cd5dc9cfb0a3884924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83baa45ee17e5769eed5779484176983"><td class="memItemLeft" align="right" valign="top"><a id="a83baa45ee17e5769eed5779484176983"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>solve</b> ()</td></tr>
-<tr class="separator:a83baa45ee17e5769eed5779484176983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1ee2644cdb0b00794365a1950902730"><td class="memItemLeft" align="right" valign="top"><a id="ad1ee2644cdb0b00794365a1950902730"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>store</b> ()</td></tr>
-<tr class="separator:ad1ee2644cdb0b00794365a1950902730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6d648dcffe08fef9702f774f90e7d9d"><td class="memItemLeft" align="right" valign="top"><a id="af6d648dcffe08fef9702f774f90e7d9d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>correct</b> ()</td></tr>
-<tr class="separator:af6d648dcffe08fef9702f774f90e7d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1baec7ba75caeb193a627e61da54b890"><td class="memItemLeft" align="right" valign="top"><a id="a1baec7ba75caeb193a627e61da54b890"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateVelocity</b> ()</td></tr>
-<tr class="separator:a1baec7ba75caeb193a627e61da54b890"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbbab38e88a6c7a254f648d378b17cb4"><td class="memItemLeft" align="right" valign="top"><a id="abbbab38e88a6c7a254f648d378b17cb4"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
-<tr class="separator:abbbab38e88a6c7a254f648d378b17cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -203,27 +164,12 @@ typedef HashPtrTable&lt; volVectorField, phasePairKey, phasePairKey::hash &gt;&#
 <tr class="memitem:a17b8887c267b139fbb987a76bbb7863f"><td class="memItemLeft" align="right" valign="top"><a id="a17b8887c267b139fbb987a76bbb7863f"></a>
 typedef HashTable&lt; scalar, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>coeffTable</b></td></tr>
 <tr class="separator:a17b8887c267b139fbb987a76bbb7863f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a926220d6117af463d4cf26a73a52740b"><td class="memItemLeft" align="right" valign="top"><a id="a926220d6117af463d4cf26a73a52740b"></a>
-typedef HashTable&lt; autoPtr&lt; <a class="el" href="classFoam_1_1interfaceTrackingModel.html">interfaceTrackingModel</a> &gt;, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interfaceTrackingModelTable</b></td></tr>
-<tr class="separator:a926220d6117af463d4cf26a73a52740b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7804ce6353603a8befee15c0567922b9"><td class="memItemLeft" align="right" valign="top"><a id="a7804ce6353603a8befee15c0567922b9"></a>
-typedef HashPtrTable&lt; volScalarField, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdtTable</b></td></tr>
-<tr class="separator:a7804ce6353603a8befee15c0567922b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac97028105a2f737507f7356a6d7ac59d"><td class="memItemLeft" align="right" valign="top"><a id="ac97028105a2f737507f7356a6d7ac59d"></a>
-typedef HashPtrTable&lt; volVectorField, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interfaceTable</b></td></tr>
-<tr class="separator:ac97028105a2f737507f7356a6d7ac59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17b8887c267b139fbb987a76bbb7863f"><td class="memItemLeft" align="right" valign="top"><a id="a17b8887c267b139fbb987a76bbb7863f"></a>
-typedef HashTable&lt; scalar, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>coeffTable</b></td></tr>
-<tr class="separator:a17b8887c267b139fbb987a76bbb7863f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:af2055578de6a91142ef5ad803b1f986e"><td class="memItemLeft" align="right" valign="top"><a id="af2055578de6a91142ef5ad803b1f986e"></a>
 virtual tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdt</b> (const phasePairKey &amp;key) const</td></tr>
 <tr class="separator:af2055578de6a91142ef5ad803b1f986e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8619c2f5f2d425c441ca84893d93e2b3"><td class="memItemLeft" align="right" valign="top"><a id="a8619c2f5f2d425c441ca84893d93e2b3"></a>
-virtual tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdt</b> (const phasePairKey &amp;key) const</td></tr>
-<tr class="separator:a8619c2f5f2d425c441ca84893d93e2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -272,13 +218,19 @@ interfaceTrackingModelTable&#160;</td><td class="memItemRight" valign="bottom"><
 <tr class="memitem:a997b812afbaaa47f0a4216728a99e5b8"><td class="memItemLeft" align="right" valign="top"><a id="a997b812afbaaa47f0a4216728a99e5b8"></a>
 rDmdtTable&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdt_</b></td></tr>
 <tr class="separator:a997b812afbaaa47f0a4216728a99e5b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae15752fd0626eb282037e6d2cc33bd80"><td class="memItemLeft" align="right" valign="top"><a id="ae15752fd0626eb282037e6d2cc33bd80"></a>
+<tr class="memitem:adecf79cabcd60b163964707feaab4290"><td class="memItemLeft" align="right" valign="top"><a id="adecf79cabcd60b163964707feaab4290"></a>
 autoPtr&lt; saturationModel &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>saturationModel_</b></td></tr>
-<tr class="separator:ae15752fd0626eb282037e6d2cc33bd80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:adecf79cabcd60b163964707feaab4290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/lnInclude/<a class="el" href="lnInclude_2EntrainedGCPCombustionPhaseSystem_8H_source.html">EntrainedGCPCombustionPhaseSystem.H</a></li>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/lnInclude/EntrainedGCPCombustionPhaseSystem.C</li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class BasePhaseSystem&gt;<br />
+class Foam::EntrainedGCPCombustionPhaseSystem&lt; BasePhaseSystem &gt;</h3>
+
+
+<p class="definition">Definition at line <a class="el" href="EntrainedGCPCombustionPhaseSystem_8H_source.html#l00059">59</a> of file <a class="el" href="EntrainedGCPCombustionPhaseSystem_8H_source.html">EntrainedGCPCombustionPhaseSystem.H</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/PhaseSystems/EntrainedGCPCombustionPhaseSystem/<a class="el" href="EntrainedGCPCombustionPhaseSystem_8H_source.html">EntrainedGCPCombustionPhaseSystem.H</a></li>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/PhaseSystems/EntrainedGCPCombustionPhaseSystem/<a class="el" href="EntrainedGCPCombustionPhaseSystem_8C_source.html">EntrainedGCPCombustionPhaseSystem.C</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

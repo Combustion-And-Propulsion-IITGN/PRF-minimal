@@ -125,54 +125,6 @@ const volScalarField &amp;&#160;</td><td class="memItemRight" valign="bottom"><b
 <tr class="memitem:ae95113a656c23c1b363b78c063d05365"><td class="memItemLeft" align="right" valign="top"><a id="ae95113a656c23c1b363b78c063d05365"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>store</b> ()</td></tr>
 <tr class="separator:ae95113a656c23c1b363b78c063d05365"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92aaa0687b45d3b59e95bfaaa7130198"><td class="memItemLeft" align="right" valign="top"><a id="a92aaa0687b45d3b59e95bfaaa7130198"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Surface</b> (const fvMesh &amp;mesh, const word name, const dictionary &amp;dict)</td></tr>
-<tr class="separator:a92aaa0687b45d3b59e95bfaaa7130198"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83332602e5f96dc7df7c53c502d32c59"><td class="memItemLeft" align="right" valign="top"><a id="a83332602e5f96dc7df7c53c502d32c59"></a>
-scalar&#160;</td><td class="memItemRight" valign="bottom"><b>rb</b> (const scalar P)</td></tr>
-<tr class="separator:a83332602e5f96dc7df7c53c502d32c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7845bbd23f4d50c5576c1304bb22ac4"><td class="memItemLeft" align="right" valign="top"><a id="aa7845bbd23f4d50c5576c1304bb22ac4"></a>
-label&#160;</td><td class="memItemRight" valign="bottom"><b>findNeighbour</b> (const volScalarField &amp;alpha, scalar NEI)</td></tr>
-<tr class="separator:aa7845bbd23f4d50c5576c1304bb22ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac6f149fa490642f1c6883e44effafa8"><td class="memItemLeft" align="right" valign="top"><a id="aac6f149fa490642f1c6883e44effafa8"></a>
-label&#160;</td><td class="memItemRight" valign="bottom"><b>findNeighbourSurface</b> (const volScalarField &amp;alpha, scalar Owner, scalar Neighbour)</td></tr>
-<tr class="separator:aac6f149fa490642f1c6883e44effafa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5559259b8e5f636b188453eaa97b4d4a"><td class="memItemLeft" align="right" valign="top"><a id="a5559259b8e5f636b188453eaa97b4d4a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>findInterface</b> ()</td></tr>
-<tr class="separator:a5559259b8e5f636b188453eaa97b4d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a183dc4a218c243688004992d382ec90c"><td class="memItemLeft" align="right" valign="top"><a id="a183dc4a218c243688004992d382ec90c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>findInterfaceCells</b> ()</td></tr>
-<tr class="separator:a183dc4a218c243688004992d382ec90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26446027423b7c81ccfeceb92908ef82"><td class="memItemLeft" align="right" valign="top"><a id="a26446027423b7c81ccfeceb92908ef82"></a>
-tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regressInterface</b> (const volScalarField &amp;p, const labelList &amp;bed)</td></tr>
-<tr class="separator:a26446027423b7c81ccfeceb92908ef82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74917f251f5561aca0a33bb30de3c100"><td class="memItemLeft" align="right" valign="top"><a id="a74917f251f5561aca0a33bb30de3c100"></a>
-tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regressInterface</b> (const volScalarField &amp;p, const volScalarField &amp;dmdt, const labelList &amp;flame, const scalar fp, const scalar MR)</td></tr>
-<tr class="separator:a74917f251f5561aca0a33bb30de3c100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9bc2c87539a77905ed80ca842ff1e6f"><td class="memItemLeft" align="right" valign="top"><a id="aa9bc2c87539a77905ed80ca842ff1e6f"></a>
-tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> () const</td></tr>
-<tr class="separator:aa9bc2c87539a77905ed80ca842ff1e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a7efeea5aa8298c23773b704db4ce6c"><td class="memItemLeft" align="right" valign="top"><a id="a8a7efeea5aa8298c23773b704db4ce6c"></a>
-tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>As</b> () const</td></tr>
-<tr class="separator:a8a7efeea5aa8298c23773b704db4ce6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c409a1bcd4f6c7a9e8d6bd3fa80c016"><td class="memItemLeft" align="right" valign="top"><a id="a0c409a1bcd4f6c7a9e8d6bd3fa80c016"></a>
-tmp&lt; volVectorField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>nHat</b> () const</td></tr>
-<tr class="separator:a0c409a1bcd4f6c7a9e8d6bd3fa80c016"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a102176a929ccd5a0c07f6dbcbb2061"><td class="memItemLeft" align="right" valign="top"><a id="a5a102176a929ccd5a0c07f6dbcbb2061"></a>
-tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rb</b> () const</td></tr>
-<tr class="separator:a5a102176a929ccd5a0c07f6dbcbb2061"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90dc2f92ae0b0721f3d28b9811d8bea6"><td class="memItemLeft" align="right" valign="top"><a id="a90dc2f92ae0b0721f3d28b9811d8bea6"></a>
-const labelList &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>iOwners</b> () const</td></tr>
-<tr class="separator:a90dc2f92ae0b0721f3d28b9811d8bea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade5e20e13722c03bec8166c9e5cef5da"><td class="memItemLeft" align="right" valign="top"><a id="ade5e20e13722c03bec8166c9e5cef5da"></a>
-const labelList &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>iNeighbours</b> () const</td></tr>
-<tr class="separator:ade5e20e13722c03bec8166c9e5cef5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4ffa04c64fc8713da8cf09418a4944"><td class="memItemLeft" align="right" valign="top"><a id="afb4ffa04c64fc8713da8cf09418a4944"></a>
-const volScalarField &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>alpha</b> ()</td></tr>
-<tr class="separator:afb4ffa04c64fc8713da8cf09418a4944"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae95113a656c23c1b363b78c063d05365"><td class="memItemLeft" align="right" valign="top"><a id="ae95113a656c23c1b363b78c063d05365"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>store</b> ()</td></tr>
-<tr class="separator:ae95113a656c23c1b363b78c063d05365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -185,12 +137,12 @@ volScalarField&#160;</td><td class="memItemRight" valign="bottom"><b>alphaOld_</
 <tr class="memitem:aff7b83603858d91b230f975ccd26bb3a"><td class="memItemLeft" align="right" valign="top"><a id="aff7b83603858d91b230f975ccd26bb3a"></a>
 volScalarField&#160;</td><td class="memItemRight" valign="bottom"><b>interface_</b></td></tr>
 <tr class="separator:aff7b83603858d91b230f975ccd26bb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15cd9b582185e3ff2d93887c7b42105e"><td class="memItemLeft" align="right" valign="top"><a id="a15cd9b582185e3ff2d93887c7b42105e"></a>
+<tr class="memitem:a561f469330ef5dcf2bce2232d1db0f71"><td class="memItemLeft" align="right" valign="top"><a id="a561f469330ef5dcf2bce2232d1db0f71"></a>
 autoPtr&lt; labelList &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interfaceOwners_</b></td></tr>
-<tr class="separator:a15cd9b582185e3ff2d93887c7b42105e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51d3174237353182879bae7998c9ecf4"><td class="memItemLeft" align="right" valign="top"><a id="a51d3174237353182879bae7998c9ecf4"></a>
+<tr class="separator:a561f469330ef5dcf2bce2232d1db0f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2286efd3da3bb8660088970e3a40e812"><td class="memItemLeft" align="right" valign="top"><a id="a2286efd3da3bb8660088970e3a40e812"></a>
 autoPtr&lt; labelList &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interfaceNeighbours_</b></td></tr>
-<tr class="separator:a51d3174237353182879bae7998c9ecf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a2286efd3da3bb8660088970e3a40e812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d1c95d47b9067434f6aaebd701f41e0"><td class="memItemLeft" align="right" valign="top"><a id="a4d1c95d47b9067434f6aaebd701f41e0"></a>
 volScalarField&#160;</td><td class="memItemRight" valign="bottom"><b>As_</b></td></tr>
 <tr class="separator:a4d1c95d47b9067434f6aaebd701f41e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,9 +165,12 @@ scalar&#160;</td><td class="memItemRight" valign="bottom"><b>Pmin_</b></td></tr>
 dimensionedScalar&#160;</td><td class="memItemRight" valign="bottom"><b>a_</b></td></tr>
 <tr class="separator:a46e25d5db4f3863e8ee7097caa50d353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/interfaceTrackingModels/Surface/<a class="el" href="interfaceTrackingModels_2Surface_2Surface_8H_source.html">Surface.H</a></li>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/interfaceTrackingModels/Surface/Surface.C</li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="Surface_8H_source.html#l00039">39</a> of file <a class="el" href="Surface_8H_source.html">Surface.H</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/interfaceTrackingModels/Surface/<a class="el" href="Surface_8H_source.html">Surface.H</a></li>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/interfaceTrackingModels/Surface/<a class="el" href="Surface_8C_source.html">Surface.C</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

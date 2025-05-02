@@ -101,9 +101,6 @@ Public Types</h2></td></tr>
 <tr class="memitem:a28fc7f56efc8a4de65a9321e6af33684"><td class="memItemLeft" align="right" valign="top"><a id="a28fc7f56efc8a4de65a9321e6af33684"></a>
 typedef PtrListDictionary&lt; phaseModel &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>phaseModelList</b></td></tr>
 <tr class="separator:a28fc7f56efc8a4de65a9321e6af33684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28fc7f56efc8a4de65a9321e6af33684"><td class="memItemLeft" align="right" valign="top"><a id="a28fc7f56efc8a4de65a9321e6af33684"></a>
-typedef PtrListDictionary&lt; phaseModel &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>phaseModelList</b></td></tr>
-<tr class="separator:a28fc7f56efc8a4de65a9321e6af33684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -143,54 +140,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateVelocity</b>
 <tr class="memitem:a94e9bf3c9e6007eb4c3da7ca1f54b3d7"><td class="memItemLeft" align="right" valign="top"><a id="a94e9bf3c9e6007eb4c3da7ca1f54b3d7"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
 <tr class="separator:a94e9bf3c9e6007eb4c3da7ca1f54b3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae01b3f86029b2a885ee53373a92fcf45"><td class="memItemLeft" align="right" valign="top"><a id="ae01b3f86029b2a885ee53373a92fcf45"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PropellantRegressionPhaseSystem</b> (const fvMesh &amp;)</td></tr>
-<tr class="separator:ae01b3f86029b2a885ee53373a92fcf45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae02b5a7b3074089dc192dd95a0da50a3"><td class="memItemLeft" align="right" valign="top"><a id="ae02b5a7b3074089dc192dd95a0da50a3"></a>
-const saturationModel &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>saturation</b> () const</td></tr>
-<tr class="separator:ae02b5a7b3074089dc192dd95a0da50a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e8d520a3b109e23a7dafa4f5e02d7d6"><td class="memItemLeft" align="right" valign="top"><a id="a3e8d520a3b109e23a7dafa4f5e02d7d6"></a>
-virtual tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dmdt</b> (const phasePairKey &amp;key) const</td></tr>
-<tr class="separator:a3e8d520a3b109e23a7dafa4f5e02d7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d53a7b973978254ea8c9b20f546f696"><td class="memItemLeft" align="right" valign="top"><a id="a7d53a7b973978254ea8c9b20f546f696"></a>
-virtual PtrList&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dmdts</b> () const</td></tr>
-<tr class="separator:a7d53a7b973978254ea8c9b20f546f696"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e96a81acaf1471a1945e15ab57b44f2"><td class="memItemLeft" align="right" valign="top"><a id="a5e96a81acaf1471a1945e15ab57b44f2"></a>
-virtual autoPtr&lt; phaseSystem::massTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>massTransfer</b> () const</td></tr>
-<tr class="separator:a5e96a81acaf1471a1945e15ab57b44f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a550a0116a1b9f459f96ea9acd7273125"><td class="memItemLeft" align="right" valign="top"><a id="a550a0116a1b9f459f96ea9acd7273125"></a>
-virtual autoPtr&lt; phaseSystem::heatTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>heatTransfer</b> () const</td></tr>
-<tr class="separator:a550a0116a1b9f459f96ea9acd7273125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09e2686359cb7cd1cdbcb39bd808bc0f"><td class="memItemLeft" align="right" valign="top"><a id="a09e2686359cb7cd1cdbcb39bd808bc0f"></a>
-virtual autoPtr&lt; phaseSystem::momentumTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>momentumTransfer</b> ()</td></tr>
-<tr class="separator:a09e2686359cb7cd1cdbcb39bd808bc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae15c954ed7118cb01ccfd9ff31b9c3d1"><td class="memItemLeft" align="right" valign="top"><a id="ae15c954ed7118cb01ccfd9ff31b9c3d1"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>solve</b> ()</td></tr>
-<tr class="separator:ae15c954ed7118cb01ccfd9ff31b9c3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a45476ea11ee0298c3840fd89bb574d"><td class="memItemLeft" align="right" valign="top"><a id="a3a45476ea11ee0298c3840fd89bb574d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>store</b> ()</td></tr>
-<tr class="separator:a3a45476ea11ee0298c3840fd89bb574d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71b85e53993b264ff22f75d42d316175"><td class="memItemLeft" align="right" valign="top"><a id="a71b85e53993b264ff22f75d42d316175"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>correct</b> ()</td></tr>
-<tr class="separator:a71b85e53993b264ff22f75d42d316175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1884ad97f0219b9b3bd8e26c5d0914b"><td class="memItemLeft" align="right" valign="top"><a id="ac1884ad97f0219b9b3bd8e26c5d0914b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateVelocity</b> ()</td></tr>
-<tr class="separator:ac1884ad97f0219b9b3bd8e26c5d0914b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0cf70984d938493348a3b15356e8c3d"><td class="memItemLeft" align="right" valign="top"><a id="aa0cf70984d938493348a3b15356e8c3d"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
-<tr class="separator:aa0cf70984d938493348a3b15356e8c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
 Protected Types</h2></td></tr>
-<tr class="memitem:a9c5aad8798cfd79df098546b5e05abbc"><td class="memItemLeft" align="right" valign="top"><a id="a9c5aad8798cfd79df098546b5e05abbc"></a>
-typedef HashTable&lt; autoPtr&lt; <a class="el" href="classFoam_1_1interfaceTrackingModel.html">interfaceTrackingModel</a> &gt;, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interfaceTrackingModelTable</b></td></tr>
-<tr class="separator:a9c5aad8798cfd79df098546b5e05abbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03ccf2f4a9f4a7b02337030b1668eaa0"><td class="memItemLeft" align="right" valign="top"><a id="a03ccf2f4a9f4a7b02337030b1668eaa0"></a>
-typedef HashPtrTable&lt; volScalarField, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdtTable</b></td></tr>
-<tr class="separator:a03ccf2f4a9f4a7b02337030b1668eaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae529d9a7cec64e2d814ea2e9154cdc23"><td class="memItemLeft" align="right" valign="top"><a id="ae529d9a7cec64e2d814ea2e9154cdc23"></a>
-typedef HashTable&lt; scalar, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>coeffTable</b></td></tr>
-<tr class="separator:ae529d9a7cec64e2d814ea2e9154cdc23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c5aad8798cfd79df098546b5e05abbc"><td class="memItemLeft" align="right" valign="top"><a id="a9c5aad8798cfd79df098546b5e05abbc"></a>
 typedef HashTable&lt; autoPtr&lt; <a class="el" href="classFoam_1_1interfaceTrackingModel.html">interfaceTrackingModel</a> &gt;, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interfaceTrackingModelTable</b></td></tr>
 <tr class="separator:a9c5aad8798cfd79df098546b5e05abbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,9 +158,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac9ce909ca3028d4b5b5d34bbfe8da35a"><td class="memItemLeft" align="right" valign="top"><a id="ac9ce909ca3028d4b5b5d34bbfe8da35a"></a>
 virtual tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdt</b> (const phasePairKey &amp;key) const</td></tr>
 <tr class="separator:ac9ce909ca3028d4b5b5d34bbfe8da35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5efdb3e55f78f884bb2f54a7da10cb9"><td class="memItemLeft" align="right" valign="top"><a id="ae5efdb3e55f78f884bb2f54a7da10cb9"></a>
-virtual tmp&lt; volScalarField &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdt</b> (const phasePairKey &amp;key) const</td></tr>
-<tr class="separator:ae5efdb3e55f78f884bb2f54a7da10cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -273,29 +222,19 @@ rDmdtTable&#160;</td><td class="memItemRight" valign="bottom"><b>rDmdt_</b></td>
 <tr class="memitem:ab91cb6c0f537b1ab1faf67849685e9a6"><td class="memItemLeft" align="right" valign="top"><a id="ab91cb6c0f537b1ab1faf67849685e9a6"></a>
 coeffTable&#160;</td><td class="memItemRight" valign="bottom"><b>coeff_</b></td></tr>
 <tr class="separator:ab91cb6c0f537b1ab1faf67849685e9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a13d1e5491cc361634302f20f96439a"><td class="memItemLeft" align="right" valign="top"><a id="a5a13d1e5491cc361634302f20f96439a"></a>
+<tr class="memitem:af9edc690719a82930140d659e6e63a5c"><td class="memItemLeft" align="right" valign="top"><a id="af9edc690719a82930140d659e6e63a5c"></a>
 autoPtr&lt; saturationModel &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>saturationModel_</b></td></tr>
-<tr class="separator:a5a13d1e5491cc361634302f20f96439a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1744b20de200d8696d58f1d7be500b90"><td class="memItemLeft" ><a id="a1744b20de200d8696d58f1d7be500b90"></a>
-struct {</td></tr>
-<tr class="memitem:a34d4f3d790ac0c5efeee07c02c85a92f"><td class="memItemLeft" >
-&#160;&#160;&#160;scalar&#160;&#160;&#160;<b>Al</b></td></tr>
-<tr class="separator:a34d4f3d790ac0c5efeee07c02c85a92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a918b023ca9b78e6319009f4af94da"><td class="memItemLeft" >
-&#160;&#160;&#160;scalar&#160;&#160;&#160;<b>Al2O3</b></td></tr>
-<tr class="separator:a46a918b023ca9b78e6319009f4af94da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa72e195ddd9b4ba26028034e04e571ca"><td class="memItemLeft" >
-&#160;&#160;&#160;scalar&#160;&#160;&#160;<b>H2O</b></td></tr>
-<tr class="separator:aa72e195ddd9b4ba26028034e04e571ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1ba7a2d770f8d23e03e34a4d68f7b0e"><td class="memItemLeft" >
-&#160;&#160;&#160;scalar&#160;&#160;&#160;<b>H2</b></td></tr>
-<tr class="separator:ad1ba7a2d770f8d23e03e34a4d68f7b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1744b20de200d8696d58f1d7be500b90"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>MW_</b></td></tr>
-<tr class="separator:a1744b20de200d8696d58f1d7be500b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:af9edc690719a82930140d659e6e63a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/lnInclude/<a class="el" href="lnInclude_2PropellantRegressionPhaseSystem_8H_source.html">PropellantRegressionPhaseSystem.H</a></li>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/lnInclude/PropellantRegressionPhaseSystem.C</li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class BasePhaseSystem&gt;<br />
+class Foam::PropellantRegressionPhaseSystem&lt; BasePhaseSystem &gt;</h3>
+
+
+<p class="definition">Definition at line <a class="el" href="PropellantRegressionPhaseSystem_8H_source.html#l00056">56</a> of file <a class="el" href="PropellantRegressionPhaseSystem_8H_source.html">PropellantRegressionPhaseSystem.H</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/PhaseSystems/PropellantRegressionPhaseSystem/<a class="el" href="PropellantRegressionPhaseSystem_8H_source.html">PropellantRegressionPhaseSystem.H</a></li>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/PhaseSystems/PropellantRegressionPhaseSystem/<a class="el" href="PropellantRegressionPhaseSystem_8C_source.html">PropellantRegressionPhaseSystem.C</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

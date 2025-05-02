@@ -114,30 +114,9 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</
 <tr class="memitem:a0eca1837ceaceae6d188d21bc840ce80"><td class="memItemLeft" align="right" valign="top"><a id="a0eca1837ceaceae6d188d21bc840ce80"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>store</b> ()</td></tr>
 <tr class="separator:a0eca1837ceaceae6d188d21bc840ce80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97127c2441f2945b96c083aec4119f30"><td class="memItemLeft" align="right" valign="top"><a id="a97127c2441f2945b96c083aec4119f30"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>InterphaseHeatTransferPhaseSystem</b> (const fvMesh &amp;)</td></tr>
-<tr class="separator:a97127c2441f2945b96c083aec4119f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3530e0a15b1dbd9a9a36817c2b4e73f4"><td class="memItemLeft" align="right" valign="top"><a id="a3530e0a15b1dbd9a9a36817c2b4e73f4"></a>
-virtual autoPtr&lt; phaseSystem::heatTransferTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>heatTransfer</b> () const</td></tr>
-<tr class="separator:a3530e0a15b1dbd9a9a36817c2b4e73f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c8729d87d61260900095655d8fc55ec"><td class="memItemLeft" align="right" valign="top"><a id="a7c8729d87d61260900095655d8fc55ec"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>correctEnergyTransport</b> ()</td></tr>
-<tr class="separator:a7c8729d87d61260900095655d8fc55ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a44c3a2e04b7dd35d21bfe29d82c2db"><td class="memItemLeft" align="right" valign="top"><a id="a6a44c3a2e04b7dd35d21bfe29d82c2db"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>correctInterfaceThermo</b> ()</td></tr>
-<tr class="separator:a6a44c3a2e04b7dd35d21bfe29d82c2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a243a31c48bd9d68f155a59d6a48b85e2"><td class="memItemLeft" align="right" valign="top"><a id="a243a31c48bd9d68f155a59d6a48b85e2"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
-<tr class="separator:a243a31c48bd9d68f155a59d6a48b85e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a1e42635e84457882cb198989d4802d"><td class="memItemLeft" align="right" valign="top"><a id="a3a1e42635e84457882cb198989d4802d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>store</b> ()</td></tr>
-<tr class="separator:a3a1e42635e84457882cb198989d4802d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
 Protected Types</h2></td></tr>
-<tr class="memitem:a39c70580591ef2a95529c9d5dfec9068"><td class="memItemLeft" align="right" valign="top"><a id="a39c70580591ef2a95529c9d5dfec9068"></a>
-typedef HashTable&lt; autoPtr&lt; <a class="el" href="classFoam_1_1sharpInterfaceHeatTransferModel.html">sharpInterfaceHeatTransferModel</a> &gt;, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sharpInterfaceHeatTransferModelTable</b></td></tr>
-<tr class="separator:a39c70580591ef2a95529c9d5dfec9068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39c70580591ef2a95529c9d5dfec9068"><td class="memItemLeft" align="right" valign="top"><a id="a39c70580591ef2a95529c9d5dfec9068"></a>
 typedef HashTable&lt; autoPtr&lt; <a class="el" href="classFoam_1_1sharpInterfaceHeatTransferModel.html">sharpInterfaceHeatTransferModel</a> &gt;, phasePairKey, phasePairKey::hash &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sharpInterfaceHeatTransferModelTable</b></td></tr>
 <tr class="separator:a39c70580591ef2a95529c9d5dfec9068"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,9 +136,15 @@ volScalarField&#160;</td><td class="memItemRight" valign="bottom"><b>Nu_</b></td
 volScalarField&#160;</td><td class="memItemRight" valign="bottom"><b>K_</b></td></tr>
 <tr class="separator:aa7044f14d67d41cd67941cee4e200d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/lnInclude/<a class="el" href="lnInclude_2InterphaseHeatTransferPhaseSystem_8H_source.html">InterphaseHeatTransferPhaseSystem.H</a></li>
-<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/lnInclude/InterphaseHeatTransferPhaseSystem.C</li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class BasePhaseSystem&gt;<br />
+class Foam::InterphaseHeatTransferPhaseSystem&lt; BasePhaseSystem &gt;</h3>
+
+
+<p class="definition">Definition at line <a class="el" href="InterphaseHeatTransferPhaseSystem_8H_source.html#l00061">61</a> of file <a class="el" href="InterphaseHeatTransferPhaseSystem_8H_source.html">InterphaseHeatTransferPhaseSystem.H</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/PhaseSystems/InterphaseHeatTransferPhaseSystem/<a class="el" href="InterphaseHeatTransferPhaseSystem_8H_source.html">InterphaseHeatTransferPhaseSystem.H</a></li>
+<li>/home/ganeshkumar/OpenFOAM/ganeshkumar-v2112/src/phaseSystemModels/reactingEuler/Propellant-Regression-Framework/library/PhaseSystems/InterphaseHeatTransferPhaseSystem/<a class="el" href="InterphaseHeatTransferPhaseSystem_8C_source.html">InterphaseHeatTransferPhaseSystem.C</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
