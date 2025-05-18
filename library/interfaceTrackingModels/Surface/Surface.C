@@ -133,6 +133,7 @@ Foam::Surface::Surface
     interfaceNeighbours_.reset(new labelList(interfaceCells, -1));
 
     findInterfaceCells();
+    Info << "Interface: " << sum(interface_) << endl;
 }
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
@@ -165,7 +166,7 @@ Foam::label Foam::Surface::findNeighbour
     {
         if (Own[i] == NEI)
         {
-            Info << "Nei: " << Nei[i] << " alpha: " << alpha[Nei[i]] << endl;
+            //Info << "Nei: " << Nei[i] << " alpha: " << alpha[Nei[i]] << endl;
             if (alpha[Nei[i]] == One)
             {
                 return Nei[i];
@@ -175,7 +176,7 @@ Foam::label Foam::Surface::findNeighbour
     return -1;
 }
 
-Foam::label Foam::Surface::findNeighbourSurface
+Foam::scalar Foam::Surface::findNeighbourSurfaceArea
 (
     const volScalarField& alpha,
     scalar Owner, 
@@ -184,18 +185,42 @@ Foam::label Foam::Surface::findNeighbourSurface
 {
     // Finds neighbour cell
     const fvMesh& mesh = alpha.mesh();
+    const surfaceScalarField& Sf = mesh.magSf();
     const labelList& Own = mesh.owner();
     const labelList& Nei = mesh.neighbour();
     const scalar One(1 - SMALL);
-
-    forAll(Own, i)
-    {
-        if ((Own[i] == Owner) && (Nei[i] == Neighbour))
+    
+    if (Neighbour != -1)
+    {    
+        forAll(Own, i)
         {
-            return i;
+            if ((Own[i] == Owner) && (Nei[i] == Neighbour))
+            {
+                return Sf[i];
+            }
         }
     }
-    return -1;
+    else
+    {
+        // Neighbour of interface cell is not found! 
+        // Owner of the inerface is expected to be the boundary cell --- Searching for boundary patches
+        const fvPatchList& patches = mesh.boundary();
+        forAll(patches, i)
+        {
+            const fvPatch& patch = patches[i];
+            const labelList& fC = patch.faceCells();
+            const scalarField& Sf = patch.magSf();
+            forAll(fC, j)
+            {
+                if (fC[j] == Owner)
+                {
+                    return Sf[j];
+                }
+            }
+        }
+    }
+    Info << "--------- Neighbour Surface Area not found! ------------- " << exit(FatalError);
+    return 0;
 }
 
 void Foam::Surface::findInterface()
@@ -228,11 +253,29 @@ void Foam::Surface::findInterface()
             interface_[Own[i]] = 1;
         }
         // case:4 Interface is present in between face and neighbour center
-        else if ((alpha[Own[i]] == Zero) && (alpha[Nei[i]] > 0.5))
+        else if ((alpha[Own[i]] == Zero) && (alpha[Nei[i]] >= 0.5))
         {
             interface_[Own[i]] = 1;
         }
-        // case:5 Interface is not present (Ignore)
+        // case:5 Interface is present in the boundary cell
+        else if ((alpha[Own[i]] == Zero) && (alpha[Nei[i]] < 0.5))
+        {
+            // Additional check for boundary cells
+            const fvPatchList& patches = mesh.boundary();
+            forAll(patches, j)
+            {
+                const fvPatch& patch = patches[j];
+                const labelList& fC = patch.faceCells();
+                forAll(fC, k)
+                {
+                    if (fC[k] == Nei[i])
+                    {
+                        interface_[Nei[i]] = 1;
+                    }
+                }
+            }
+        }
+        // case:6 Interface is not present (Ignore)
         else  continue;
     }
 }
@@ -323,6 +366,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
           (Nei[i] == Own[i] + 1)
       )
       {
+//	Info << "Flame Regress: Cell: " << Nei[i]  << " - " << alpha0[Nei[i]]; 
           interface_[Nei[i]] = 1;
           iOwners[k] = Own[i];
           iNeighbours[k] = Nei[i];
@@ -333,8 +377,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
           // Linear Interpolation of Area -----------------
           scalar Asi = Sf[i];
           label NNei = findNeighbour(alpha0, Nei[i]);
-          label j = findNeighbourSurface(alpha0, Nei[i], NNei);
-          scalar Asip1 = Sf[j];
+          scalar Asip1 = findNeighbourSurfaceArea(alpha0, Nei[i], NNei);
           scalar Sfj = alpha0[Nei[i]]*Asi + (1 - alpha0[Nei[i]])*Asip1;
           As_[Nei[i]] = Sfj/V[Nei[i]];  // Area of face between owner and neighbour
           // ----------------------------------------------
@@ -342,7 +385,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
           rb_[Nei[i]] = rb(p[bed[k]]);  // burning Rate
           dmdt_[Nei[i]] = rb_[Nei[i]]*As_[Nei[i]];
           nHat_[Nei[i]] = vector(1, 0, 0);
-          // Info << Nei[i] << " ( " << dmdt_[Nei[i]] << " ) ";
+          //Info << "Bed Regress: " << Nei[i] << " ( " << dmdt_[Nei[i]] << " ) ";
           scalar newalpha = alpha0[Nei[i]] - rb_[Nei[i]]*As_[Nei[i]]*dt;
           if (newalpha < 0)
           {
@@ -376,7 +419,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
           {
               alpha[Nei[i]] = newalpha;
           }
-
+	//Info << " New Alpha: " << alpha[Nei[i]] << endl;
           k++;
       }
     }
@@ -440,6 +483,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
             (Nei[i] == Own[i] + 1)
         )
         {
+//		Info << "Bed Regress -> Cell: " << Nei[i] << " - " << alpha0[Nei[i]];
             scalar dmdtflame = 0;
             scalar Vflame = 0;
 
@@ -461,8 +505,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
             // Linear Interpolation of Area -----------------
             scalar Asi = Sf[i];
             label NNei = findNeighbour(alpha0, Nei[i]);
-            label j = findNeighbourSurface(alpha0, Nei[i], NNei);
-            scalar Asip1 = Sf[j];
+            scalar Asip1 = findNeighbourSurfaceArea(alpha0, Nei[i], NNei);
             scalar Sfj = alpha0[Nei[i]]*Asi + (1 - alpha0[Nei[i]])*Asip1;
             As_[Nei[i]] = Sfj/V[Nei[i]];  // Area of face between owner and neighbour
             // ----------------------------------------------
@@ -475,10 +518,10 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
             rb_[Own[i]] = rb_[Nei[i]];
             dmdt_[Own[i]] = alpha0[Nei[i]]*dmdtflame*Vflame/V[Own[i]];
             nHat_[Own[i]] = vector(1, 0, 0);
-            // Info << " ( " << Nei[i] << " " << Own[i] << " ) -> "
-            //   << " ( " << dmdt_[Nei[i]] << " " << dmdt_[Own[i]] << " ) "
-            //   << " Flame: dmdt: " << dmdt[flame[k]] << " vF: " << V[flame[k]]
-            //   << " fp: " << fp << endl;
+            Info << " ( " << Nei[i] << " " << Own[i] << " ) -> "
+              << " ( " << dmdt_[Nei[i]] << " " << dmdt_[Own[i]] << " ) "
+              << " Flame: dmdt: " << dmdt[flame[k]] << " vF: " << V[flame[k]]
+              << " fp: " << fp << endl;
 
             scalar newalpha = alpha0[Nei[i]] - (1.0 - MR/fp)*dmdt[flame[k]]*V[flame[k]]*dt/V[Nei[i]];
             if (newalpha < 0)
@@ -513,7 +556,7 @@ Foam::tmp<Foam::volScalarField> Foam::Surface::regressInterface
             {
                 alpha[Nei[i]] = newalpha;
             }
-
+//		Info << " New Alpha: " << alpha[Nei[i]] << endl;
             k++;
         }
     }

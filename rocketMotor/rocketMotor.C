@@ -197,10 +197,10 @@ int main(int argc, char *argv[])
 
             fluid.correctKinematics();
 
-            if (pimple.turbCorr())
-            {
+            // if (pimple.turbCorr())
+            // {
                 fluid.correctTurbulence();
-            }
+            // }
         }
 
         if (runTime.write())

@@ -597,8 +597,8 @@ void Foam::RASModels::multiphaseKineticTheoryModel::correct()
         ThetaEqn.solve();
 
         // Impose wall on propellant surface
-        const volScalarField& alphaProp(this->db().lookupObject<volScalarField>("alpha.propellant"));
-        ImposeWall(Theta_, alphaProp);
+        // const volScalarField& alphaProp(this->db().lookupObject<volScalarField>("alpha.propellant"));
+        // ImposeWall(Theta_, alphaProp);
         // Theta_ = pos0(alpha - minAlpha_)*Theta_;
         fvOptions.correct(Theta_);
     }
