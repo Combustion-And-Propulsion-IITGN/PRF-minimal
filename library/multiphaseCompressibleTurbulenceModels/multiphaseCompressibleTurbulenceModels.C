@@ -62,6 +62,9 @@ defineTurbulenceModelTypes
 #include "continuousMultiphaseKEpsilon.H"
 makeRASModel(continuousMultiphaseKEpsilon);
 
+#include "continuousMultiphaseKOmegaSST.H"
+makeRASModel(continuousMultiphaseKOmegaSST);
+
 // -------------------------------------------------------------------------- //
 // Kinetic Theory based models
 // -------------------------------------------------------------------------- //
