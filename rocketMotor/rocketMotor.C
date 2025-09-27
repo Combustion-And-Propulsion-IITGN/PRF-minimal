@@ -84,8 +84,6 @@ int main(int argc, char *argv[])
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
-    // Info << "Propellant Volume: "
-    //       << sum(fluid.phases()[2].internalField()*mesh.V())*10000 << endl;
 
     // Correcting Phase Volume Fractions
     forAll(fluid.phases(), phasei)
@@ -123,9 +121,6 @@ int main(int argc, char *argv[])
         {
             fluid.solve();
             fluid.correct();
-
-            // // Reconstruct Propellant surface
-            // surf.reconstruct();
 
             //***********  Start Find Propellant size ***********//
             if (propellantIndex != -1)
@@ -196,11 +191,8 @@ int main(int argc, char *argv[])
             #include "pU/pEqn.H"
 
             fluid.correctKinematics();
+            fluid.correctTurbulence();
 
-            // if (pimple.turbCorr())
-            // {
-                fluid.correctTurbulence();
-            // }
         }
 
         if (runTime.write())
