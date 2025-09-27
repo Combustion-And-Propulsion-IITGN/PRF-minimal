@@ -196,20 +196,4 @@ inline void limitT(volScalarField& he, const scalarField heMax, const scalarFiel
     }
   }
   // Info << "Limit Temperature Internal cells" << endl;
-
-  // forAll(T.boundaryField(), patchi)
-  // {
-  //   const scalarField& Tpatch(T.boundaryField()[patchi]);
-  //   scalarField& hepatch(he.boundaryFieldRef()[patchi]);
-  //   const scalarField& heMaxpatch(heMax.boundaryField()[patchi]);
-  //   Info << "Limit Temperature boundary cells" << patchi <<  endl;
-
-  //   forAll(Tpatch, i)
-  //   {
-  //     if (Tpatch[i] > 2740)
-  //     {
-  //       hepatch[i] = heMaxpatch[i];
-  //     }
-  //   }
-  // }
 }

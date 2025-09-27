@@ -50,7 +50,7 @@ Description
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include "AdiabaticWall.H"
+#include "helperFunctions.H"
 
 int main(int argc, char *argv[])
 {
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 
     Info<< "\nStarting time loop\n" << endl;
 
-    // Correcting Phase Volume Fractions
+    // Correcting Phase Volume Fractions (<- To avoid division by zero)
     forAll(fluid.phases(), phasei)
     {
       fluid.phases()[phasei].clip(SMALL, 1 - SMALL);
@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
             if (propellantIndex != -1)
             {
               label purePropellantSize = 0;
-              scalar cutoff = 0.999; //(1.0 - SMALL);
+              scalar cutoff = 0.999; // (1.0 - SMALL) is another alternative;
               {
                 const volScalarField& propellant = phases[propellantIndex];
 
@@ -167,7 +167,7 @@ int main(int argc, char *argv[])
               } 
             }
             labelList particleFreeCells(particleFreeCellSize);
-	          const volScalarField& gasTemp(phases[0].thermo().T());
+	          const volScalarField& gasTemp(gasPhase.thermo().T());
             scalarField setParticleTemp(particleFreeCellSize, 300);
             {
               const volScalarField alphaP(phases[1]);
