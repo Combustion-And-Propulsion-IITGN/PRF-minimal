@@ -435,9 +435,9 @@ Foam::RASModels::multiphaseKineticTheoryModel::devRhoReff
                 IOobject::NO_READ,
                 IOobject::NO_WRITE
             ),
-          - (rho_*nut_)
+          - (alpha_*rho_*nut_)
            *dev(twoSymm(fvc::grad(U)))
-          - ((rho_*lambda_)*fvc::div(phi_))*symmTensor::I
+          - ((alpha_*rho_*lambda_)*fvc::div(phi_))*symmTensor::I
         )
     );
 }
@@ -451,11 +451,11 @@ Foam::RASModels::multiphaseKineticTheoryModel::divDevRhoReff
 {
     return
     (
-      - fvm::laplacian(rho_*nut_, U)
+      - fvm::laplacian(alpha_*rho_*nut_, U)
       - fvc::div
         (
-            (rho_*nut_)*dev2(T(fvc::grad(U)))
-          + ((rho_*lambda_)*fvc::div(phi_))
+            (alpha_*rho_*nut_)*dev2(T(fvc::grad(U)))
+          + ((alpha_*rho_*lambda_)*fvc::div(phi_))
            *dimensioned<symmTensor>("I", dimless, symmTensor::I)
         )
     );
@@ -489,7 +489,6 @@ void Foam::RASModels::multiphaseKineticTheoryModel::correct()
         const surfaceScalarField& alphaRhoPhi = alphaRhoPhi_;
         const volVectorField& Uc_ = otherPhase_.U();
         const volVectorField& U = U_;
-        // refCast<const twoPhaseSystem>(phase_.fluid()).otherPhase(phase_).U();
 
         // Particle viscosity (Table 3.2, p.47)
         nut_ = viscosityModel_->nu(alpha, Theta_, gs0_, rho, da, e_);
@@ -597,14 +596,15 @@ void Foam::RASModels::multiphaseKineticTheoryModel::correct()
         ThetaEqn.solve();
 
         // Impose wall on propellant surface
-        // const volScalarField& alphaProp(this->db().lookupObject<volScalarField>("alpha.propellant"));
-        // ImposeWall(Theta_, alphaProp);
-        // Theta_ = pos0(alpha - minAlpha_)*Theta_;
+        const volScalarField& alphaProp(this->db().lookupObject<volScalarField>("alpha.propellant"));
+        ImposeWall(Theta_, alphaProp);
+        Theta_ = pos0(alpha - residualAlpha_)*Theta_;
         fvOptions.correct(Theta_);
     }
     else
     {
-        // Equilibrium => dissipation == production
+        // Equilibrium => dissipation == production 
+        // (**** Proceed with caution! -> This can change with viscosity model -> verify these coefficients before using.)
         // Eq. 4.14, p.82
         volScalarField K1("K1", 2*(1 + e_)*rho*gs0_);
         volScalarField K3
@@ -667,30 +667,30 @@ void Foam::RASModels::multiphaseKineticTheoryModel::correct()
         // Bulk viscosity  p. 45 (Lun et al. 1984).
         lambda_ = (4.0/3.0)*sqr(alpha)*da*gs0_*(1 + e_)*ThetaSqrt/sqrtPi;
 
-        // Frictional pressure
-        volScalarField pf
-        (
-            frictionalStressModel_->frictionalPressure
-            (
-                phase_,
-                alphaMinFriction_,
-                alphaMax_
-            )
-        );
+        // // Frictional pressure (Will be implemented in future releases)
+        // volScalarField pf
+        // (
+        //     frictionalStressModel_->frictionalPressure
+        //     (
+        //         phase_,
+        //         alphaMinFriction_,
+        //         alphaMax_
+        //     )
+        // );
 
-        nuFric_ = frictionalStressModel_->nu
-        (
-            phase_,
-            alphaMinFriction_,
-            alphaMax_,
-            pf/rho,
-            D
-        );
+        // nuFric_ = frictionalStressModel_->nu
+        // (
+        //     phase_,
+        //     alphaMinFriction_,
+        //     alphaMax_,
+        //     pf/rho,
+        //     D
+        // );
 
         // Limit viscosity and add frictional viscosity
         nut_.min(maxNut_);
-        nuFric_ = min(nuFric_, maxNut_ - nut_);
-        nut_ += nuFric_;
+        // nuFric_ = min(nuFric_, maxNut_ - nut_);
+        // nut_ += nuFric_;
     }
 
     // if (debug)

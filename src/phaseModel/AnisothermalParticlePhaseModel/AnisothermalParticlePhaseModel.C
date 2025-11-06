@@ -116,6 +116,9 @@ Foam::AnisothermalParticlePhaseModel<BasePhaseModel>::heEqn()
     );
     const volScalarField& DpDt(tDpDt());
 
+    volTensorField gradU(fvc::grad(U));
+    const volScalarField mu(rho*this->nu());
+
     volScalarField& he = this->thermo_->he();
 
     tmp<fvScalarMatrix> tEEqn
@@ -123,6 +126,7 @@ Foam::AnisothermalParticlePhaseModel<BasePhaseModel>::heEqn()
         fvm::ddt(alpha, rho, he)
       + fvm::div(alphaRhoPhi, he)
       - fvm::Sp(contErr, he)
+    //   - alpha*(mu*(gradU + dev2(T(gradU))) && gradU)   // Viscous Disscipation
       ==
          alpha*DpDt
     );

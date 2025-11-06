@@ -33,6 +33,7 @@ radial = $(multiphaseTurbulence)/kineticTheoryModels/radialModel
 $(radial)/radialModel/radialModel.C
 $(radial)/CarnahanStarling/CarnahanStarlingRadial.C
 $(radial)/LunSavage/LunSavageRadial.C
+$(radial)/Gidaspow/GidaspowRadial.C
 $(radial)/SinclairJackson/SinclairJacksonRadial.C
 
 granular = $(multiphaseTurbulence)/kineticTheoryModels/granularPressureModel
