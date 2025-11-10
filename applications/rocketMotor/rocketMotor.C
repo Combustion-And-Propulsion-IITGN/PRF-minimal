@@ -36,8 +36,8 @@ Description
     momentum, mass, and energy exchange.
 
     Can also be used without the propellant phase, making it applicable
-    for simulations of two-phase (gas-particle) flows in rocket motors
-    and convergent-divergent nozzles without propellant regression. 
+    for steady flow simulations of two-phase (gas-particle) flows in 
+    rocket motors and convergent-divergent nozzles. 
 
 \*---------------------------------------------------------------------------*/
 
