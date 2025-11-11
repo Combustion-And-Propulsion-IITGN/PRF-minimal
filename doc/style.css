@@ -47,16 +47,36 @@ header a {
     font-size: inherit !important;
 }
 
-/* Removed scaling and vibrant effects for RocIBCFD header */
-header a:hover,
-header a:focus,
-header a:active,
+/* Removed scaling and vibrant effects for RocIBCFD header
+   Only apply non-color hover behavior to top-level nav items (not dropdown items)
+   Top-level nav links are direct children of the main flex container inside the nav. */
+header nav > div > a:hover,
+header nav > div > a:focus,
+header nav > div > a:active,
+header nav > div > button:hover,
+header nav > div > button:focus,
+header nav > div > button:active,
 .nav-active,
 .nav-active a {
-    color: #fa0000; /* Red on hover/active */
     font-weight: bold !important; /* ensure it remains bold */
     transform: none !important; /* remove any accidental scaling */
     font-size: inherit !important; /* prevent font-size changes */
+    color: #ff8800 !important; /* contrasting gold on hover */
+    transition: color 0.18s ease; /* smooth color transition */
+}
+
+/* Red hover only for dropdown menu items (the dropdown panel uses .absolute inside .group) */
+header .group .absolute a:hover,
+header .group .absolute a:focus,
+header .group .absolute a:active {
+    color: #fa0000; /* Red on dropdown hover */
+}
+
+/* Mobile menu: make the text contrast on hover as well (instead of gray background alone) */
+#mobile-menu a:hover,
+#mobile-menu a:focus,
+#mobile-menu a:active {
+    color: #ff8800 !important;
 }
 
 /* Glassy / translucent active/nav focus style
