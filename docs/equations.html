@@ -18,6 +18,16 @@
                 {left: '$', right: '$', display: false}
             ]
         });"></script>
+    <style>
+        .flowchart-wrapper {
+          display: flex;
+          justify-content: center; /* This centers your flowchart */
+        }
+        .flowchart-wrapper .mermaid {
+          min-width: 600px;  /* Adjust this value as needed */
+          max-width: 100%; /* Allows it to be responsive */
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
@@ -56,9 +66,9 @@
                         <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="absolute -left-4 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden group-hover:block">
-                        <a href="#governing-equations" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Governing Equations</a>
-                        <a href="#numerical-methods" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Numerical Methods</a>
-                        <a href="#boundary-conditions" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Boundary Conditions</a>
+                        <a href="#governing-equations" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Equations</a>
+                        <a href="#closure-models" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Closure Models</a>
+                        <a href="#solution-algo" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Solution Algorithm</a>
                     </div>
                 </div>
             
@@ -80,26 +90,52 @@
 
     <!-- Main Content -->
     <main>
-        <section id="governing-equations" class="py-20 bg-white">
+        <div class="container mx-auto px-4 py-4 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Theoretical Framework</h2>
+    
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
+    
+                    <div class="md:col-span-7">
+                        <img src="Framework.png" alt="A representative rocket motor simulation domain and the closure models included to simulate the multiphase flow" class="mx-auto my-6 mb-6 rounded-lg shadow-md w-full"> <figcaption class="text-center text-gray-600 text-sm italic mt-2 mb-4">
+                            A representative rocket motor simulation domain and the closure models included to simulate the multiphase flow.
+                        </figcaption>
+                    </div>
+    
+                    <div class="md:col-span-5">
+                        <p class="text-base text-gray-700 leading-relaxed mb-6">
+                            This study adopts a <strong>Multiphase Eulerian-Eulerian approach</strong> to model the flow. 
+                            This framework treats the <strong>gas phase</strong>, <strong>particle phase</strong>, and <strong>propellant phase</strong> 
+                            as distinct, continuous phases. The key models and assumptions are detailed below.
+                        </p>
+    
+                        <ul class="list-disc list-outside space-y-3 pl-5 text-base text-gray-700 leading-relaxed">
+                            <li>
+                                <strong>Phase Modeling:</strong> The gas phase is a compressible ideal gas, while the particle phase is an incompressible fluid with constant density.
+                            </li>
+                            <li>
+                                <strong>Particle Size:</strong> The particle size is assumed to be constant.
+                            </li>
+                            <li>
+                                <strong>Combustion:</strong> Modeled as a single-step process producing only major gas-phase products and particles.
+                            </li>
+                            <li>
+                                <strong>Species Conservation:</strong> Species diffusion processes are neglected due to high velocities in the rocket motor. 
+                                The gas is assumed to be chemically frozen during expansion, so gas-phase species conservation equations are not solved.
+                            </li>
+                        </ul>
+                    </div>
+    
+                </div> </div>
+        </div>
+        <section id="governing-equations" class="py-10 bg-white">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Theoretical Framework</h2>
-                    <img src="Framework.png" alt="A representative rocket motor simulation domain and the closure models included to simulate the multiphase flow" class="mx-auto my-6 mb-6">
-                    <figcaption class="text-center text-gray-700 text-sm font-bold mt-2 mb-4">A representative rocket motor simulation domain and the closure models included to simulate the multiphase flow</figcaption>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                        A multiphase Eulerian-Eulerian approach has been adopted in this study, in which both particles and fluid are modeled as continuous phases. 
-                        The particle size is assumed to be constant. The propellant is modeled as an additional phase, and the propellant regression is governed by the burning rate law. 
-                        The gas phase mixture is compressible and its thermodynamic state is governed by the ideal gas equation of state, and the particle phase is treated as an incompressible phase with constant density. 
-                        The combustion process is modeled as a single-step process producing only major gas-phase product species and particles, which enter the combustion chamber. 
-                        The species diffusion processes in the rocket motor are neglected, considering high velocities in the rocket motor.  
-                        Viscous effects in the fluid flow are considered and the no-slip condition is enforced along the walls of the rocket motor. 
-                        The gas is assumed to be chemically frozen during expansion and species diffusion is ignored, thus, the species mass conservation equations for gas-phase species are not solved. 
-                    </p>
-                    <p class="text-lg font-bold text-gray-900 mb-4">Governing Equations:</p>
+                <div class="max-w-7xl mx-auto">
+                    <p class="text-2xl font-bold text-gray-900 mb-4">Governing Equations:</p>
                     <p class="text-lg text-gray-700 leading-relaxed mb-4">The mass conservation equations of gas and particle phases are given by:</p>
                     <p>
                         $$
-                        \frac{\partial}{\partial t}(\alpha_k \rho_k) + \nabla \cdot (\alpha_k \rho_k \boldsymbol{u}_k) = \dot{m}'''_{prop \rightarrow k} \tag{1}
+                        \frac{\partial}{\partial t}(\alpha_k \rho_k) + \boldsymbol{\nabla} \cdot (\alpha_k \rho_k \boldsymbol{u}_k) = \dot{m}'''_{prop \rightarrow k} \tag{1}
                         $$
                     </p>
 
@@ -109,7 +145,7 @@
 
                     <p>
                         $$
-                        \frac{\partial}{\partial t}(\alpha_g \rho_g \boldsymbol{u}_g) + \nabla \cdot (\alpha_g \rho_g \boldsymbol{u}_g \boldsymbol{u}_g) = -\alpha_g \nabla P + \nabla \cdot (\alpha_g \boldsymbol{\tau}_g) 
+                        \frac{\partial}{\partial t}(\alpha_g \rho_g \boldsymbol{u}_g) + \boldsymbol{\nabla} \cdot (\alpha_g \rho_g \boldsymbol{u}_g \boldsymbol{u}_g) = -\alpha_g \boldsymbol{\nabla} P + \boldsymbol{\nabla} \cdot (\alpha_g \boldsymbol{\tau}_g) 
                         + \boldsymbol{M}_{prop \rightarrow g} + \boldsymbol{f}_{D,g}
                         \tag{2}
                         $$
@@ -117,16 +153,26 @@
 
                     <p>
                         $$
-                        \frac{\partial}{\partial t}(\alpha_p \rho_p \boldsymbol{u}_p) + \nabla \cdot (\alpha_p \rho_p \boldsymbol{u}_p \boldsymbol{u}_p) = -\alpha_p \nabla P + \boldsymbol{M}_{prop \rightarrow p} + \boldsymbol{f}_{D,p} \tag{3}
+                        \frac{\partial}{\partial t}(\alpha_p \rho_p \boldsymbol{u}_p) + \boldsymbol{\nabla} \cdot (\alpha_p \rho_p \boldsymbol{u}_p \boldsymbol{u}_p) = -\alpha_p \boldsymbol{\nabla} P + \boldsymbol{\nabla} \cdot \boldsymbol{\tau}_p - \boldsymbol{\nabla} P_p + \boldsymbol{M}_{prop \rightarrow p} + \boldsymbol{f}_{D,p} \tag{3}
                         $$
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                        where $P$ is the common pressure experienced by all the phases, $\tau_k$ is the shear stress in the $k^{\text{th}}$ phase, and $f_{D,k}$ is the drag force experienced by the $k^{\text{th}}$ phase. The subscripts $g$ and $p$ refer to gas and particle phases, respectively. Note that the particle–particle interaction terms are not included in the above equations. The justification for this omission as well as the effect of particle–particle interactions on propulsive performance are discussed in Sec. V. Here $\boldsymbol{M}_{prop \rightarrow g}$ and $\boldsymbol{M}_{prop \rightarrow p}$ represent momentum source terms for the gas phase and particle phase, respectively, due to regression. The shear stress in the gas phase is modeled as follows:
+                        where $P$ is the common pressure experienced by all the phases, $\boldsymbol{\tau}_k$ is the shear stress in the $k^{\text{th}}$ phase, 
+                        and $f_{D,k}$ is the drag force experienced by the $k^{\text{th}}$ phase. The subscripts $g$ and $p$ refer to gas and particle phases, respectively. 
+                        Here $\boldsymbol{M}_{prop \rightarrow g}$ and $\boldsymbol{M}_{prop \rightarrow p}$ represent momentum source terms for the gas phase and particle phase, 
+                        respectively, due to regression. The shear stress in the gas phase is modeled as follows:
                     </p>
 
                     <p>
                         $$
-                        \tau_g = \mu_g (\nabla \boldsymbol{u}_g + \nabla \boldsymbol{u}_g^T) - \frac{2}{3} \mu_g (\nabla \cdot \boldsymbol{u}_g) \boldsymbol{I} \tag{4}
+                        \boldsymbol{\tau}_g = \mu_g (\boldsymbol{\nabla} \boldsymbol{u}_g + \boldsymbol{\nabla} \boldsymbol{u}_g^T) - \frac{2}{3} \mu_g (\boldsymbol{\nabla} \cdot \boldsymbol{u}_g) \boldsymbol{I} \tag{4}
+                        $$
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">The shear stress in the particle phase is modeled as follows:</p>
+                    <p>
+                        $$
+                        \boldsymbol{\tau}_p = \mu_p (\boldsymbol{\nabla} \boldsymbol{u}_p + \boldsymbol{\nabla} \boldsymbol{u}_p^T) 
+                        + (\lambda_p - \frac{2}{3} \mu_p) (\boldsymbol{\nabla} \cdot \boldsymbol{u}_p) \boldsymbol{I} \tag{5}
                         $$
                     </p>
 
@@ -136,34 +182,66 @@
 
                     <p>
                         $$
-                        \begin{aligned}
-                        \frac{\partial}{\partial t}(\alpha_g \rho_g h_g) + \nabla \cdot (\alpha_g \rho_g \boldsymbol{u}_g h_g) = \nabla \cdot \left( \frac{\alpha_g \lambda_g}{C_{p,g}} \nabla h_g \right) + \alpha_g \frac{DP}{Dt} 
-                         & + \alpha_g \boldsymbol{\tau}_g : \nabla \boldsymbol{u}_g + \dot{q}'''_{p \rightarrow g} \\
-                         & + f_{D,g} \cdot (\boldsymbol{u}_p - \boldsymbol{u}_g) + H_{prop \rightarrow g} 
-                        \tag{5}
-                        \end{aligned}
+                        \frac{\partial}{\partial t}(\alpha_g \rho_g h_g) + \boldsymbol{\nabla} \cdot (\alpha_g \rho_g \boldsymbol{u}_g h_g) = \boldsymbol{\nabla} \cdot \left( \frac{\alpha_g \lambda_g}{C_{p,g}} \boldsymbol{\nabla} h_g \right) + \alpha_g \frac{DP}{Dt} 
+                          + \alpha_g \boldsymbol{\tau}_g : \boldsymbol{\nabla} \boldsymbol{u}_g + \dot{q}'''_{p \rightarrow g} 
+                          + f_{D,g} \cdot (\boldsymbol{u}_p - \boldsymbol{u}_g) + H_{prop \rightarrow g} 
+                        \tag{6}
                         $$
                     </p>
 
                     <p>
                         $$
-                        \frac{\partial}{\partial t}(\alpha_p \rho_p h_p) + \nabla \cdot (\alpha_p \rho_p \boldsymbol{u}_p h_p) = \alpha_p \frac{DP}{Dt} + H_{prop \rightarrow p} + \dot{q}'''_{g \rightarrow p} \tag{6}
+                        \frac{\partial}{\partial t}(\alpha_p \rho_p h_p) + \boldsymbol{\nabla} \cdot (\alpha_p \rho_p \boldsymbol{u}_p h_p) = \alpha_p \frac{DP}{Dt} + 
+                        \alpha_p \boldsymbol{\tau}_p : \boldsymbol{\nabla} \boldsymbol{u}_p + H_{prop \rightarrow p} + \dot{q}'''_{g \rightarrow p} \tag{7}
                         $$
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed mb-4">
                         where $h$ is the enthalpy, $\lambda$ is the thermal conductivity, $C_p$ is the specific heat, 
-                        $H_{\text{prop}\to k}$ is the enthalpy source term for the $k$th phase due to regression, and 
-                        $q'''_{i\to j}$ is the rate of heat transfer from the $i$th phase to the $j$th phase. 
+                        $H_{\text{prop}\to k}$ is the enthalpy source term for the $k^{\text{th}}$ phase due to regression, and 
+                        $q'''_{i\to j}$ is the rate of heat transfer from the $i^{\text{th}}$ phase to the $j^{\text{th}}$ phase. 
                         Note that the source terms due to propellant regression are only relevant to the computational cells adjacent to the surface of the propellant bed. 
-                        For the remaining computational cells inside the rocket motor, only the source terms arising from particle–gas interactions are relevant.
+                        For the remaining computational cells inside the rocket motor, only the source terms arising from particle–gas interactions are relevant.  
                     </p>
-
-                    <hr class="my-12">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">References</h3>
-
-                    <div id="bibliography" class="text-lg text-gray-700 leading-relaxed space-y-4"></div>
             </div>
         </section>
+
+        <!--Closure Models-->
+        <section id="closure-models" class="py-10 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-7xl mx-auto">
+                    <p class="text-2xl font-bold text-gray-900 mb-4">Closure Models:</p>
+                    <p class="text-xl text-gray-900 leading-relaxed mb-4">1. Propellant Surface Regression Model</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">The mass conservation equation for the propellant phase is written as:</p>
+                    <p>
+                        $$
+                        \frac{\partial}{\partial t}(\alpha_{prop} \rho_{prop})  = \dot{m}'''_{prop} \tag{8}
+                        $$
+                    </p>
+                    <p class="text-xl text-gray-900 leading-relaxed mb-4">2. Combustion Model</p>
+                    <p class="text-xl text-gray-900 leading-relaxed mb-4">3. Drag Models</p>
+                    <p class="text-xl text-gray-900 leading-relaxed mb-4">4. Heat Transfer Models</p>
+                    <p class="text-xl text-gray-900 leading-relaxed mb-4">5. Particle-particle Interaction Models</p>
+                </div>
+            </div>
+        </section>
+
+        <!--Solution Algorithm-->
+        <section id="solution-algo" class="py-10 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-7xl mx-auto">
+                    <p class="text-2xl font-bold text-gray-900 mb-4 text-center">Solution Algorithm</p>
+                    <div class="flowchart-wrapper">
+                    <pre class="mermaid">
+                        graph TD;
+                            A["Initialize variables: $a_g$, a_p(n), a_prop(n), rho_g(n), T_g(n), T_p(n), P(n), u_g(n), u_p(n)"]
+                            B["Advance time step, t = t + dt set PIMPLE iteration, k = 0"]
+                            A --> B 
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -188,6 +266,12 @@
             © 2025 Ganeshkumar V. All rights reserved.
         </p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
