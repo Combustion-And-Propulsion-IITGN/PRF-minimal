@@ -133,7 +133,7 @@
         <section id="governing-equations" class="py-10 bg-white">
             <div class="container mx-auto px-6">
                 <div class="max-w-7xl mx-auto">
-                    <p class="text-2xl font-bold text-gray-900 mb-4">Governing Equations:</p>
+                    <p class="text-2xl font-bold text-gray-900 mb-4 text-center">Governing Equations</p>
                     <p class="text-lg text-gray-700 leading-relaxed mb-4">
                         The mass conservation equations of gas and particle phases are given by:
                         $$
@@ -187,18 +187,134 @@
         <section id="closure-models" class="py-10 bg-white">
             <div class="container mx-auto px-6">
                 <div class="max-w-7xl mx-auto">
-                    <p class="text-2xl font-bold text-gray-900 mb-4">Closure Models:</p>
-                    <p class="text-xl text-gray-900 leading-relaxed mb-4">1. Propellant Surface Regression Model</p>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-4">The mass conservation equation for the propellant phase is written as:</p>
-                    <p>
+                    <p class="text-2xl font-bold text-gray-900 mb-4 text-center">Closure Models</p>
+                    <p class="text-xl font-bold text-gray-900 leading-relaxed mb-4">1. Propellant Surface Regression Model</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">The propellant phase is stationary ($u_{prop}$ = 0). 
+                        Therefore, only mass and energy conservation equations are solved for the propellant phase.
+                        The mass conservation equation for the propellant phase is written as:
                         $$
-                        \frac{\partial}{\partial t}(\alpha_{prop} \rho_{prop})  = \dot{m}'''_{prop} \tag{8}
+                        \frac{d}{dt}(\alpha_{prop} \rho_{prop})  = -\dot{m}'''_{prop} \tag{8}
+                        $$
+                        The propellant mass burning rate or propellant mass consumption rate is denoted as $\dot{m}'''_{prop}$, and 
+                        is a function of propellant burning rate and the burning surface area. The burning rate of the propellant is
+                        expressed as the function of pressure as per  St. Robert's law. The mass burning rate and the burning rate law 
+                        is expressed as:
+                        $$
+                        \dot{m}'''_{prop} = \rho_{prop}r_bs_b
+                        $$
+                        $$
+                        r_b[\text{cm/s}] = a(P[\text{MPa}])^n
+                        $$
+                        where, $r_b$ is the burning rate of the propellant with the units of cm/s and $s_b$ is the burning surface area
+                        per unit volume of the propellant. The burning rate pressure exponent is denoted as $n$ and the pre-exponential factor 
+                        is denoted as $a$. The pressure is substituted in the units of MPa in the burning rate expression. The pre-exponential
+                        factor and the burning rate pressure exponent are one of the inputs to the program. The algorithm to find the burning 
+                        surface area is presented in detail $\underline{here}$. 
+                        The energy conservation equation for the propellant phase is written as:
+                        $$
+                        \frac{d}{dt}(\alpha_{prop} \rho_{prop} h_{prop})  = -\dot{m}'''_{prop}h_{prop} + \alpha_{prop}\frac{dP}{dt}\tag{8}
+                        $$
+                        where, $h_{prop}$ is the enthalpy of the propellant phase. 
+                        Expressing the energy equation in non-conservative form of the equation in terms of internal energy will lead 
+                        to $\frac{de_{prop}}{dt} = 0$, suggesting the specific internal energy of the propellant phase is constant. The 
+                        present framework model does not explicitly resolve the reaction zone. The propellant at the initial temperature is assumed 
+                        to get converted to products at the interface and the rate of the reaction is dictated by the burning rate law 
+                        which is one of the input to the model. Therefore, the energy equation for the propellant phase need not be solved. 
+                    </p>
+                    
+                    <p class="text-xl font-bold text-gray-900 leading-relaxed mb-4">2. Combustion Model</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        The combustion of the propellant is modelled as a single step global reaction:
+                        $$
+                        \text{Propellant} \rightarrow \text{Gas phase} + \text{Particle phase} 
+                        $$ 
+                        The mass fraction of the gas phase and particle phase can be obtained from the global reaction, and is denoted as 
+                        $X_g$ and $X_p$, respectively. The mass source term for the particle and gas phase are computed as, 
+                        $$
+                        \dot{m}'''_{prop\rightarrow g} = X_g\dot{m}'''_{prop} \hspace{30pt} \dot{m}'''_{prop\rightarrow p} = X_p\dot{m}'''_{prop}
+                        $$
+                        The momentum source terms for the gas and particle phases are calculated by performing interfacial mass conservation 
+                        locally near the propellant surface. The interfacial mass balance equation at the propellant surface becomes,
+                        $$
+                        \left[\alpha_g \rho_g (\boldsymbol{v}_g \cdot \boldsymbol{\hat{n}} - r_b) \right]s_b +
+                        \left[\alpha_p \rho_p (\boldsymbol{v}_p \cdot \boldsymbol{\hat{n}} - r_b) \right]s_b = -\rho_{prop}r_bs_b
+                        $$
+                        where the radially outward unit normal vector of the propellant surface is denoted as $\boldsymbol{\hat{n}}$. Assuming
+                        the particles are not yet dragged by the gas at the propellant surface, the velocity of the particle phase is taken 
+                        to be zero ($\boldsymbol{v}_p = 0$). The above equation is used to obtain the velocity of gas phase at the propellant 
+                        surface. Therefore, the momentum sources of the gas and particle phase due to propellant regression are:
+                        $$
+                        \boldsymbol{M}_{prop \rightarrow g} = \dot{m}'''_{prop \rightarrow g}\boldsymbol{v}_g \hspace{30pt}
+                        \boldsymbol{M}_{prop \rightarrow p} = \dot{m}'''_{prop \rightarrow p}\boldsymbol{v}_p
+                        $$
+                        Note that the interfacial momentum balance should also be considered to obtain the velocity of the gas and particle 
+                        phase at the propellant surface. Such a balance would suggest that there is a pressure jump across the propellant 
+                        surface as a result of the thrust force experienced by the propellant phase due to mass ejection. 
+                        A simple calculation suggests that the thrust force per unit area is of order $\sim$ 1 kPa, and the chamber pressures 
+                        are much higher than 100 kPa. Therefore, this effect is neglected. The temperature $(T_{ad})$ of the gas and particles
+                        entering the combustion chamber is obtained by performing energy balance between reactants and products,
+                        i.e., equating the enthalpy of reactants and products. The enthalpy of the gas and particle phase are then computed as:
+                        $$
+                        h_{prop \rightarrow k} = \Delta h_{f, k}^0 + \int_{T_{ref}}^{T_{ad}} C_{p, k}(T) \,dT
+                        $$ 
+                        where, $\Delta h_{f, k}^0$ is the enthalpy of formation of $k^{\text{th}}$ phase and $C_{p, k}$ is the constant pressure
+                        specific heat of $k^{\text{th}}$ phase. If the gas phase constitutes of mixture of various species, the enthalpy of 
+                        formation and the constant pressure specific heat can be obtained as weighting based on the mass fractions of the individual 
+                        species in the mixture. The mass fraction weighted coefficients can be given as inputs to the model.
+                        Thus, the enthalpy source term of the gas and particle phase is expressed as, 
+                        $$
+                        H_{prop \rightarrow g} = \dot{m}'''_{prop \rightarrow g} \hspace{30pt} 
+                        H_{prop \rightarrow p} = \dot{m}'''_{prop \rightarrow p}
                         $$
                     </p>
-                    <p class="text-xl text-gray-900 leading-relaxed mb-4">2. Combustion Model</p>
-                    <p class="text-xl text-gray-900 leading-relaxed mb-4">3. Drag Models</p>
-                    <p class="text-xl text-gray-900 leading-relaxed mb-4">4. Heat Transfer Models</p>
-                    <p class="text-xl text-gray-900 leading-relaxed mb-4">5. Particle-particle Interaction Models</p>
+                    <p class="text-xl font-bold text-gray-900 leading-relaxed mb-4">3. Drag Models</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        Various drag models are included in the library that provides a closure model for the drag coefficient between gas and particle
+                        phase. The drag force is calculated from the drag coefficient as follows:
+                        $$
+                        \boldsymbol{f}_{D, g} = -\boldsymbol{f}_{D, p} = 
+                        \frac{3}{4}\frac{\alpha_p\mu_g}{d_p^2}C_D\text{Re}_p(\boldsymbol{u}_p - \boldsymbol{u}_g)
+                        $$
+                        where, $d_p$ is particle size, $\mu_g$ is the gas phase viscosity, $C_D$ is the drag coefficient and, $Re_p$ is the particle
+                        Reynolds number and is computed as:
+                        $$
+                        \text{Re}_p = \frac{\rho_g |\boldsymbol{u}_g - \boldsymbol{u}_p| d_p}{\mu_g}
+                        $$ 
+                        For CD nozzle flows, the gas particle interactions are expected to include compressibility and rarefactional effects in addition
+                        to inertial effects. The drag model that includes all these effects is developed by 
+                        <a href="https://doi.org/10.2514/1.J060153" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">
+                            Eric Loth et. al (2021)
+                        </a>. Additionally, few standard drag models such as Schiller Naumann, Clift Gauvin, Gidaspow - Ergun WenYu and Henderson's drag model
+                        are included with this library.   
+                    </p>
+                    <p class="text-xl font-bold text-gray-900 leading-relaxed mb-4">4. Heat Transfer Models</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        The interphase heat transfer between gas and particle phases are modelled based on Ranz-Marshall correlation. To include rarefactional
+                        effects, the correction proposed by Kavanau is used. The heat transfer between gas and particle phases is calculated as follows,
+                        $$
+                        Q_{HT, p} = -Q_{HT, g} = 6\frac{\alpha_p\lambda_g}{d_p^2}\text{Nu}(T_g - T_p)
+                        $$ 
+                        where, $\text{Nu}$ is the Nusselt number calculated based on the heat transfer model. The library includes Kavanau Ranz Marshall correlation and 
+                        Drake's heat transfer correlation. 
+                    </p>
+                    <p class="text-xl font-bold text-gray-900 leading-relaxed mb-4">5. Particle-particle Interaction Models</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        The particle-particle interactions are modelled based on Kinetic Theory for Granular Flow  (KTGF). The solid pressure and solid shear stress 
+                        is modelled based on the closure models which is a function of granular kinetic energy. A separate governing equation is solved for granular 
+                        kinetic energy ($\Theta$) and is expressed as:
+                        $$
+                        \frac{3}{2} \left[\frac{\partial}{\partial t}(\alpha_p\rho_p\Theta) + \boldsymbol{\nabla}\cdot(\alpha_p\rho_p\Theta \boldsymbol{u}_p)\right] = 
+                        \left[(-P_p\mathbf{I} + \boldsymbol{\tau}_p):\boldsymbol{\nabla} \boldsymbol{u}_p\right] + \boldsymbol{\nabla}\cdot(\kappa_p\boldsymbol{\nabla}\Theta) 
+                        - \gamma_p - J_p 
+                        $$
+                        The first term in the right-hand side of the equation denotes the production of fluctuating energy for the particle phase through stress; 
+                        the second term is the diffusion of the granular energy; the third term is the dissipation of the fluctuating energy due to inelastic collisions 
+                        between particles and the fourth term is the production or destruction of energy due to drag force fluctuations exerted on the particle. 
+                        The library consists of two granular pressure model: 1. Lun's model and 2. Syamlal-Rogers-OBrien model. The viscosity and conductivity models 
+                        proposed by Hrenya-Sinclair, Gidaspow and Syamlal are included in the library. The radial distribution functions required to compute the 
+                        viscosity and solids pressure such as Gidaspow, Lun-Savage, Sinclair-Jackson and Carnahan-Starling are included in this library. The user can
+                        choose one of the available models as per their requirements.  
+                    </p>
                 </div>
             </div>
         </section>
@@ -221,18 +337,14 @@
 
     <!-- Footer -->
     <footer>
-        <p class="mb-4 text-gray-500">
+        <p class="mb-4 text-gray-500 max-w-6xl mx-auto">
             Distributed under the GNU General Public License v3 (GPL-3.0). See the 
             <a href="https://github.com/Ganeshkumar-V/Propellant-Regression-Framework/main/LICENSE" 
                target="_blank" rel="noopener noreferrer" 
                class="text-gray-500 hover:text-gray-500 hover:underline">
                LICENSE
             </a> 
-            file for the full text.
-        </p>
-
-        <p class="mb-6 text-gray-500 max-w-2xl mx-auto">
-            This software is an independent project and is not affiliated with, endorsed by, or 
+            file for the full text. This software is an independent project and is neither endorsed by, nor 
             associated with OpenCFD Ltd or the OpenFOAM® project. OpenFOAM® is a 
             registered trademark of OpenCFD Ltd.
         </p>
